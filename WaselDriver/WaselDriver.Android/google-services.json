@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "622412870107",
+    "firebase_url": "https://wassel-d6fb1.firebaseio.com",
+    "project_id": "wassel-d6fb1",
+    "storage_bucket": "wassel-d6fb1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622412870107:android:6aec2d0b1210b5bc",
+        "android_client_info": {
+          "package_name": "com.alsalil.wasel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622412870107-u8jusrcec7c6cgnkbe12lqt8v7srdq41.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMUX1W0jaVLAllk4v7jJTXaAq69dkzwJU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622412870107:android:cfa4cb9d2a6fbe84",
+        "android_client_info": {
+          "package_name": "com.companyname.App2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622412870107-u8jusrcec7c6cgnkbe12lqt8v7srdq41.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMUX1W0jaVLAllk4v7jJTXaAq69dkzwJU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

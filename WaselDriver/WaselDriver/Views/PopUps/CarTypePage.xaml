@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:i18n="clr-namespace:WaselDriver.CustomControl" 
+             xmlns:viewmodels="clr-namespace:WaselDriver.ViewModels"
+             x:Class="WaselDriver.Views.PopUps.CarTypePage">
+    <ContentPage.BindingContext>
+        <viewmodels:DelivaryViewModel/>
+    </ContentPage.BindingContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0" Padding="5" >
+            <Label Text="{i18n:Translate ChooseCarType}"  HorizontalOptions="Center"/>
+            <ListView x:Name="CarTypeList" IsVisible="{Binding ConnectedIsVisable}" SelectionMode="None"
+                      ItemsSource="{Binding CarType }" ItemTapped="CarTypeList_ItemTapped"
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="250">
+                            <Frame Margin="10" CornerRadius="10" BorderColor="Gray">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                                    <Label HorizontalTextAlignment="Center" Text="{Binding name}" />
+                                    <Image Source="{Binding image}" Aspect="AspectFit" HeightRequest="50" WidthRequest="70" />
+                                    <Label HorizontalTextAlignment="Center" Text="{Binding PPrice}" />
+                                    <Label HorizontalTextAlignment="Center" Text="{Binding Availability}"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center" IsVisible="{Binding NotConnectedIsVisable}">
+                <Label 
+                   Text="{i18n:Translate ErrorMessage}">
+                </Label>
+                <Button Text="{i18n:Translate TryAgain}" Clicked="Button_Clicked"  Image ="warning.png" HeightRequest="50" WidthRequest="50" CornerRadius="20"/>
+            </StackLayout>
+        </StackLayout>
+        <Button Grid.Row="1" x:Name="Returnbtn" IsEnabled="False" Text="{i18n:Translate Continue}" Clicked="Button_Clicked_1"
+                BackgroundColor="OrangeRed" Padding="7" HeightRequest="40"
+                Margin="10" TextColor="White" BorderRadius="10" />
+    </Grid>
+</ContentPage>

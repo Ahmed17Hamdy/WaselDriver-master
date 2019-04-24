@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WaselDriver.Views.UserAuthentication.Register"
+              xmlns:i18n="clr-namespace:WaselDriver.CustomControl"
+             xmlns:viewmodels="clr-namespace:WaselDriver.ViewModels">
+    <ContentPage.BindingContext>
+        <viewmodels:MainViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="3*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Row="0" VerticalOptions="Center">
+                        <Image x:Name="image" Aspect="AspectFit" Source="WaselLogo.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Padding="20,0,20,0" Grid.Row="1" VerticalOptions="Start">
+                        <StackLayout >
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="user.png" Aspect="AspectFit"/>
+                                <Entry Placeholder="{i18n:Translate Name}" x:Name="EntryName" PlaceholderColor="LightGray"  HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="smartphone.png" Aspect="AspectFit"/>
+                                <Entry Keyboard="Numeric" Placeholder="{i18n:Translate Phone}" x:Name="EntryPhone" PlaceholderColor="LightGray" HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="mail.png" Aspect="AspectFit"/>
+                                <Entry Placeholder="{i18n:Translate Email}" x:Name="EntryEmail" PlaceholderColor="LightGray" HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="lock.png" Aspect="AspectFit"/>
+                                <Entry Placeholder="{i18n:Translate Pass}" IsPassword="True" PlaceholderColor="LightGray" x:Name="EntryPassword" HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="lock.png" Aspect="AspectFit"/>
+                                <Entry Placeholder="{i18n:Translate ConfirmPass}" IsPassword="True" PlaceholderColor="LightGray" x:Name="ConfirmPassword" HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+
+
+                            <Button Text="{i18n:Translate Confirm}" x:Name="regbtn"  BackgroundColor="OrangeRed" Padding="7" Margin="10" TextColor="White" BorderRadius="10" HeightRequest="60" WidthRequest="110" Clicked="Regbtn_Clicked"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" FlowDirection="RightToLeft" >
+                                <Label Text="{i18n:Translate Login}" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="Start" TextColor="OrangeRed">
+                                    <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="LoginPageTapped" />
+                                </Label.GestureRecognizers>
+                                </Label>
+                                <Label Text="{i18n:Translate HaveAccount}" TextColor="Gray" HorizontalOptions="End" Margin="0,0,0,20"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" x:Name="Activ" Color="OrangeRed"/>
+        </Grid>
+    </ContentPage.Content>
+  
+
+</ContentPage>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WaselDriver.Views"
+               xmlns:i18n="clr-namespace:WaselDriver.CustomControl"
+             xmlns:viewmodel="clr-namespace:WaselDriver.ViewModels"
+             x:Class="WaselDriver.Views.SplashPage">
+    <ContentPage.BindingContext>
+        <viewmodel:BaseViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <local:ConnectionView Grid.Row="0">
+                <Button Text="{i18n:Translate TryAgain}" Clicked="Button_Clicked" />
+            </local:ConnectionView>
+            <Grid IsVisible="{Binding IsConnected}" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="End">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1" VerticalOptions="End">
+                    <Image  Source="WaselLogoo.png" x:Name="logoImage" Aspect="AspectFit"/>
+                    <Image Source="WaselText.png" HorizontalOptions="CenterAndExpand" Aspect="AspectFill"/>
+                </StackLayout>
+            </Grid>
+
+            <StackLayout Grid.Row="1">
+                <ActivityIndicator x:Name="Activ" HorizontalOptions="Center" VerticalOptions="Start" IsRunning="True" Margin="30"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WaselDriver.Views.UserAuthentication.ActiveCode">
+    <ContentPage.Content>
+        <Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Image Aspect="AspectFit" Source="n.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Grid>
+                <StackLayout Grid.Row="1">
+                    <Label HorizontalTextAlignment="Center" HorizontalOptions="Center" Text="برجاء إدخال كود التأكيد للتحقق من حسابك" FontSize="Large"/>
+                    <Entry IsPassword="True" x:Name="EntryCode" Placeholder="*******" HorizontalTextAlignment="Center"/>
+                    <Button BackgroundColor="OrangeRed" Text="إرسال" HorizontalOptions="Center" Clicked="Button_Clicked" Margin="0,30,0,0"/>
+                </StackLayout>
+            </Grid>
+            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" x:Name="Activ" Color="OrangeRed"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

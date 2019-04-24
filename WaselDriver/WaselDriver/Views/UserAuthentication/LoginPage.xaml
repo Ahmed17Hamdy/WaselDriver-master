@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:WaselDriver.CustomControl"
+             x:Class="WaselDriver.Views.UserAuthentication.LoginPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                    <Image x:Name="image" Source="WaselLogo.png"  Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Grid>
+                <StackLayout  Padding="20,0,20,0" Grid.Row="2" VerticalOptions="Center">
+                    <!-- Place new controls here -->
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="smartphone.png" Aspect="AspectFit" Opacity=".4"/>
+                            <Entry Focused="EntryPhone_Focused" Unfocused="EntryPhone_Unfocused"
+                                   x:Name="EntryPhone" MaxLength="25" Keyboard="Numeric"
+                                   Placeholder="{i18n:Translate Phone}" PlaceholderColor="LightGray" 
+                                   HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="mail.png" Aspect="AspectFit" Opacity=".4"/>
+                            <Entry x:Name="EntryEmail" Placeholder="{i18n:Translate Email}" PlaceholderColor="LightGray"  HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="downArrow.png" Aspect="AspectFit" Opacity=".4"/>
+                            <Entry x:Name="EntryPassword" IsPassword="True" Placeholder="{i18n:Translate Pass}" PlaceholderColor="LightGray"  HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+
+                        <Label Text="{i18n:Translate ForgetPass }" FontAttributes="Bold" TextColor="LightGray" FontSize="Medium" >
+                            <Label.FontFamily>
+                                <OnPlatform x:TypeArguments="x:String" Android="Cairo-Regular.ttf#Cairo Regular " iOS="Cairo-Regular" />
+                            </Label.FontFamily>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                        <Button x:Name="Loginbtn" Text="{i18n:Translate Login}" Clicked="Button_Clicked_1" BackgroundColor="OrangeRed" Padding="8" Margin="10" TextColor="White" BorderRadius="10" HeightRequest="60" WidthRequest="110"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <Label Text="{i18n:Translate NoAccount}" TextColor="Gray" Opacity="0.4" HorizontalOptions="Start" Margin="0,0,0,20"/>
+                            <Label Text="{i18n:Translate Register}" FontSize="Medium" TextColor="#FF4500" HorizontalOptions="Center" FontAttributes="Bold">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+                <!--Splash Image-->
+            </Grid>
+            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" x:Name="Activ" Color="OrangeRed"/>
+        </Grid>
+    </ContentPage.Content>
+  
+</ContentPage>

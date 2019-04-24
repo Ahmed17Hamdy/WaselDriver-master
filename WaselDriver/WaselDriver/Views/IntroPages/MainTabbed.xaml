@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:waseldriver="clr-namespace:WaselDriver"
+              xmlns:i18n="clr-namespace:WaselDriver.CustomControl"
+            xmlns:intropages="clr-namespace:WaselDriver.Views.IntroPages"
+            x:Class="WaselDriver.Views.IntroPages.MainTabbed">
+  <!--Pages can be added as references or inline-->
+    <waseldriver:MainPage Title="{i18n:Translate MainPage}"/>
+    <intropages:ProfilePage Title="{i18n:Translate ProfilePage}"/>
+   
+</TabbedPage>

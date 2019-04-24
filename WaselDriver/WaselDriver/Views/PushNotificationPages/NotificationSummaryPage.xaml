@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     xmlns:i18n="clr-namespace:WaselDriver.CustomControl" 
+             x:Class="WaselDriver.Views.PushNotificationPages.NotificationSummaryPage">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout Padding="10" VerticalOptions="Center" BackgroundColor="White" HorizontalOptions="Center">
+                <StackLayout VerticalOptions="Center" BackgroundColor="White" HorizontalOptions="Center"  Orientation="Horizontal">
+                    <Label x:Name="userNamelbl"/>
+                    <Label Text="{i18n:Translate OrderDetails }"/>
+                </StackLayout>
+                <StackLayout VerticalOptions="Center" BackgroundColor="White" HorizontalOptions="Center" Orientation="Horizontal">
+                    <Label Text="{i18n:Translate LocationFrom }"/>
+                    <Label x:Name="AddressFromlbl"/>
+                </StackLayout>
+                <StackLayout VerticalOptions="Center" BackgroundColor="White" HorizontalOptions="Center" Orientation="Horizontal">
+                    <Label Text="{i18n:Translate LocationTo }"/>
+                    <Label x:Name="AddressTolbl"/>
+                </StackLayout>
+                <StackLayout VerticalOptions="Center" BackgroundColor="White" HorizontalOptions="Center" Orientation="Horizontal">
+                    <Button x:Name="Acceptbtn" BackgroundColor="Green" Clicked="Acceptbtn_Clicked" Text="{i18n:Translate Confirm}" />
+                    <BoxView BackgroundColor="OrangeRed" WidthRequest="1"/>
+                    <Button x:Name="Cancelbtn" Clicked="Cancelbtn_Clicked" BackgroundColor="Red" Text="{i18n:Translate Cancel}" />
+                </StackLayout>
+            </StackLayout>
+            <ActivityIndicator x:Name="Active"  HorizontalOptions="Center" VerticalOptions="Center"
+                                 Color="OrangeRed" />
+        </Grid>
+      
+    </ContentPage.Content>
+</ContentPage>
