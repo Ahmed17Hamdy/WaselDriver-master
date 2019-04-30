@@ -18,22 +18,84 @@ using TK.CustomMap;
 using WaselDriver.Views.PopUps;
 using Rg.Plugins.Popup.Services;
 using WaselDriver.Views.IntroPages;
+using TK.CustomMap.Api.Google;
+using WaselDriver.ViewModels;
 
 namespace WaselDriver.Views.PushNotificationPages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NotificationSummaryPage : ContentPage
 	{
-        private ObservableCollection<TKRoute> routes;
-        private ObservableCollection<TKCustomMapPin> pins;
-        private MapSpan bounds;
+        List<TKRoute> routes = new List<TKRoute>();
+        List<TKCustomMapPin> Pins = new List<TKCustomMapPin>();
+
+        public MapSpan Bounds { get; set; }
 
         public NotificationSummaryPage ()
 		{
 			InitializeComponent ();
             ChechNotification();
+            GmsDirection.Init("AIzaSyB7rB6s8fc317zCPz8HS_yqwi7HjMsAqks");
+            SetMyLocation();
+            OrderMap.RouteCalculationFinished += OrderMap_RouteCalculationFinished;
+            OrderMap.RouteCalculationFailed += OrderMap_RouteCalculationFailed;
         }
-        private  void ChechNotification()
+        private async void OrderMap_RouteCalculationFailed(object sender, TKGenericEventArgs<TK.CustomMap.Models.TKRouteCalculationError> e)
+        {
+            await DisplayAlert(AppResources.Error, AppResources.RouteNotFound, AppResources.Ok);
+
+            var request = new GeolocationRequest(GeolocationAccuracy.High);
+            var location = await Geolocation.GetLocationAsync(request);
+            OrderMap.MapRegion = MapSpan.FromCenterAndRadius(
+                    new Position(location.Longitude, location.Longitude), Distance.FromMiles(1));
+
+        }
+        private void OrderMap_RouteCalculationFinished(object sender, TKGenericEventArgs<TKRoute> e)
+        {
+            OrderMap.MapRegion = e.Value.Bounds;
+
+        }
+        private async void SetMyLocation()
+        {
+            Pins.Clear();
+            routes.Clear();
+            var route = new TKRoute();
+            route.TravelMode = TKRouteTravelMode.Driving;
+            var myposition = new Position(Convert.ToDouble(Settings.LastLat), Convert.ToDouble(Settings.LastLng));
+            var toposition = new Position(Convert.ToDouble(Settings.Latfrom), Convert.ToDouble(Settings.Lngfrom));
+            route.Source = myposition;
+            route.Destination = toposition;
+            route.Color = Color.OrangeRed;
+            route.LineWidth = 4;
+
+            Pins.Add(new RoutePin
+            {
+                Route = route,
+                Image = "deliverytruck.png",
+                IsSource = true,
+                IsDraggable = true,
+                Position = myposition,
+                Title = "From",
+                ShowCallout = true,
+
+            });
+            Pins.Add(new RoutePin
+            {
+                Route = route,
+                IsSource = false,
+                IsDraggable = true,
+                Position = toposition,
+                Title = "To",
+                ShowCallout = true,
+                DefaultPinColor = Color.Red
+            });
+            routes.Add(route);
+            OrderMap.Routes = routes;
+            OrderMap.Pins = Pins;
+
+        }
+
+        private void ChechNotification()
         {
             if(Settings.LastNotify!= "Has been approved" && Settings.LastNotify!= "Not approved")
             {
@@ -47,7 +109,7 @@ namespace WaselDriver.Views.PushNotificationPages
                 Settings.Lngfrom = Req.lngfrom;
                 GetAddressFrom(Settings.Latfrom, Settings.Lngfrom);
                 GetAddressTo(Settings.Latto, Settings.Lngto);
-                Settings.LastNotify = null;
+               
             }
             //else
             //{
