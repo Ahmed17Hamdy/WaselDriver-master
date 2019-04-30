@@ -25,6 +25,8 @@ namespace WaselDriver.Models
         public int role { get; set; }
         public string country { get; set; }
         public string phone { get; set; }
-  //      public List<City> rates { get; set; }
+        public string lat { get; set; }
+        public string lng { get; set; }
+                                           //      public List<City> rates { get; set; }
     }
 }

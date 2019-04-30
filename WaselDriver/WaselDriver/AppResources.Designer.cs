@@ -61,6 +61,24 @@ namespace WaselDriver {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please , Add All Required Images First .
+        /// </summary>
+        internal static string AddImages {
+            get {
+                return ResourceManager.GetString("AddImages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alert.
+        /// </summary>
+        internal static string Alert {
+            get {
+                return ResourceManager.GetString("Alert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do You Want To Log Out ?.
         /// </summary>
         internal static string AskLogOUt {
@@ -106,6 +124,15 @@ namespace WaselDriver {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please , Check Your PassWord.
+        /// </summary>
+        internal static string CheckPassWord {
+            get {
+                return ResourceManager.GetString("CheckPassWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please , Choose Your CarType.
         /// </summary>
         internal static string ChooseCarType {
@@ -129,6 +156,15 @@ namespace WaselDriver {
         internal static string ConfirmPass {
             get {
                 return ResourceManager.GetString("ConfirmPass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verification Code Sent To Your Email.
+        /// </summary>
+        internal static string ConfirmSentCode {
+            get {
+                return ResourceManager.GetString("ConfirmSentCode", resourceCulture);
             }
         }
         
@@ -178,6 +214,24 @@ namespace WaselDriver {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please , Enter The New PassWord.
+        /// </summary>
+        internal static string EnterNewPassWord {
+            get {
+                return ResourceManager.GetString("EnterNewPassWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please , Enter The validation Code Sent To You By Mail.
+        /// </summary>
+        internal static string EnterVerifyCode {
+            get {
+                return ResourceManager.GetString("EnterVerifyCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error !.
         /// </summary>
         internal static string Error {
@@ -192,6 +246,15 @@ namespace WaselDriver {
         internal static string ErrorMessage {
             get {
                 return ResourceManager.GetString("ErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please , Fill All Fields.
+        /// </summary>
+        internal static string FillSpaces {
+            get {
+                return ResourceManager.GetString("FillSpaces", resourceCulture);
             }
         }
         
@@ -232,11 +295,29 @@ namespace WaselDriver {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid Email Address Format.
+        /// </summary>
+        internal static string InvalidMail {
+            get {
+                return ResourceManager.GetString("InvalidMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         internal static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Location is Required.
+        /// </summary>
+        internal static string Location {
+            get {
+                return ResourceManager.GetString("Location", resourceCulture);
             }
         }
         
@@ -291,6 +372,15 @@ namespace WaselDriver {
         internal static string MainPage {
             get {
                 return ResourceManager.GetString("MainPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile number must be 11 digit.
+        /// </summary>
+        internal static string MobileValid {
+            get {
+                return ResourceManager.GetString("MobileValid", resourceCulture);
             }
         }
         
@@ -367,6 +457,15 @@ namespace WaselDriver {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Or.
+        /// </summary>
+        internal static string Or {
+            get {
+                return ResourceManager.GetString("Or", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wants to Make an Order.
         /// </summary>
         internal static string OrderDetails {
@@ -390,6 +489,51 @@ namespace WaselDriver {
         internal static string Pass {
             get {
                 return ResourceManager.GetString("Pass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PassWord Doesn&apos;t Match.
+        /// </summary>
+        internal static string PassWordMatch {
+            get {
+                return ResourceManager.GetString("PassWordMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PassWord consists of 6 lenght , contains at least one digit &amp; alphabet.
+        /// </summary>
+        internal static string PassWordValid {
+            get {
+                return ResourceManager.GetString("PassWordValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to take photos..
+        /// </summary>
+        internal static string PermissionDetails {
+            get {
+                return ResourceManager.GetString("PermissionDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, Can&apos;t Get Your Location.
+        /// </summary>
+        internal static string PermissionLocationDetails {
+            get {
+                return ResourceManager.GetString("PermissionLocationDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permissions Denied.
+        /// </summary>
+        internal static string PermissionsDenied {
+            get {
+                return ResourceManager.GetString("PermissionsDenied", resourceCulture);
             }
         }
         
@@ -439,6 +583,15 @@ namespace WaselDriver {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sorry , But Couldn&apos;t Draw this route.
+        /// </summary>
+        internal static string RouteNotFound {
+            get {
+                return ResourceManager.GetString("RouteNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select Car Type.
         /// </summary>
         internal static string SelectCarType {
@@ -466,11 +619,38 @@ namespace WaselDriver {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        internal static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please , Send Code Using .
+        /// </summary>
+        internal static string SendCode {
+            get {
+                return ResourceManager.GetString("SendCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change Password.
         /// </summary>
         internal static string SettingsPass {
             get {
                 return ResourceManager.GetString("SettingsPass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main Page.
+        /// </summary>
+        internal static string String1 {
+            get {
+                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
         
@@ -489,6 +669,15 @@ namespace WaselDriver {
         internal static string UserStatues {
             get {
                 return ResourceManager.GetString("UserStatues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry , This Email isn&apos;t Exist ..
+        /// </summary>
+        internal static string WrongEmail {
+            get {
+                return ResourceManager.GetString("WrongEmail", resourceCulture);
             }
         }
         

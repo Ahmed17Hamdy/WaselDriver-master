@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
                xmlns:i18n="clr-namespace:WaselDriver.CustomControl"
+             xmlns:Behaviors="clr-namespace:WaselDriver.Behaviors"
+             xmlns:Validators="clr-namespace:WaselDriver.Models"
+             xmlns:local="clr-namespace:WaselDriver"
              BackgroundColor="White" Padding="10"
              x:Class="WaselDriver.Views.IntroPages.ProfilePage">
     <ContentPage.Content>
@@ -32,30 +35,76 @@
              
                <Frame Grid.Row="2" Margin="0,30" CornerRadius="10" Padding="10" BorderColor="Yellow">
                         <StackLayout HorizontalOptions="Fill">
-                            <Grid HeightRequest="50">
+                        <StackLayout.Behaviors>
+                            <Validators:ValidationGroupBehavior x:Name="form"/>
+                        </StackLayout.Behaviors>
+                        <Grid HeightRequest="50">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0">
-                                    <Label Text="{i18n:Translate SettingsPass}" FontSize="Large" VerticalOptions="Center" HorizontalOptions="Start"/>
+                                    <Label Text="{i18n:Translate SettingsPass}" FontSize="Large" VerticalOptions="Center"
+                                           HorizontalOptions="Start"/>
                                 </StackLayout>
                                 <Label Grid.Column="1" BackgroundColor="Yellow" WidthRequest="10" VerticalOptions="Fill"/>
                             </Grid>
                             <StackLayout x:Name="StkPass" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="False">
                                 <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
                                     <Image Source="lock.png" Aspect="AspectFit"/>
-                                    <Entry Placeholder="{i18n:Translate OldPass}" x:Name="EntryOldPass" HorizontalOptions="Fill" IsPassword="True"/>
+                                <Entry Placeholder="{i18n:Translate OldPass}" x:Name="EntryOldPass"
+                                           HorizontalOptions="Fill" IsPassword="True">
+                                    <Entry.Behaviors>
+                                        <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                            <Behaviors:ValidationBehavior.Validators>
+                                                <Validators:RequiredValidator />
+                                                <Validators:FormatValidator
+                            Message="{i18n:Translate PassWordValid}" 
+                            Format="(?=^[^\s]{6,}$)(?=.*\d)(?=.*[a-zA-Z])"/>
+                                            </Behaviors:ValidationBehavior.Validators>
+                                        </Behaviors:ValidationBehavior>
+                                        <local:MaxLengthValidatorBehavior  MaxLength="15"/>
+                                    </Entry.Behaviors>
+                                </Entry>
                                 </StackLayout>
                                 <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
                                     <Image Source="login.png" Aspect="AspectFit"/>
-                                    <Entry Placeholder="{i18n:Translate NewPass}" x:Name="EntryNewPass" HorizontalOptions="Fill" IsPassword="True"/>
+                                <Entry Placeholder="{i18n:Translate NewPass}"
+                                           x:Name="EntryNewPass" HorizontalOptions="Fill" IsPassword="True">
+                                    <Entry.Behaviors>
+                                        <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                            <Behaviors:ValidationBehavior.Validators>
+                                                <Validators:RequiredValidator />
+                                                <Validators:FormatValidator
+                            Message="{i18n:Translate PassWordValid}" 
+                            Format="(?=^[^\s]{6,}$)(?=.*\d)(?=.*[a-zA-Z])"/>
+                                            </Behaviors:ValidationBehavior.Validators>
+                                        </Behaviors:ValidationBehavior>
+                                        <local:MaxLengthValidatorBehavior  MaxLength="15"/>
+                                    </Entry.Behaviors>
+                                </Entry>
                                 </StackLayout>
                                 <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
                                     <Image Source="login.png" Aspect="AspectFit"/>
-                                <Entry Placeholder="{i18n:Translate ConfirmPass}" x:Name="EntryConfirmPass" HorizontalOptions="Fill" IsPassword="True"/>
+                                <Entry Placeholder="{i18n:Translate ConfirmPass}" x:Name="EntryConfirmPass"
+                                       HorizontalOptions="Fill" IsPassword="True">
+                                    <Entry.Behaviors>
+                                        <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                            <Behaviors:ValidationBehavior.Validators>
+                                                <Validators:RequiredValidator />
+                                                <Validators:FormatValidator
+                            Message="{i18n:Translate PassWordMatch}" 
+                            Format="(?=^[^\s]{6,}$)(?=.*\d)(?=.*[a-zA-Z])" />
+                                            </Behaviors:ValidationBehavior.Validators>
+                                        </Behaviors:ValidationBehavior>
+                                        <local:CompareValidationBehavior BindingContext="{x:Reference EntryNewPass}" Text="
+                                                                     {Binding Text}"/>
+                                    </Entry.Behaviors>
+                                </Entry>
                                 </StackLayout>
-                            <Button CornerRadius="30" BackgroundColor="Green" TextColor="White" HorizontalOptions="Center" Clicked="Button_Clicked" Text="{i18n:Translate Confirm}"/>
+                            <Button IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}" CornerRadius="30"
+                                    BackgroundColor="Green" TextColor="White" HorizontalOptions="Center" Clicked="Button_Clicked" 
+                                    Text="{i18n:Translate Confirm}"/>
                             </StackLayout>
                             <Image x:Name="ImgDown" Aspect="AspectFit" HorizontalOptions="Center" Source="downArrow.png"/>
                             <StackLayout.GestureRecognizers>

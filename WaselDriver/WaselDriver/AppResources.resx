@@ -264,4 +264,67 @@
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
   </data>
+  <data name="FillSpaces" xml:space="preserve">
+    <value>Please , Fill All Fields</value>
+  </data>
+  <data name="InvalidMail" xml:space="preserve">
+    <value>Invalid Email Address Format</value>
+  </data>
+  <data name="PassWordMatch" xml:space="preserve">
+    <value>PassWord Doesn't Match</value>
+  </data>
+  <data name="MobileValid" xml:space="preserve">
+    <value>Mobile number must be 11 digit</value>
+  </data>
+  <data name="PermissionDetails" xml:space="preserve">
+    <value>Unable to take photos.</value>
+  </data>
+  <data name="PermissionsDenied" xml:space="preserve">
+    <value>Permissions Denied</value>
+  </data>
+  <data name="PassWordValid" xml:space="preserve">
+    <value>PassWord consists of 6 lenght , contains at least one digit &amp; alphabet</value>
+  </data>
+  <data name="CheckPassWord" xml:space="preserve">
+    <value>Please , Check Your PassWord</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Main Page</value>
+  </data>
+  <data name="RouteNotFound" xml:space="preserve">
+    <value>Sorry , But Couldn't Draw this route</value>
+  </data>
+  <data name="Alert" xml:space="preserve">
+    <value>Alert</value>
+  </data>
+  <data name="ConfirmSentCode" xml:space="preserve">
+    <value>Verification Code Sent To Your Email</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="SendCode" xml:space="preserve">
+    <value>Please , Send Code Using </value>
+  </data>
+  <data name="WrongEmail" xml:space="preserve">
+    <value>Sorry , This Email isn't Exist .</value>
+  </data>
+  <data name="AddImages" xml:space="preserve">
+    <value>Please , Add All Required Images First </value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Your Location is Required</value>
+  </data>
+  <data name="PermissionLocationDetails" xml:space="preserve">
+    <value>Sorry, Can't Get Your Location</value>
+  </data>
+  <data name="EnterNewPassWord" xml:space="preserve">
+    <value>Please , Enter The New PassWord</value>
+  </data>
+  <data name="EnterVerifyCode" xml:space="preserve">
+    <value>Please , Enter The validation Code Sent To You By Mail</value>
+  </data>
 </root>

@@ -65,7 +65,7 @@ namespace WaselDriver.Views.IntroPages
                 var response = await ser.ChangePassword(EntryOldPass.Text, EntryNewPass.Text);
                 var json = JsonConvert.DeserializeObject<Response<string, string>>(response);
                 if (json.success == true) await DisplayAlert("", json.message, "Ok");
-                else await DisplayAlert("", "من فضلك تحقق من كلمة السر القديمة", "Ok");
+                else await DisplayAlert(AppResources.Error, "من فضلك تحقق من كلمة السر القديمة", "Ok");
             }
             else if (EntryNewPass.Text.Length < 6)
             {

@@ -3,12 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:custommap="clr-namespace:TK.CustomMap;assembly=TK.CustomMap"
              xmlns:viewmodels="clr-namespace:WaselDriver.ViewModels"
-             x:Class="WaselDriver.Views.OrderPage.OrdersPage">
-    
+             xmlns:tr="clr-namespace:WaselDriver.CustomControl"
+             x:Class="WaselDriver.Views.OrderPage.OrdersPage" >
+
     <ContentPage.Content>
-        <custommap:TKCustomMap x:Name="OrderMap"  IsClusteringEnabled="False"
-      IsShowingUser="True" HasScrollEnabled="True" RouteCalculationFinished="OrderMap_RouteCalculationFinished" 
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" CornerRadius="20" BackgroundColor="OrangeRed" TextColor="White"
+                    Clicked="Button_Clicked"
+                    Text="{tr:Translate MainPage}"/>
+            <custommap:TKCustomMap Grid.Row="1" x:Name="OrderMap"  IsClusteringEnabled="False"
+                                    IsShowingUser="True" HasScrollEnabled="True"
+                                   RouteCalculationFinished="OrderMap_RouteCalculationFinished" 
                                HasZoomEnabled="True" UserLocationChanged="OrderMap_UserLocationChanged"
                                />
+        </Grid>
+
+       
     </ContentPage.Content>
 </ContentPage>

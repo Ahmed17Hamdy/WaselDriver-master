@@ -18,7 +18,8 @@ namespace WaselDriver.Views.UserAuthentication
         public ActiveCode(string Email)
         {
             InitializeComponent();
-            FlowDirection = (WaselDriver.Helper.Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+            FlowDirection = (WaselDriver.Helper.Settings.LastUserGravity == "Arabic") ?
+                FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             mail = Email;
         }
 
@@ -35,8 +36,12 @@ namespace WaselDriver.Views.UserAuthentication
                     Activ.IsRunning = false;
                     await Navigation.PushModalAsync(new NewPassword());
                 }
-                else await DisplayAlert("تنبيه", "من فضلك أدخل الكود المرسل لك عبر البريد الإلكتروني الذي أدخلته مسبقاً", "موافق");
+                else await DisplayAlert(AppResources.Error, AppResources.ErrorMessage, AppResources.Ok);
                 Activ.IsRunning = false;
+            }
+            else
+            {
+                await DisplayAlert(AppResources.Alert, AppResources.EnterVerifyCode, AppResources.Ok);
             }
         }
     }

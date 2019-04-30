@@ -24,72 +24,40 @@ namespace WaselDriver.Views.UserAuthentication
         public LoginPage()
         {
             InitializeComponent();
+            if(Settings.LastUsedEmail!= "" && Settings.LastUsedEmail!= "120c0649-5711-4fe5-abe1-df941202c038")
+            {
+                EntryEmail.Text = Settings.LastUsedEmail;
+            }
             OneSignal.Current.IdsAvailable(IdsAvailable);
-            FlowDirection = (WaselDriver.Helper.Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
-            userService = new UserServices();
-            EntryPhone.Completed += (Object sender, EventArgs e) =>
-            {
-                EntryEmail.Focus();
-            };
-            EntryEmail.Completed += (Object sender, EventArgs e) =>
-            {
-                EntryPassword.Focus();
-            };
-            Settings.LastUsedEmail = EntryEmail.Text;
-            EntryPassword.Completed += (Object sender, EventArgs e) =>
-            {
-                Loginbtn.Focus();
-            };
-            Settings.LastUsedEmail = EntryEmail.Text;
-
+            FlowDirection = (WaselDriver.Helper.Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft :
+                FlowDirection.LeftToRight;
+            userService = new UserServices();            
         }
 
         private void IdsAvailable(string userID, string pushToken)
         {
-            WaselDriver.Helper.Settings.LastSignalID = pushToken;
-            WaselDriver.Helper.Settings.UserFirebaseToken = userID;
+            Settings.LastSignalID = pushToken;
+            Settings.UserFirebaseToken = userID;
 
         }
 
-        private bool AllFieldsFilled()
-        {
-            bool check = ((String.IsNullOrEmpty(EntryEmail.Text)) || (String.IsNullOrEmpty(EntryPassword.Text))) ? false : true;
-            if (EntryEmail.Text == null || EntryEmail.Text == null || EntryPassword.Text == null)
-            {
-                Activ.IsRunning = false;
-                DisplayAlert("خطأ", "من فضلك أكمل الحقول الفارغة", "OK");
-            }
-            else if (Settings.CarModelID == null)
-            {
-                Activ.IsRunning = false;
-                DisplayAlert("خطأ", "من فضلك إختر نوع السيارة", "OK");
-            }
-            else if (EntryEmail.Text.Length < 1 || EntryEmail.Text.Length < 1 || EntryPassword.Text.Length < 1)
-            {
-                Activ.IsRunning = false;
-                DisplayAlert("خطأ", "من فضلك أكمل الحقول الفارغة", "OK");
-            }
-            return check;
-
-        }
-
+       
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
             Activ.IsRunning = true;
             if (CrossConnectivity.Current.IsConnected)
             {
-                if (AllFieldsFilled())
-                {
+             
                     string email = EntryEmail.Text;
                     string password = EntryPassword.Text;
                     string device_id = "192.168.1.1";
                     string firebase_token = Settings.UserFirebaseToken;
                     var ResBack = await userService.login(email, password, device_id, firebase_token);
-                    email = Settings.LastUsedEmail;
+                     Settings.LastUsedEmail= email;
                     if (ResBack == null)
                     {
                         Activ.IsRunning = false;
-                        await DisplayAlert("Communication Error", "من فضلك تحقق من الإتصال بالإنترنت", "OK");
+                        await DisplayAlert(AppResources.Error, AppResources.ErrorMessage, AppResources.Ok);
                     }
                     else
                     {
@@ -108,6 +76,7 @@ namespace WaselDriver.Views.UserAuthentication
                                 Settings.LastUseeRole = JsonResponse.message.role;
                                 Settings.LastUserStatus = JsonResponse.message.status;
                                 Settings.ProfileName = JsonResponse.message.name;
+                                Settings.UserFirebaseToken = JsonResponse.message.firebase_token;
                                 PopAlert(checker);
                                 Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new MainTabbed());
                             }
@@ -124,13 +93,12 @@ namespace WaselDriver.Views.UserAuthentication
                             var JsonResponse = JsonConvert.DeserializeObject<Response<object, string>>(ResBack);
                             PopAlert(checker);
                             return;
-                        }
-                    }
+                        }                    
                 }
             }
             else
             {
-                await DisplayAlert("Connection Error", "", "ok");
+                await DisplayAlert(AppResources.Error, AppResources.ErrorMessage, AppResources.Ok);
                 Activ.IsRunning = false;
             }
 

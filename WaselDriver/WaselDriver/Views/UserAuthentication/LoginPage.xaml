@@ -2,6 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:WaselDriver.CustomControl"
+             xmlns:Behaviors="clr-namespace:WaselDriver.Behaviors"
+             xmlns:Validators="clr-namespace:WaselDriver.Models"
+             xmlns:local="clr-namespace:WaselDriver"
+             BackgroundColor="White"
              x:Class="WaselDriver.Views.UserAuthentication.LoginPage">
     <ContentPage.Content>
         <Grid>
@@ -12,12 +16,16 @@
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="1">
-                    <Image x:Name="image" Source="WaselLogo.png"  Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Image x:Name="image" Source="WaselLogo.png"  Aspect="AspectFit" HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
                 </Grid>
                 <StackLayout  Padding="20,0,20,0" Grid.Row="2" VerticalOptions="Center">
                     <!-- Place new controls here -->
                     <StackLayout>
                         <StackLayout Orientation="Horizontal">
+                            <StackLayout.Behaviors>
+                                <Validators:ValidationGroupBehavior x:Name="form"/>
+                            </StackLayout.Behaviors>
                             <Image Source="smartphone.png" Aspect="AspectFit" Opacity=".4"/>
                             <Entry Focused="EntryPhone_Focused" Unfocused="EntryPhone_Unfocused"
                                    x:Name="EntryPhone" MaxLength="25" Keyboard="Numeric"
@@ -26,27 +34,61 @@
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Image Source="mail.png" Aspect="AspectFit" Opacity=".4"/>
-                            <Entry x:Name="EntryEmail" Placeholder="{i18n:Translate Email}" PlaceholderColor="LightGray"  HorizontalOptions="FillAndExpand"/>
+                            <Entry x:Name="EntryEmail" Placeholder="{i18n:Translate Email}" PlaceholderColor="LightGray" 
+                                   HorizontalOptions="FillAndExpand">
+                                <Entry.Behaviors>
+                                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                        <Behaviors:ValidationBehavior.Validators>
+                                            <Validators:RequiredValidator />
+                                            <Validators:FormatValidator
+                            Message="{i18n:Translate InvalidMail}" 
+                            Format="^[_a-z0-9-]*(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" />
+                                        </Behaviors:ValidationBehavior.Validators>
+                                    </Behaviors:ValidationBehavior>
+                                    <local:EmailValidatorBehavior />
+                                </Entry.Behaviors>
+                            </Entry>
                         </StackLayout>
 
                         <StackLayout Orientation="Horizontal">
                             <Image Source="downArrow.png" Aspect="AspectFit" Opacity=".4"/>
-                            <Entry x:Name="EntryPassword" IsPassword="True" Placeholder="{i18n:Translate Pass}" PlaceholderColor="LightGray"  HorizontalOptions="FillAndExpand"/>
+                            <Entry x:Name="EntryPassword" IsPassword="True" Placeholder="{i18n:Translate Pass}" 
+                                   PlaceholderColor="LightGray"  HorizontalOptions="FillAndExpand">
+                                <Entry.Behaviors>
+                                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                        <Behaviors:ValidationBehavior.Validators>
+                                            <Validators:RequiredValidator />
+                                            <Validators:FormatValidator
+                            Message="{i18n:Translate PassWordValid}" 
+                            Format="(?=^[^\s]{6,}$)(?=.*\d)(?=.*[a-zA-Z])"/>
+                                        </Behaviors:ValidationBehavior.Validators>
+                                    </Behaviors:ValidationBehavior>
+                                    <local:MaxLengthValidatorBehavior  MaxLength="15"/>
+                                </Entry.Behaviors>
+                            </Entry>
                         </StackLayout>
 
-                        <Label Text="{i18n:Translate ForgetPass }" FontAttributes="Bold" TextColor="LightGray" FontSize="Medium" >
+                        <Label Text="{i18n:Translate ForgetPass }" FontAttributes="Bold" TextColor="LightGray"
+                               FontSize="Medium" >
                             <Label.FontFamily>
-                                <OnPlatform x:TypeArguments="x:String" Android="Cairo-Regular.ttf#Cairo Regular " iOS="Cairo-Regular" />
+                                <OnPlatform x:TypeArguments="x:String" Android="Cairo-Regular.ttf#Cairo Regular "
+                                            iOS="Cairo-Regular" />
                             </Label.FontFamily>
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
                             </Label.GestureRecognizers>
                         </Label>
 
-                        <Button x:Name="Loginbtn" Text="{i18n:Translate Login}" Clicked="Button_Clicked_1" BackgroundColor="OrangeRed" Padding="8" Margin="10" TextColor="White" BorderRadius="10" HeightRequest="60" WidthRequest="110"/>
+                        <Button x:Name="Loginbtn" Text="{i18n:Translate Login}" 
+                                IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
+                                Clicked="Button_Clicked_1" BackgroundColor="OrangeRed"
+                                Padding="8" Margin="10" TextColor="White" BorderRadius="10"
+                                HeightRequest="60" WidthRequest="110"/>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <Label Text="{i18n:Translate NoAccount}" TextColor="Gray" Opacity="0.4" HorizontalOptions="Start" Margin="0,0,0,20"/>
-                            <Label Text="{i18n:Translate Register}" FontSize="Medium" TextColor="#FF4500" HorizontalOptions="Center" FontAttributes="Bold">
+                            <Label Text="{i18n:Translate NoAccount}" TextColor="Gray" Opacity="0.4"
+                                   HorizontalOptions="Start" Margin="0,0,0,20"/>
+                            <Label Text="{i18n:Translate Register}" FontSize="Medium" TextColor="#FF4500"
+                                   HorizontalOptions="Center" FontAttributes="Bold">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2" />
                                 </Label.GestureRecognizers>
@@ -59,5 +101,4 @@
             <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" x:Name="Activ" Color="OrangeRed"/>
         </Grid>
     </ContentPage.Content>
-  
 </ContentPage>

@@ -24,12 +24,14 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label HorizontalOptions="Start" Margin="5,0" TextColor="White" VerticalOptions="Center" FontSize="Medium" Grid.Column="0" Text="{i18n:Translate Next}">
+                <Label HorizontalOptions="Start" Margin="5,0" TextColor="White" VerticalOptions="Center"
+                       FontSize="Medium" Grid.Column="0" Text="{i18n:Translate Next}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
                     </Label.GestureRecognizers>
                 </Label>
-                <Label HorizontalOptions="Center" Grid.Column="1" VerticalOptions="Center" Text="{i18n:Translate Language}" TextColor="White" FontAttributes="Bold" FontSize="Large"/>
+                <Label HorizontalOptions="Center" Grid.Column="1" VerticalOptions="Center"
+                       Text="{i18n:Translate Language}" TextColor="White" FontAttributes="Bold" FontSize="Large"/>
             </Grid>
             <Grid Padding="10" Grid.Row="1" IsVisible="{Binding IsConnected}">
                 <Grid.RowDefinitions>

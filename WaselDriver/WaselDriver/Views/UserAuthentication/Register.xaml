@@ -3,62 +3,129 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WaselDriver.Views.UserAuthentication.Register"
               xmlns:i18n="clr-namespace:WaselDriver.CustomControl"
-             xmlns:viewmodels="clr-namespace:WaselDriver.ViewModels">
+             xmlns:viewmodels="clr-namespace:WaselDriver.ViewModels"
+             xmlns:Validators="clr-namespace:WaselDriver.Models"
+             xmlns:local="clr-namespace:WaselDriver"
+             BackgroundColor="White"
+             xmlns:Behaviors="clr-namespace:WaselDriver.Behaviors">
     <ContentPage.BindingContext>
         <viewmodels:MainViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid>
-            <ScrollView>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="3*"/>
-                    </Grid.RowDefinitions>
-
-                    <StackLayout Grid.Row="0" VerticalOptions="Center">
-                        <Image x:Name="image" Aspect="AspectFit" Source="WaselLogo.png" HorizontalOptions="Center" VerticalOptions="Center"/>
-                    </StackLayout>
-
-                    <StackLayout Padding="20,0,20,0" Grid.Row="1" VerticalOptions="Start">
-                        <StackLayout >
-                            <StackLayout Orientation="Horizontal">
-                                <Image Source="user.png" Aspect="AspectFit"/>
-                                <Entry Placeholder="{i18n:Translate Name}" x:Name="EntryName" PlaceholderColor="LightGray"  HorizontalOptions="FillAndExpand"/>
-                            </StackLayout>
-
-                            <StackLayout Orientation="Horizontal">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" x:Name="image" Aspect="AspectFit" 
+                           Source="WaselLogo.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+               
+                <StackLayout Padding="20,0,20,0" Grid.Row="1" VerticalOptions="Start">
+                        <StackLayout>
+                        <StackLayout.Behaviors>
+                            <Validators:ValidationGroupBehavior x:Name="form"/>
+                        </StackLayout.Behaviors>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="user.png" Aspect="AspectFit"/>
+                            <Entry Placeholder="{i18n:Translate Name}" x:Name="EntryName" PlaceholderColor="LightGray"
+                                   HorizontalOptions="FillAndExpand">
+                                <Entry.Behaviors>
+                                    <Behaviors:ValidationBehavior Group="{x:Reference form}" 
+                                              PropertyName="Text">
+                                            <Behaviors:ValidationBehavior.Validators>
+                                                <Validators:RequiredValidator />
+                                            </Behaviors:ValidationBehavior.Validators>
+                                        </Behaviors:ValidationBehavior>
+                                    </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
                                 <Image Source="smartphone.png" Aspect="AspectFit"/>
-                                <Entry Keyboard="Numeric" Placeholder="{i18n:Translate Phone}" x:Name="EntryPhone" PlaceholderColor="LightGray" HorizontalOptions="FillAndExpand"/>
+                            <Entry Keyboard="Numeric" Placeholder="{i18n:Translate Phone}" x:Name="EntryPhone"
+                                   PlaceholderColor="LightGray" HorizontalOptions="FillAndExpand">
+                                <Entry.Behaviors>
+                                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                        <Behaviors:ValidationBehavior.Validators>
+                                            <Validators:RequiredValidator />
+                                            <Validators:FormatValidator
+                            Message="{i18n:Translate MobileValid}" 
+                            Format="^[0-9]{11}$" />
+                                        </Behaviors:ValidationBehavior.Validators>
+                                    </Behaviors:ValidationBehavior>
+                                    <local:MaxLengthValidatorBehavior  MaxLength="11"/>
+                                </Entry.Behaviors>
+                            </Entry>
                             </StackLayout>
 
                             <StackLayout Orientation="Horizontal">
                                 <Image Source="mail.png" Aspect="AspectFit"/>
-                                <Entry Placeholder="{i18n:Translate Email}" x:Name="EntryEmail" PlaceholderColor="LightGray" HorizontalOptions="FillAndExpand"/>
+                            <Entry Placeholder="{i18n:Translate Email}" x:Name="EntryEmail" 
+                                   PlaceholderColor="LightGray" HorizontalOptions="FillAndExpand">
+                                <Entry.Behaviors>
+                                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                        <Behaviors:ValidationBehavior.Validators>
+                                            <Validators:RequiredValidator />
+                                            <Validators:FormatValidator
+                            Message="{i18n:Translate InvalidMail}" 
+                            Format="^[_a-z0-9-]*(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" />
+                                        </Behaviors:ValidationBehavior.Validators>
+                                    </Behaviors:ValidationBehavior>
+                                    <local:EmailValidatorBehavior />
+                                </Entry.Behaviors>
+                            </Entry>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Image Source="lock.png" Aspect="AspectFit"/>
-                                <Entry Placeholder="{i18n:Translate Pass}" IsPassword="True" PlaceholderColor="LightGray" x:Name="EntryPassword" HorizontalOptions="FillAndExpand"/>
+                            <Entry Placeholder="{i18n:Translate Pass}" IsPassword="True" 
+                                   PlaceholderColor="LightGray" x:Name="EntryPassword" HorizontalOptions="FillAndExpand">
+                                <Entry.Behaviors>
+                                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                        <Behaviors:ValidationBehavior.Validators>
+                                            <Validators:RequiredValidator />
+                                            <Validators:FormatValidator
+                            Message="{i18n:Translate PassWordValid}" 
+                            Format="(?=^[^\s]{6,}$)(?=.*\d)(?=.*[a-zA-Z])"/>
+                                        </Behaviors:ValidationBehavior.Validators>
+                                    </Behaviors:ValidationBehavior>
+                                    <local:MaxLengthValidatorBehavior  MaxLength="15"/>
+                                </Entry.Behaviors>
+                            </Entry>
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal">
-                                <Image Source="lock.png" Aspect="AspectFit"/>
-                                <Entry Placeholder="{i18n:Translate ConfirmPass}" IsPassword="True" PlaceholderColor="LightGray" x:Name="ConfirmPassword" HorizontalOptions="FillAndExpand"/>
-                            </StackLayout>
-
-
-                            <Button Text="{i18n:Translate Confirm}" x:Name="regbtn"  BackgroundColor="OrangeRed" Padding="7" Margin="10" TextColor="White" BorderRadius="10" HeightRequest="60" WidthRequest="110" Clicked="Regbtn_Clicked"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="lock.png" Aspect="AspectFit"/>
+                            <Entry Placeholder="{i18n:Translate ConfirmPass}" IsPassword="True" 
+                                   PlaceholderColor="LightGray" x:Name="ConfirmPassword" HorizontalOptions="FillAndExpand">
+                                <Entry.Behaviors>
+                                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                                        <Behaviors:ValidationBehavior.Validators>
+                                            <Validators:RequiredValidator />
+                                            <Validators:FormatValidator
+                            Message="{i18n:Translate PassWordMatch}" 
+                            Format="(?=^[^\s]{6,}$)(?=.*\d)(?=.*[a-zA-Z])" />
+                                        </Behaviors:ValidationBehavior.Validators>
+                                    </Behaviors:ValidationBehavior>
+                                    <local:CompareValidationBehavior BindingContext="{x:Reference EntryPassword}" Text="
+                                                                     {Binding Text}"/>
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                        <Button  IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}" Text="{i18n:Translate Confirm}" 
+                                 x:Name="regbtn"  BackgroundColor="OrangeRed" Padding="7" Margin="10" TextColor="White"
+                                 BorderRadius="10" HeightRequest="60" WidthRequest="110" Clicked="Regbtn_Clicked"/>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" FlowDirection="RightToLeft" >
-                                <Label Text="{i18n:Translate Login}" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="Start" TextColor="OrangeRed">
+                                <Label Text="{i18n:Translate Login}" 
+                                       FontAttributes="Bold" FontSize="Medium" HorizontalOptions="Start" TextColor="OrangeRed">
                                     <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="LoginPageTapped" />
                                 </Label.GestureRecognizers>
                                 </Label>
-                                <Label Text="{i18n:Translate HaveAccount}" TextColor="Gray" HorizontalOptions="End" Margin="0,0,0,20"/>
+                                <Label Text="{i18n:Translate HaveAccount}" TextColor="Gray" HorizontalOptions="End" 
+                                       Margin="0,0,0,20"/>
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
                 </Grid>
-            </ScrollView>
             <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" x:Name="Activ" Color="OrangeRed"/>
         </Grid>
     </ContentPage.Content>

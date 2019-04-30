@@ -29,7 +29,7 @@
                     </Grid.GestureRecognizers>
                 </Grid>
                 <StackLayout Grid.Row="1" Spacing="0">
-                    <Label HorizontalOptions="Center" FontSize="Large" Text="IdentityImages"/>
+                    <Label HorizontalOptions="Center" FontSize="Large" Text="{i18n:Translate IdentityImages}"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -111,8 +111,8 @@
                     Clicked="Regbtn_Clicked" Text="{i18n:Translate Register}"
                          x:Name="regbtn"  BackgroundColor="OrangeRed" Padding="7" 
                          Margin="10" TextColor="White" BorderRadius="10" />
-                <ActivityIndicator x:Name="Active"  HorizontalOptions="Center" VerticalOptions="Center"
-                                 Color="OrangeRed" />
+                <ActivityIndicator Grid.Row="0" Grid.RowSpan="6" x:Name="Active"  HorizontalOptions="Center" VerticalOptions="Center"
+                                 Color="OrangeRed" HeightRequest="100" WidthRequest="100" />
             </Grid>
             <!--<StackLayout>
                 <Grid Padding="5,0" Grid.Row="0" HorizontalOptions="Fill">

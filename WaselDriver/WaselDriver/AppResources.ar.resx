@@ -136,7 +136,7 @@
     <value>تأكيد</value>
   </data>
   <data name="ConfirmPass" xml:space="preserve">
-    <value>تأكيد الرقم السري</value>
+    <value>تأكيد كلمة المرور</value>
   </data>
   <data name="Continue" xml:space="preserve">
     <value>إستكمل</value>
@@ -148,7 +148,7 @@
     <value>صور رخص القيادة</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>البريد الإلكترونية</value>
+    <value>البريد الإلكتروني</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>! خطأ</value>
@@ -199,7 +199,7 @@
     <value>الرقم السري الجديد</value>
   </data>
   <data name="Next" xml:space="preserve">
-    <value>التالى</value>
+    <value>التالي</value>
   </data>
   <data name="NoAccount" xml:space="preserve">
     <value>لا تمتلك حساب ؟</value>
@@ -263,5 +263,68 @@
   </data>
   <data name="Yes" xml:space="preserve">
     <value>نعم</value>
+  </data>
+  <data name="FillSpaces" xml:space="preserve">
+    <value>من فضلك إملأ الحقول الفارغة</value>
+  </data>
+  <data name="InvalidMail" xml:space="preserve">
+    <value>صيغة البريد الإلكتروني غير صحيحة</value>
+  </data>
+  <data name="PassWordMatch" xml:space="preserve">
+    <value>كلمة السر غير متطابقة</value>
+  </data>
+  <data name="MobileValid" xml:space="preserve">
+    <value>رقم الهاتف لابد أن يكون مكون من 11 رقم</value>
+  </data>
+  <data name="PermissionDetails" xml:space="preserve">
+    <value>غير قادر على تحميل صور</value>
+  </data>
+  <data name="PermissionsDenied" xml:space="preserve">
+    <value>مطلوب إذن</value>
+  </data>
+  <data name="PassWordValid" xml:space="preserve">
+    <value> لا تقل عن 6 رموز , ولا تحتوي على مسافات , وتحتوي حرف ورقم على الأقل</value>
+  </data>
+  <data name="CheckPassWord" xml:space="preserve">
+    <value>من فضلك تحقق من كلمة المرور الخاصة بك</value>
+  </data>
+  <data name="MainBage" xml:space="preserve">
+    <value>الصفحة الرئيسية</value>
+  </data>
+  <data name="RouteNotFound" xml:space="preserve">
+    <value>عفواً , لم يتم العثور على الطريق</value>
+  </data>
+  <data name="AddImages" xml:space="preserve">
+    <value>من فضلك أضف الصور المطلوبة أولاً</value>
+  </data>
+  <data name="Alert" xml:space="preserve">
+    <value>تنبيه</value>
+  </data>
+  <data name="ConfirmSentCode" xml:space="preserve">
+    <value>لقد تم إرسال رقم التأكد من الهوية إلي البريد الإلكتروني الذى تم إدخاله</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>لم يتم تحديد موقعك ,برجاء السماح لإستخدام الموقع</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>أو</value>
+  </data>
+  <data name="PermissionLocationDetails" xml:space="preserve">
+    <value>عفواً , لا يمكن تحديد موقعك </value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>إرسال</value>
+  </data>
+  <data name="SendCode" xml:space="preserve">
+    <value>برجاء إرسال الكود عن طريق </value>
+  </data>
+  <data name="WrongEmail" xml:space="preserve">
+    <value>عفواً لا يوجد حساب لهذا البريد الإلكتروني من فضلك قم بالتسجيل</value>
+  </data>
+  <data name="EnterNewPassWord" xml:space="preserve">
+    <value>برجاء إدخال كلمة المرور الجديدة </value>
+  </data>
+  <data name="EnterVerifyCode" xml:space="preserve">
+    <value>برجاء إدخال كود التأكيد المُرسل لبريدك الإلكتروني</value>
   </data>
 </root>

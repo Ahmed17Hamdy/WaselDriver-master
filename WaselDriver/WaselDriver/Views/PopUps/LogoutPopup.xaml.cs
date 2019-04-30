@@ -23,8 +23,9 @@ namespace WaselDriver.Views.PopUps
         }
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Settings.LastUsedEmail = "";
+           
             Settings.LastUsedID = 0;
+            Settings.LastRegister = "";
             Settings.LastUsedDriverID = 0;
             Settings.LastUseeRole = 0;
             App.Current.MainPage = new LoginPage();

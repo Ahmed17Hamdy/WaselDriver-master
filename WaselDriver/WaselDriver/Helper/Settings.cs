@@ -30,6 +30,20 @@ namespace WaselDriver.Helper
                 AppSettings.AddOrUpdateValue(LascarmodelidKey, value);
 
         }
+        private const string LastregisterKey = "last_register_key";
+        private static readonly string RegisterKey = string.Empty;
+        public static string LastRegister
+        {
+            get
+            =>
+                 AppSettings.GetValueOrDefault(LastregisterKey, RegisterKey);
+
+
+            set
+            =>
+                AppSettings.AddOrUpdateValue(LastregisterKey, value);
+
+        }
         private const string LastlattoKey = "last_latto_key";
         private static readonly string LattoKey = string.Empty;
         public static string Latto

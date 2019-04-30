@@ -31,7 +31,35 @@ namespace WaselDriver.iOS
            
             Rg.Plugins.Popup.Popup.Init();
             OneSignal.Current.StartInit("1126a3d0-1d80-42ee-94db-d0449ac0a62c").EndInit();
+
             return base.FinishedLaunching(app, options);
+        }
+        [Export("oneSignalApplicationDidBecomeActive:")]
+        public void OneSignalApplicationDidBecomeActive(UIApplication application)
+        {
+            // Remove line if you don't have a OnActivated method.
+         //   OnActivated(application);
+        }
+
+        [Export("oneSignalApplicationWillResignActive:")]
+        public void OneSignalApplicationWillResignActive(UIApplication application)
+        {
+            // Remove line if you don't have a OnResignActivation method.
+        //    OnResignActivation(application);
+        }
+
+        [Export("oneSignalApplicationDidEnterBackground:")]
+        public void OneSignalApplicationDidEnterBackground(UIApplication application)
+        {
+            // Remove line if you don't have a DidEnterBackground method.
+         //   DidEnterBackground(application);
+        }
+
+        [Export("oneSignalApplicationWillTerminate:")]
+        public void OneSignalApplicationWillTerminate(UIApplication application)
+        {
+            // Remove line if you don't have a WillTerminate method.
+          //  WillTerminate(application);
         }
     }
 }

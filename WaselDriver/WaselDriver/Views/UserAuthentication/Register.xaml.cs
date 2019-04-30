@@ -20,11 +20,14 @@ namespace WaselDriver.Views.UserAuthentication
 		public Register ()
 		{
 			InitializeComponent ();
+            if(Settings.LastUsedEmail!= "")
+            {
+                EntryEmail.Text = Settings.LastUsedEmail;
+            }
 		}
         private async void Regbtn_Clicked(object sender, EventArgs e)
         {
             Activ.IsRunning = true;
-            if (AllFieldsFilled())
             {
                 User _user = new User
                 {
@@ -44,7 +47,7 @@ namespace WaselDriver.Views.UserAuthentication
                var ResBack = await userService.InsertUser(_user);
                 if (ResBack == "false")
                 {
-                    await DisplayAlert("Connection Error", "من فضلك تحقق من الإتصال بالإنترنت", "OK");
+                    await DisplayAlert(AppResources.Error, AppResources.ErrorMessage, AppResources.Ok);
                 }
                 else
                 {
@@ -56,14 +59,18 @@ namespace WaselDriver.Views.UserAuthentication
                         if (JsonResponse.success == true)
                         {
                             checker = true;
-                        //  PopAlert(checker);
+
+                            //  PopAlert(checker);
+                            Settings.LastUserStatus = JsonResponse.message.status;
                             Settings.UserHash = JsonResponse.message.user_hash;
-                            Settings.LastUsedDriverID = JsonResponse.message.id;
+                            Settings.LastUsedEmail = JsonResponse.message.email;
+                            Settings.LastRegister = JsonResponse.message.id.ToString();
                             Settings.UserFirebaseToken = JsonResponse.message.firebase_token;     
                             Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new DriverRegestration());
                         }
                         else
                         {
+
                             Activ.IsRunning = false;
                           PopAlert(checker);
                             return;
@@ -80,40 +87,12 @@ namespace WaselDriver.Views.UserAuthentication
 
             }
 
-        }
-        private bool AllFieldsFilled()
-        {
-
-            if (EntryName.Text == null || EntryEmail.Text == null || EntryPassword.Text == null || EntryPhone.Text == null )
-            {
-                Activ.IsRunning = false;
-                DisplayAlert("خطأ", "من فضلك أكمل البانات", "موافق");
-            }
-            else if (EntryName.Text.Length < 1 || EntryEmail.Text.Length < 1 || EntryPassword.Text.Length < 1 || EntryPhone.Text.Length < 1)
-            {
-                Activ.IsRunning = false;
-                DisplayAlert("خطأ", "من فضلك أكمل البانات", "موافق");
-            }
-            else if (EntryPassword.Text != ConfirmPassword.Text)
-            {
-                Activ.IsRunning = false;
-                DisplayAlert("خطأ", "عفواً كلمة السر غير متطابقة!!", "OK");
-            }
-       
-
-            bool check = ((String.IsNullOrEmpty(EntryName.Text)) || (String.IsNullOrEmpty(EntryEmail.Text)) ||
-                    (String.IsNullOrEmpty(EntryPassword.Text)) || (String.IsNullOrEmpty(ConfirmPassword.Text) ||
-                    (String.IsNullOrEmpty(EntryPhone.Text))) )
-                ? false : true;
-            return check;
-
-        }
+        }     
         private void PopAlert(bool x)
         {
             PopupNavigation.Instance.PushAsync(new RequestPopUp(x, 1));
             return;
         }
-
         private async void LoginPageTapped(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new LoginPage());

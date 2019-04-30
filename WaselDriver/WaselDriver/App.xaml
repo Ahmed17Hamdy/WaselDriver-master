@@ -3,6 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WaselDriver.App">
     <Application.Resources>
+        <Style TargetType="Label" ApplyToDerivedTypes="True">
+            <Setter Property="FontFamily">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="x:String" Android="Cairo-Regular.ttf#Cairo Regular " iOS="Cairo-Regular" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="FontFamily">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="x:String" Android="Cairo-Regular.ttf#Cairo Regular " iOS="Cairo-Regular" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="x:String" Android="Cairo-Regular.ttf#Cairo Regular " iOS="Cairo-Regular" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+       
+        <Style TargetType="Editor">
+            <Setter Property="FontFamily">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="x:String" Android="Cairo-Regular.ttf#Cairo Regular " iOS="Cairo-Regular" />
+                </Setter.Value>
+            </Setter>
+        </Style>
 
+        <Style TargetType="Picker">
+            <Setter Property="FontFamily">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="x:String" Android="Cairo-Regular.ttf#Cairo Regular " iOS="Cairo-Regular" />
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

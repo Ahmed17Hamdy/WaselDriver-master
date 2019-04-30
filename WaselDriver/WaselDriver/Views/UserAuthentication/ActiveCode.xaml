@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:i18n="clr-namespace:WaselDriver.CustomControl"
+             Padding="5"
              x:Class="WaselDriver.Views.UserAuthentication.ActiveCode">
     <ContentPage.Content>
-        <Grid>
+        <Grid Padding="10">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -14,12 +16,16 @@
                     <Image Aspect="AspectFit" Source="n.png" HorizontalOptions="Center" VerticalOptions="Center"/>
                 </Grid>
                 <StackLayout Grid.Row="1">
-                    <Label HorizontalTextAlignment="Center" HorizontalOptions="Center" Text="برجاء إدخال كود التأكيد للتحقق من حسابك" FontSize="Large"/>
-                    <Entry IsPassword="True" x:Name="EntryCode" Placeholder="*******" HorizontalTextAlignment="Center"/>
-                    <Button BackgroundColor="OrangeRed" Text="إرسال" HorizontalOptions="Center" Clicked="Button_Clicked" Margin="0,30,0,0"/>
+                    <Label HorizontalTextAlignment="Center" HorizontalOptions="Center"
+                           Text="{i18n:Translate EnterVerifyCode}" FontSize="Large"/>
+                    <Entry IsPassword="True" x:Name="EntryCode" Placeholder="*******"
+                           HorizontalTextAlignment="Center"/>
+                    <Button BackgroundColor="OrangeRed" Text="{i18n:Translate Send}" HorizontalOptions="Center"
+                            Clicked="Button_Clicked" Margin="0,30,0,0"/>
                 </StackLayout>
             </Grid>
-            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" x:Name="Activ" Color="OrangeRed"/>
+            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="100" WidthRequest="100"
+                               x:Name="Activ" Color="OrangeRed"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

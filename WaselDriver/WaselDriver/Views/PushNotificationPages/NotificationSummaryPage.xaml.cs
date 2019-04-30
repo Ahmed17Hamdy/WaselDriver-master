@@ -17,6 +17,7 @@ using TK.CustomMap.Overlays;
 using TK.CustomMap;
 using WaselDriver.Views.PopUps;
 using Rg.Plugins.Popup.Services;
+using WaselDriver.Views.IntroPages;
 
 namespace WaselDriver.Views.PushNotificationPages
 {
@@ -34,7 +35,7 @@ namespace WaselDriver.Views.PushNotificationPages
         }
         private  void ChechNotification()
         {
-            if(Settings.LastNotify!= "Has been approved" || Settings.LastNotify!= "not done")
+            if(Settings.LastNotify!= "Has been approved" && Settings.LastNotify!= "Not approved")
             {
                 var Req = JsonConvert.DeserializeObject<DelivaryObject>(Settings.LastNotify);
                 userNamelbl.Text = Req.driver_id;
@@ -46,7 +47,14 @@ namespace WaselDriver.Views.PushNotificationPages
                 Settings.Lngfrom = Req.lngfrom;
                 GetAddressFrom(Settings.Latfrom, Settings.Lngfrom);
                 GetAddressTo(Settings.Latto, Settings.Lngto);
+                Settings.LastNotify = null;
             }
+            //else
+            //{
+            //    Settings.LastNotify = null;
+            //    Application.Current.MainPage = new NavigationPage( new MainTabbed());
+            //}
+            
         }
 
         private async void GetAddressFrom(string latfrom , string lngfrom)
@@ -137,9 +145,10 @@ namespace WaselDriver.Views.PushNotificationPages
                     Active.IsRunning = false;
                     Settings.LastNotify = null;
                     await PopupNavigation.Instance.PushAsync(new SuccessPage(json.message));
-                    App.Current.MainPage = new TabbedPage();
+                    App.Current.MainPage = new MainTabbed();
                 }
                 else
+
                 {
                     Active.IsRunning = false;
                     Settings.LastNotify = null;
@@ -152,7 +161,7 @@ namespace WaselDriver.Views.PushNotificationPages
             catch (Exception)
             {
                 Active.IsRunning = false;
-                await DisplayAlert(AppResources.ErrorMessage, AppResources.ErrorMessage, AppResources.Ok);
+                await DisplayAlert(AppResources.Error, AppResources.ErrorMessage, AppResources.Ok);
             }
         }
        
@@ -200,7 +209,7 @@ namespace WaselDriver.Views.PushNotificationPages
                     Active.IsRunning = false;
                     Settings.LastNotify = null;
                     await DisplayAlert(AppResources.OrderSuccess, json.message, AppResources.Ok);
-                    Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new MainPage());
+                    Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new MainTabbed());
                 }
             }
             catch (Exception)

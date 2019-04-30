@@ -21,7 +21,8 @@ namespace WaselDriver.Views.UserAuthentication
         public ForgetPassword()
         {
             InitializeComponent();
-            FlowDirection = (WaselDriver.Helper.Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+            FlowDirection = (WaselDriver.Helper.Settings.LastUserGravity == "Arabic") ?
+                FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             userService = new UserServices();
         }
 
@@ -32,29 +33,17 @@ namespace WaselDriver.Views.UserAuthentication
             return;
         }
 
-        private bool AllFieldsFilled()
-        {
-            bool check = ((String.IsNullOrEmpty(EntryEmail.Text))) ? false : true;
-            if (EntryEmail.Text == null || EntryEmail.Text.Length < 1)
-            {
-                Activ.IsRunning = false;
-                DisplayAlert("خطأ", "من فضلك أكمل الحقول الفارغة", "OK");
-            }
-            return check;
-
-        }
-
+    
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
             Activ.IsRunning = true;
-            if (AllFieldsFilled())
-            {
+           
                 string email = EntryEmail.Text;
                 var ResBack = await userService.BackupEmail(email);
                 if (ResBack == "False")
                 {
                     Activ.IsRunning = false;
-                    await DisplayAlert("Communication Error", "من فضلك تحقق من الإتصال بالإنترنت", "OK");
+                    await DisplayAlert(AppResources.Error, AppResources.ErrorMessage, AppResources.Ok);
                 }
                 else
                 {
@@ -66,13 +55,13 @@ namespace WaselDriver.Views.UserAuthentication
                         if (JsonResponse.success == true)
                         {
                             checker = true;
-                            await DisplayAlert("تنبيه", "لقد تم إرسال رقم التأكد من الهوية إلي البريد الإلكتروني الذى تم إدخاله", "موافق");
+                            await DisplayAlert(AppResources.Alert, AppResources.ConfirmSentCode, AppResources.Ok);
                             Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new ActiveCode(EntryEmail.Text));
                         }
                         else
                         {
                             Activ.IsRunning = false;
-                            await DisplayAlert("تنبيه", "عفوا لايوجد حساب لهذا البريد الإلكتروني من فضلك قم بالتسجيل ", "موافق");
+                            await DisplayAlert(AppResources.Alert, AppResources.WrongEmail, AppResources.Ok);
                             Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new LoginPage());
                             return;
                         }
@@ -83,18 +72,15 @@ namespace WaselDriver.Views.UserAuthentication
                         Activ.IsRunning = false;
                         var JsonResponse = JsonConvert.DeserializeObject<Response<string, string>>(ResBack);
                         Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new LoginPage());
-                        await DisplayAlert("تنبيه", "لقد حدث خطأ بالإتصال بالإنترنت", "موافق");
+                        await DisplayAlert(AppResources.Error, AppResources.ErrorMessage, AppResources.Ok);
                         return;
                     }
 
                 }
-            }
+            
             App.Current.MainPage = new MainPage();
         }
 
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            await Navigation.PopModalAsync();
-        }
+       
     }
 }

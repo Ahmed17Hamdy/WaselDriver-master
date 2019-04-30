@@ -12,12 +12,13 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0" >
-                <Label x:Name="UserStatuslbl" HorizontalOptions="Center" VerticalOptions="Center" Text="{i18n:Translate UserStatues}"/>
+                <Label x:Name="UserStatuslbl" HorizontalOptions="Center" VerticalOptions="Center"
+                       Text="{i18n:Translate UserStatues}"/>
             </StackLayout>
             <AbsoluteLayout Grid.Row="1">
                 <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
                     <!-- Place new controls here -->
-                    <custommap:TKCustomMap MapType="Street" HasScrollEnabled="True" 
+                    <custommap:TKCustomMap x:Name="MainMap" MapType="Street" HasScrollEnabled="True" 
                                HasZoomEnabled="True" IsClusteringEnabled="False"
                                IsShowingUser="True"
                                UserLocationChanged="UserLocationChanged"

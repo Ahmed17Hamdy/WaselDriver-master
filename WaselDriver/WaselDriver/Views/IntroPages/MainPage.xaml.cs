@@ -23,8 +23,50 @@ namespace WaselDriver
         public MainPage()
         {
             InitializeComponent();
-           
+            GetLocation();
             CheckUserStatus();
+        }
+        private async void GetLocation()
+        {
+            var request = new GeolocationRequest(GeolocationAccuracy.High);
+            var location = await Geolocation.GetLocationAsync(request);
+            MainMap.MapRegion = MapSpan.FromCenterAndRadius(
+                    new Position(location.Longitude, location.Longitude), Distance.FromMiles(1));
+            OneSignal.Current.StartInit("1126a3d0-1d80-42ee-94db-d0449ac0a62c")
+              .InFocusDisplaying(OSInFocusDisplayOption.None)
+              .HandleNotificationReceived(OnNotificationRecevied)
+              .HandleNotificationOpened(OnNotificationOpened)
+              .EndInit();
+        }
+        private void OnNotificationOpened(OSNotificationOpenedResult result)
+        {
+            if (result.notification?.payload?.additionalData == null)
+            {
+                return;
+            }
+
+            if (result.notification.payload.additionalData.ContainsKey("body"))
+            {
+                var labelText = result.notification.payload.additionalData["body"].ToString();
+                Settings.LastNotify = labelText;
+                App.Current.MainPage = new NotificationSummaryPage();
+            }
+
+        }
+
+        private void OnNotificationRecevied(OSNotification notification)
+        {
+            if (notification.payload?.additionalData == null)
+            {
+                return;
+            }
+
+            if (notification.payload.additionalData.ContainsKey("body"))
+            {
+                var labelText = notification.payload.additionalData["body"].ToString();
+                Settings.LastNotify = labelText;
+                App.Current.MainPage = new NotificationSummaryPage();
+            }
         }
         private void CheckUserStatus()
         {

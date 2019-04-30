@@ -11,6 +11,8 @@ using WaselDriver.Helper;
 using Newtonsoft.Json;
 using System.Net.Http;
 using WaselDriver.Models;
+using Xamarin.Essentials;
+using WaselDriver.Views.IntroPages;
 
 namespace WaselDriver.Views.OrderPage
 {
@@ -32,8 +34,14 @@ namespace WaselDriver.Views.OrderPage
             
         }
 
-        private void OrderMap_RouteCalculationFailed(object sender, TKGenericEventArgs<TK.CustomMap.Models.TKRouteCalculationError> e)
+        private async void OrderMap_RouteCalculationFailed(object sender, TKGenericEventArgs<TK.CustomMap.Models.TKRouteCalculationError> e)
         {
+            await DisplayAlert(AppResources.Error, AppResources.RouteNotFound, AppResources.Ok);
+           
+                var request = new GeolocationRequest(GeolocationAccuracy.High);
+                var location = await Geolocation.GetLocationAsync(request);
+                OrderMap.MapRegion = MapSpan.FromCenterAndRadius(
+                        new Position(location.Longitude, location.Longitude), Distance.FromMiles(1));
            
         }
 
@@ -125,5 +133,10 @@ namespace WaselDriver.Views.OrderPage
                 }
                
             }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new MainTabbed());
         }
+    }
     }

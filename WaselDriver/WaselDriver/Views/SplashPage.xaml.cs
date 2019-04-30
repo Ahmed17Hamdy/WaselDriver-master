@@ -40,23 +40,30 @@ namespace WaselDriver.Views
 
         private void SetMainPage()
         {
-            if (Settings.LastUsedDriverID == 0 )
+            if (Settings.LastUsedDriverID == 0 && Settings.LastRegister=="" )
             {
                 App.Current.MainPage = new LanguagePage();
             }
-            else if (Settings.LastUsedDriverID != 0 && Settings.LastUserStatus != "0" && Settings.LastNotify==null )
+            else if(Settings.LastUsedDriverID==0 && Settings.LastRegister!= "")
             {
-                App.Current.MainPage = new MainTabbed();                //Device.BeginInvokeOnMainThread(async () => { await Navigation.PushAsync(new MenuPage()); });                                                                      //MainPage = new AddNewHall();
+                App.Current.MainPage = new DriverRegestration();
             }
-            else if( Settings.LastUserStatus == "0")
+            else if ( Settings.LastUsedDriverID!= 0 && 
+                Settings.LastUserStatus != "0" &&
+                Settings.LastNotify==null)
+            {
+                App.Current.MainPage = new MainTabbed();                                                                               
+            }
+            else if( Settings.LastUsedDriverID != 0 &&
+                Settings.LastUserStatus == "0")
             {
                 App.Current.MainPage = new LoginPage();
             }
-            else if (Settings.LastNotify!= null)
+            else if (Settings.LastUsedDriverID != 0 &&
+                Settings.LastUserStatus != "0" && Settings.LastNotify!= null)
             {
                 App.Current.MainPage = new NotificationSummaryPage();
             }
-           
         }
 
         private void Button_Clicked(object sender, EventArgs e)

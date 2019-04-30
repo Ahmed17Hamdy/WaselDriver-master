@@ -80,10 +80,13 @@ namespace WaselDriver.Droid
                 return;
             }
         }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permission, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
     }
