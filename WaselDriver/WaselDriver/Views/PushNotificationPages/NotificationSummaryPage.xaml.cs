@@ -207,7 +207,9 @@ namespace WaselDriver.Views.PushNotificationPages
                     Active.IsRunning = false;
                     Settings.LastNotify = null;
                     await PopupNavigation.Instance.PushAsync(new SuccessPage(json.message));
-                    App.Current.MainPage = new MainTabbed();
+                    Device.BeginInvokeOnMainThread(() => {
+                        Navigation.PushModalAsync(new MainTabbed());
+                    });                    
                 }
                 else
 
@@ -217,7 +219,11 @@ namespace WaselDriver.Views.PushNotificationPages
                     // await DisplayAlert(AppResources.OrderSuccess, json.message, AppResources.Ok);
                     //  Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new OrdersPage());
                     await PopupNavigation.Instance.PushAsync(new SuccessPage(json.message));
-                    App.Current.MainPage = new OrdersPage();
+                    await PopupNavigation.Instance.PushAsync(new SuccessPage(json.message));
+                    Device.BeginInvokeOnMainThread(() => {
+                        Navigation.PushModalAsync(new OrdersPage());
+                    });
+                    
                 }
             }
             catch (Exception)
@@ -257,7 +263,8 @@ namespace WaselDriver.Views.PushNotificationPages
             var httpClient = new HttpClient();
             try
             {
-                var response = await httpClient.PostAsync("http://wassel.alsalil.net/api/addResponse", new StringContent(content, Encoding.UTF8, "text/json"));
+                var response = await httpClient.PostAsync("http://wassel.alsalil.net/api/addResponse",
+                    new StringContent(content, Encoding.UTF8, "text/json"));
                 var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
                 var json = JsonConvert.DeserializeObject<Response<TirhalOrder, string>>(serverResponse);
                 if (json.success == false)
@@ -271,7 +278,10 @@ namespace WaselDriver.Views.PushNotificationPages
                     Active.IsRunning = false;
                     Settings.LastNotify = null;
                     await DisplayAlert(AppResources.OrderSuccess, json.message, AppResources.Ok);
-                    Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new MainTabbed());
+                    await PopupNavigation.Instance.PushAsync(new SuccessPage(json.message));
+                    Device.BeginInvokeOnMainThread(() => {
+                        Navigation.PushModalAsync(new MainTabbed());
+                    });
                 }
             }
             catch (Exception)
