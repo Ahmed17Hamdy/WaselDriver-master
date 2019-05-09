@@ -13,6 +13,8 @@ using System.Net.Http;
 using WaselDriver.Models;
 using Xamarin.Essentials;
 using WaselDriver.Views.IntroPages;
+using Com.OneSignal;
+using Com.OneSignal.Abstractions;
 
 namespace WaselDriver.Views.OrderPage
 {
@@ -28,13 +30,60 @@ namespace WaselDriver.Views.OrderPage
 			InitializeComponent ();
             Settings.LastNotify = null;
             GmsDirection.Init("AIzaSyB7rB6s8fc317zCPz8HS_yqwi7HjMsAqks");
-            SetMyLocation();
+           // SetMyLocation();
             OrderMap.RouteCalculationFinished += OrderMap_RouteCalculationFinished;
             OrderMap.RouteCalculationFailed += OrderMap_RouteCalculationFailed;
-            
+            OneSignal.Current.StartInit("1126a3d0-1d80-42ee-94db-d0449ac0a62c")
+             .InFocusDisplaying(OSInFocusDisplayOption.None)
+             .HandleNotificationReceived(OnNotificationRecevied)
+             .HandleNotificationOpened(OnNotificationOpened)
+             .EndInit();
         }
+        private void OnNotificationOpened(OSNotificationOpenedResult result)
+        {
+            if (result.notification?.payload?.additionalData == null)
+            {
+                return;
+            }
 
-        private async void OrderMap_RouteCalculationFailed(object sender, TKGenericEventArgs<TK.CustomMap.Models.TKRouteCalculationError> e)
+            if (result.notification.payload.additionalData.ContainsKey("body"))
+            {
+                var labelText = result.notification.payload.additionalData["body"].ToString();
+                var Req = JsonConvert.DeserializeObject<DelivaryObject>(labelText);
+                if (Req.done == 3)
+                {
+                    DisplayAlert(AppResources.Alert, AppResources.CanceledOrder, AppResources.Ok);
+                    Device.BeginInvokeOnMainThread(() => {
+                        Navigation.PushModalAsync(new MainTabbed());
+                    });
+                }
+            }
+
+        }
+        private void OnNotificationRecevied(OSNotification notification)
+        {
+            if (notification.payload?.additionalData == null)
+            {
+                return;
+            }
+
+            if (notification.payload.additionalData.ContainsKey("body"))
+            {
+                var labelText = notification.payload.additionalData["body"].ToString();
+              
+                var Req = JsonConvert.DeserializeObject<DelivaryObject>(labelText);
+                if (Req.done == 3)
+                {
+                    DisplayAlert(AppResources.Alert, AppResources.CanceledOrder, AppResources.Ok);
+                    Device.BeginInvokeOnMainThread(() => {
+                        Navigation.PushModalAsync(new MainTabbed());
+                    });
+                }
+               
+            }
+        }
+        private async void OrderMap_RouteCalculationFailed(object sender, 
+            TKGenericEventArgs<TK.CustomMap.Models.TKRouteCalculationError> e)
         {
             await DisplayAlert(AppResources.Error, AppResources.RouteNotFound, AppResources.Ok);
            
@@ -44,7 +93,6 @@ namespace WaselDriver.Views.OrderPage
                         new Position(location.Longitude, location.Longitude), Distance.FromMiles(1));
            
         }
-
         private async void SetMyLocation()
         {
             Pins.Clear();           
@@ -84,17 +132,17 @@ namespace WaselDriver.Views.OrderPage
             OrderMap.Pins = Pins;
            
         }
-
         private void OrderMap_RouteCalculationFinished(object sender, TKGenericEventArgs<TKRoute> e)
         {
             OrderMap.MapRegion = e.Value.Bounds;      
           
         }
-
         private async void OrderMap_UserLocationChanged(object sender, TKGenericEventArgs<Position> e)
         {
-            var x = e.Value.Latitude;
-            var y = e.Value.Longitude;
+            var request = new GeolocationRequest(GeolocationAccuracy.High);
+            var location = await Geolocation.GetLocationAsync(request);
+            var x = location.Latitude;
+            var y = location.Longitude;
             if (Settings.LastLat != x.ToString() || Settings.LastLng != y.ToString())
             {
                     Settings.LastLat = x.ToString();
@@ -133,10 +181,50 @@ namespace WaselDriver.Views.OrderPage
                 }
                
             }
-
         private async void Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new MainTabbed());
+        }
+        private async void  FinishedOrder_Clicked(object sender, EventArgs e)
+        {
+            TirhalOrder order = new TirhalOrder
+            {
+                user_id = Settings.LastUsedID.ToString(),
+                id = Settings.LastOrderid,
+                driver_id = Settings.LastUsedDriverID.ToString()
+            };
+            Dictionary<string, string> values = new Dictionary<string, string>();
+            values.Add("user_id", order.user_id.ToString());
+            values.Add("tirhal_order_id", order.id.ToString());
+            values.Add("driver_id", order.driver_id.ToString());
+            string content = JsonConvert.SerializeObject(values);
+            var httpClient = new HttpClient();
+            try
+            {
+                var response = await httpClient.PostAsync("http://wassel.alsalil.net/api/completetirhalorder",
+                    new StringContent(content, Encoding.UTF8, "text/json"));
+                var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
+                var json = JsonConvert.DeserializeObject<Response<TirhalOrder, string>>(serverResponse);
+                if (json.success == false)
+                {
+                    Activ.IsRunning = false;
+                    await DisplayAlert(AppResources.Error, json.message, AppResources.Ok);
+                }
+                else
+                {
+                    Settings.LastNotify = null;
+                    Activ.IsRunning = false;                    
+                    await DisplayAlert(AppResources.OrderSuccess, json.message, AppResources.Ok);
+                    Device.BeginInvokeOnMainThread(() => {
+                        Navigation.PushModalAsync(new MainTabbed());
+                    });                   
+                }
+            }
+            catch (Exception)
+            {
+                Activ.IsRunning = false;
+                await DisplayAlert(AppResources.ErrorMessage, AppResources.ErrorMessage, AppResources.Ok);
+            }
         }
     }
     }

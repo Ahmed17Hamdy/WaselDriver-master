@@ -6,7 +6,7 @@ namespace WaselDriver.Models
 {
     public class RequiredValidator : IValidator
     {
-        public string Message { get; set; } = "This field is required";
+        public string Message { get; set; } = AppResources.FieldReq;
 
         public bool Check(string value)
         {

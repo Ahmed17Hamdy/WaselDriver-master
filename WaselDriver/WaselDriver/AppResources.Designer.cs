@@ -106,6 +106,15 @@ namespace WaselDriver {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sorry ,The User has Cancelled Order.
+        /// </summary>
+        internal static string CanceledOrder {
+            get {
+                return ResourceManager.GetString("CanceledOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Car Images.
         /// </summary>
         internal static string CarImages {
@@ -250,11 +259,29 @@ namespace WaselDriver {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This field is required.
+        /// </summary>
+        internal static string FieldReq {
+            get {
+                return ResourceManager.GetString("FieldReq", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please , Fill All Fields.
         /// </summary>
         internal static string FillSpaces {
             get {
                 return ResourceManager.GetString("FillSpaces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finish Order.
+        /// </summary>
+        internal static string FinishOrder {
+            get {
+                return ResourceManager.GetString("FinishOrder", resourceCulture);
             }
         }
         
@@ -646,7 +673,7 @@ namespace WaselDriver {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Main Page.
+        ///   Looks up a localized string similar to .
         /// </summary>
         internal static string String1 {
             get {

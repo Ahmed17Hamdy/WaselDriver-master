@@ -40,7 +40,8 @@ namespace WaselDriver.Views.PushNotificationPages
             OrderMap.RouteCalculationFinished += OrderMap_RouteCalculationFinished;
             OrderMap.RouteCalculationFailed += OrderMap_RouteCalculationFailed;
         }
-        private async void OrderMap_RouteCalculationFailed(object sender, TKGenericEventArgs<TK.CustomMap.Models.TKRouteCalculationError> e)
+        private async void OrderMap_RouteCalculationFailed(object sender,
+            TKGenericEventArgs<TK.CustomMap.Models.TKRouteCalculationError> e)
         {
             await DisplayAlert(AppResources.Error, AppResources.RouteNotFound, AppResources.Ok);
 
@@ -207,9 +208,6 @@ namespace WaselDriver.Views.PushNotificationPages
                     Active.IsRunning = false;
                     Settings.LastNotify = null;
                     await PopupNavigation.Instance.PushAsync(new SuccessPage(json.message));
-                    Device.BeginInvokeOnMainThread(() => {
-                        Navigation.PushModalAsync(new MainTabbed());
-                    });                    
                 }
                 else
 
@@ -218,7 +216,6 @@ namespace WaselDriver.Views.PushNotificationPages
                     Settings.LastNotify = null;
                     // await DisplayAlert(AppResources.OrderSuccess, json.message, AppResources.Ok);
                     //  Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new OrdersPage());
-                    await PopupNavigation.Instance.PushAsync(new SuccessPage(json.message));
                     await PopupNavigation.Instance.PushAsync(new SuccessPage(json.message));
                     Device.BeginInvokeOnMainThread(() => {
                         Navigation.PushModalAsync(new OrdersPage());

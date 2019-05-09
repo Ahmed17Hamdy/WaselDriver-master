@@ -288,9 +288,6 @@
   <data name="CheckPassWord" xml:space="preserve">
     <value>من فضلك تحقق من كلمة المرور الخاصة بك</value>
   </data>
-  <data name="MainBage" xml:space="preserve">
-    <value>الصفحة الرئيسية</value>
-  </data>
   <data name="RouteNotFound" xml:space="preserve">
     <value>عفواً , لم يتم العثور على الطريق</value>
   </data>
@@ -326,5 +323,14 @@
   </data>
   <data name="EnterVerifyCode" xml:space="preserve">
     <value>برجاء إدخال كود التأكيد المُرسل لبريدك الإلكتروني</value>
+  </data>
+  <data name="FieldReq" xml:space="preserve">
+    <value>هذا الحقل مطلوب </value>
+  </data>
+  <data name="CanceledOrder" xml:space="preserve">
+    <value>عذراً , الطلب تم إلغاؤه من قبل المستخدم</value>
+  </data>
+  <data name="FinishOrder" xml:space="preserve">
+    <value>تم الإنتهاء من التوصيل</value>
   </data>
 </root>

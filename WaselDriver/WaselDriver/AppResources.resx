@@ -289,7 +289,7 @@
     <value>Please , Check Your PassWord</value>
   </data>
   <data name="String1" xml:space="preserve">
-    <value>Main Page</value>
+    <value />
   </data>
   <data name="RouteNotFound" xml:space="preserve">
     <value>Sorry , But Couldn't Draw this route</value>
@@ -326,5 +326,14 @@
   </data>
   <data name="EnterVerifyCode" xml:space="preserve">
     <value>Please , Enter The validation Code Sent To You By Mail</value>
+  </data>
+  <data name="FieldReq" xml:space="preserve">
+    <value>This field is required</value>
+  </data>
+  <data name="CanceledOrder" xml:space="preserve">
+    <value>Sorry ,The User has Cancelled Order</value>
+  </data>
+  <data name="FinishOrder" xml:space="preserve">
+    <value>Finish Order</value>
   </data>
 </root>

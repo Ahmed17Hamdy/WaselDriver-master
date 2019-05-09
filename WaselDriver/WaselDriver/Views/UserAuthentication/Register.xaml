@@ -71,7 +71,6 @@
                             Format="^[_a-z0-9-]*(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" />
                                         </Behaviors:ValidationBehavior.Validators>
                                     </Behaviors:ValidationBehavior>
-                                    <local:EmailValidatorBehavior />
                                 </Entry.Behaviors>
                             </Entry>
                             </StackLayout>

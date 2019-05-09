@@ -4,7 +4,8 @@ namespace WaselDriver
 {
     public class MaxLengthValidatorBehavior : Behavior<Entry>
     {
-         public static readonly BindableProperty MaxLengthProperty = BindableProperty.Create("MaxLength", typeof(int), typeof(MaxLengthValidatorBehavior), 0);
+         public static readonly BindableProperty MaxLengthProperty =
+            BindableProperty.Create("MaxLength", typeof(int), typeof(MaxLengthValidatorBehavior), 0);
 
         public int MaxLength
         {

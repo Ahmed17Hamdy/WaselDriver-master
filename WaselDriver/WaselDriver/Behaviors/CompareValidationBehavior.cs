@@ -12,7 +12,8 @@ namespace WaselDriver
     public class CompareValidationBehavior : Behavior<Entry>
     {
        
-        public static BindableProperty TextProperty = BindableProperty.Create<CompareValidationBehavior, string>(tc => tc.Text, string.Empty, BindingMode.TwoWay);
+        public static BindableProperty TextProperty =
+            BindableProperty.Create<CompareValidationBehavior, string>(tc => tc.Text, string.Empty, BindingMode.TwoWay);
 
         public string Text
         {
