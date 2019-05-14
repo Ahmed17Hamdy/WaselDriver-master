@@ -24,10 +24,7 @@ namespace WaselDriver.Views.UserAuthentication
         public LoginPage()
         {
             InitializeComponent();
-            if(Settings.LastUsedEmail!= "" && Settings.LastUsedEmail!= "120c0649-5711-4fe5-abe1-df941202c038")
-            {
-                EntryEmail.Text = Settings.LastUsedEmail;
-            }
+           
             OneSignal.Current.IdsAvailable(IdsAvailable);
             FlowDirection = (WaselDriver.Helper.Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft :
                 FlowDirection.LeftToRight;

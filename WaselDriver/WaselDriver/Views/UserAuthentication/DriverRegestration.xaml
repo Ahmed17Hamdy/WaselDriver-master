@@ -35,11 +35,13 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Frame Grid.Column="0" Padding="1" HasShadow="False" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Frame Grid.Column="0" Padding="1" HasShadow="False" HorizontalOptions="Center" 
+                               VerticalOptions="Center">
                             <Grid Margin="3">
                                 <Image x:Name="NatFrontImgSource" HeightRequest="100" WidthRequest="100" 
                                        Aspect="AspectFill"/>
-                                <Image Parent="5,0" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
+                                <Image Parent="5,0" HorizontalOptions="Center" VerticalOptions="Center"
+                                       Aspect="AspectFit"
                                      HeightRequest="30" WidthRequest="30" Source="camera.png"/>
                                 <Label Text="{i18n:Translate Front}" Margin="2" HorizontalOptions="Center"/>
                                 <Grid.GestureRecognizers>
@@ -47,10 +49,13 @@
                                 </Grid.GestureRecognizers>
                             </Grid>
                         </Frame>
-                        <Frame Grid.Column="1" Padding="1" HasShadow="False" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Frame Grid.Column="1" Padding="1" HasShadow="False" HorizontalOptions="Center"
+                               VerticalOptions="Center">
                             <Grid Padding="3">
-                                <Image x:Name="NatBackImgSource" HeightRequest="100" WidthRequest="100" Aspect="AspectFill"/>
-                                <Image Parent="5,0" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
+                                <Image x:Name="NatBackImgSource" HeightRequest="100" WidthRequest="100"
+                                       Aspect="AspectFill"/>
+                                <Image Parent="5,0" HorizontalOptions="Center" VerticalOptions="Center" 
+                                       Aspect="AspectFit"
                                       HeightRequest="30" WidthRequest="30" Source="camera.png"/>
                                 <Label Margin="2" Text="{i18n:Translate BackCard}" HorizontalOptions="Center"/>
                                 <Grid.GestureRecognizers>
@@ -67,10 +72,13 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Frame Grid.Column="0" Padding="1" HasShadow="False" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Frame Grid.Column="0" Padding="1" HasShadow="False" HorizontalOptions="Center" 
+                               VerticalOptions="Center">
                             <Grid>
-                                <Image x:Name="CarLicImgSource" HeightRequest="100" WidthRequest="100" Aspect="AspectFill"/>
-                                <Image Parent="5,0" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="30"
+                                <Image x:Name="CarLicImgSource" HeightRequest="100" WidthRequest="100"
+                                       Aspect="AspectFill"/>
+                                <Image Parent="5,0" HorizontalOptions="Center" VerticalOptions="Center" 
+                                       Aspect="AspectFit" HeightRequest="30" WidthRequest="30"
                                        Source="camera.png"/>
                                 <Label Margin="2" Text="{i18n:Translate CarLiecence}" HorizontalOptions="Center"/>
                                 <Grid.GestureRecognizers>
@@ -79,10 +87,13 @@
                             </Grid>
                         </Frame>
 
-                        <Frame Grid.Column="1" Padding="1" HasShadow="False" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Frame Grid.Column="1" Padding="1" HasShadow="False" HorizontalOptions="Center"
+                               VerticalOptions="Center">
                             <Grid>
-                                <Image x:Name="DriverLicImgSource" HeightRequest="100" WidthRequest="100" Aspect="AspectFill"/>
-                                <Image Parent="5,0" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" HeightRequest="30" WidthRequest="30" Source="camera.png"/>
+                                <Image x:Name="DriverLicImgSource" HeightRequest="100" WidthRequest="100"
+                                       Aspect="AspectFill"/>
+                                <Image Parent="5,0" HorizontalOptions="Center" VerticalOptions="Center"
+                                       Aspect="AspectFit" HeightRequest="30" WidthRequest="30" Source="camera.png"/>
                                 <Label Margin="2" Text="{i18n:Translate DriverLiecence}" HorizontalOptions="Center"/>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="DriverLicImg_Clicked"/>
@@ -93,10 +104,12 @@
                 </StackLayout>
                 <StackLayout Grid.Row="3" Spacing="0" BackgroundColor="White">
                     <Label HorizontalOptions="Center" FontSize="Large" Text="{i18n:Translate CarImages}"/>
-                    <Frame Padding="0" IsClippedToBounds="True" BackgroundColor="White" HasShadow="False" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Frame Padding="0" IsClippedToBounds="True" BackgroundColor="White" HasShadow="False"
+                           HorizontalOptions="Center" VerticalOptions="Center">
                         <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
                             <Image x:Name="CarImgSource" HeightRequest="100" WidthRequest="100" Aspect="AspectFill"/>
-                            <Image HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" x:Name="FileImage5" HeightRequest="30" WidthRequest="30" Source="camera.png"/>
+                            <Image HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" 
+                                   x:Name="FileImage5" HeightRequest="30" WidthRequest="30" Source="camera.png"/>
                         </Grid>
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="CarImg_Clicked"/>
@@ -111,7 +124,8 @@
                     Clicked="Regbtn_Clicked" Text="{i18n:Translate Register}"
                          x:Name="regbtn"  BackgroundColor="OrangeRed" Padding="7" 
                          Margin="10" TextColor="White" BorderRadius="10" />
-                <ActivityIndicator Grid.Row="0" Grid.RowSpan="6" x:Name="Active"  HorizontalOptions="Center" VerticalOptions="Center"
+                <ActivityIndicator Grid.Row="0" Grid.RowSpan="6" x:Name="Active"  HorizontalOptions="Center"
+                                   VerticalOptions="Center"
                                  Color="OrangeRed" HeightRequest="100" WidthRequest="100" />
             </Grid>
             <!--<StackLayout>

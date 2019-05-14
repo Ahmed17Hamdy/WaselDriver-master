@@ -74,10 +74,11 @@ namespace WaselDriver.Views.OrderPage
                 var Req = JsonConvert.DeserializeObject<DelivaryObject>(labelText);
                 if (Req.done == 3)
                 {
+                    App.Current.MainPage = new MainTabbed();
                     DisplayAlert(AppResources.Alert, AppResources.CanceledOrder, AppResources.Ok);
-                    Device.BeginInvokeOnMainThread(() => {
-                        Navigation.PushModalAsync(new MainTabbed());
-                    });
+                    //Device.BeginInvokeOnMainThread(() => {
+                    //    Navigation.PushModalAsync(new MainTabbed());
+                    //});
                 }
                
             }
@@ -213,11 +214,12 @@ namespace WaselDriver.Views.OrderPage
                 else
                 {
                     Settings.LastNotify = null;
-                    Activ.IsRunning = false;                    
+                    Activ.IsRunning = false;
+                    //Device.BeginInvokeOnMainThread(() => {
+                    //    Navigation.PushModalAsync(new MainTabbed());
+                    //});
+                    App.Current.MainPage = new MainTabbed();
                     await DisplayAlert(AppResources.OrderSuccess, json.message, AppResources.Ok);
-                    Device.BeginInvokeOnMainThread(() => {
-                        Navigation.PushModalAsync(new MainTabbed());
-                    });                   
                 }
             }
             catch (Exception)

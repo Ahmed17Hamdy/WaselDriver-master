@@ -100,7 +100,7 @@ namespace WaselDriver.Views.PushNotificationPages
         {
             if(Settings.LastNotify!= "Has been approved" && Settings.LastNotify!= "Not approved")
             {
-                var Req = JsonConvert.DeserializeObject<DelivaryObject>(Settings.LastNotify);
+                var Req = JsonConvert.DeserializeObject<DelivaryObject>(Settings.LastNotify);                
                 userNamelbl.Text = Req.driver_id;
                 Settings.LastOrderid = Req.id;
                 Settings.LastUsedID = int.Parse(Req.user_id);
@@ -214,8 +214,6 @@ namespace WaselDriver.Views.PushNotificationPages
                 {
                     Active.IsRunning = false;
                     Settings.LastNotify = null;
-                    // await DisplayAlert(AppResources.OrderSuccess, json.message, AppResources.Ok);
-                    //  Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new OrdersPage());
                     await PopupNavigation.Instance.PushAsync(new SuccessPage(json.message));
                     Device.BeginInvokeOnMainThread(() => {
                         Navigation.PushModalAsync(new OrdersPage());
