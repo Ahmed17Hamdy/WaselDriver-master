@@ -20,10 +20,7 @@ namespace WaselDriver.Views.UserAuthentication
 		public Register ()
 		{
 			InitializeComponent ();
-            if(Settings.LastUsedEmail!= "")
-            {
-                EntryEmail.Text = Settings.LastUsedEmail;
-            }
+            
 		}
         private async void Regbtn_Clicked(object sender, EventArgs e)
         {

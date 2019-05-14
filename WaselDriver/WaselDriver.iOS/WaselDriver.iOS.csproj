@@ -241,222 +241,222 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\MainPin.png">
+    <BundleResource Include="Resources\MainPin.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\camera.png">
+    <BundleResource Include="Resources\camera.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\WaselText.png">
+    <BundleResource Include="Resources\WaselText.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\WaselLogo.png">
+    <BundleResource Include="Resources\WaselLogo.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\WaselLogoo.png">
+    <BundleResource Include="Resources\WaselLogoo.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\CurvedMask.png">
+    <BundleResource Include="Resources\CurvedMask.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\HeaderBackground.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\taxidriver.png">
+    <BundleResource Include="Resources\taxidriver.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\downArrow.png">
+    <BundleResource Include="Resources\downArrow.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\aLanguage.png">
+    <BundleResource Include="Resources\aLanguage.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\checked.png">
+    <BundleResource Include="Resources\checked.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Elanguage.png">
+    <BundleResource Include="Resources\Elanguage.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\deliverytruck.png">
+    <BundleResource Include="Resources\deliverytruck.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\ethiopia.png">
+    <BundleResource Include="Resources\ethiopia.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\lock.png">
+    <BundleResource Include="Resources\lock.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\mail.png">
+    <BundleResource Include="Resources\mail.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\smartphone.png">
+    <BundleResource Include="Resources\smartphone.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\sudan.png">
+    <BundleResource Include="Resources\sudan.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\telephone.png">
+    <BundleResource Include="Resources\telephone.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\user.png">
+    <BundleResource Include="Resources\user.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\add.png" />
+    <BundleResource Include="Resources\add.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\addbutton.png" />
+    <BundleResource Include="Resources\addbutton.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\AddIcon.png" />
+    <BundleResource Include="Resources\AddIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\backArrow.png" />
+    <BundleResource Include="Resources\backArrow.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\automobile.png" />
+    <BundleResource Include="Resources\automobile.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\bell.png" />
+    <BundleResource Include="Resources\bell.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\bi.png" />
+    <BundleResource Include="Resources\bi.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\calendar.png" />
+    <BundleResource Include="Resources\calendar.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\chat.png" />
+    <BundleResource Include="Resources\chat.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\choices.png" />
+    <BundleResource Include="Resources\choices.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Delete.png" />
+    <BundleResource Include="Resources\Delete.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\dropdownarrow.png" />
+    <BundleResource Include="Resources\dropdownarrow.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Edit.png" />
+    <BundleResource Include="Resources\Edit.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Forgot.PNG" />
+    <BundleResource Include="Resources\Forgot.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\home.png" />
+    <BundleResource Include="Resources\home.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\hos.png" />
+    <BundleResource Include="Resources\hos.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\left.png" />
+    <BundleResource Include="Resources\left.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\lo.png" />
+    <BundleResource Include="Resources\lo.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\locatemaps.png" />
+    <BundleResource Include="Resources\locatemaps.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\location.png" />
+    <BundleResource Include="Resources\location.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\login.png" />
+    <BundleResource Include="Resources\login.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\loupe.png" />
+    <BundleResource Include="Resources\loupe.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\n.png" />
+    <BundleResource Include="Resources\n.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Next.png" />
+    <BundleResource Include="Resources\Next.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\notifion.png" />
+    <BundleResource Include="Resources\notifion.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\onlineshop.png" />
+    <BundleResource Include="Resources\onlineshop.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\orders.png" />
+    <BundleResource Include="Resources\orders.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\placeholder.png" />
+    <BundleResource Include="Resources\placeholder.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\plusss.png" />
+    <BundleResource Include="Resources\plusss.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\s.png" />
+    <BundleResource Include="Resources\s.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\see.png" />
+    <BundleResource Include="Resources\see.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\wallet.png" />
+    <BundleResource Include="Resources\wallet.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\WhiteBackArrow.png" />
+    <BundleResource Include="Resources\WhiteBackArrow.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\x.png" />
+    <BundleResource Include="Resources\x.png" />
   </ItemGroup>
 </Project>
