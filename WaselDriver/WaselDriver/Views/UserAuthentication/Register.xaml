@@ -13,16 +13,17 @@
         <viewmodels:MainViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid Padding="5">
-            <Grid.RowDefinitions>
+        <ScrollView>
+            <Grid Padding="5">
+                <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
                 <Image Grid.Row="0" x:Name="image" Aspect="AspectFit" 
                            Source="WaselLogo.png" HorizontalOptions="Center" VerticalOptions="Center"/>
-               
+
                 <StackLayout Padding="20,0,20,0" Grid.Row="1" VerticalOptions="Start">
-                        <StackLayout>
+                    <StackLayout>
                         <StackLayout.Behaviors>
                             <Validators:ValidationGroupBehavior x:Name="form"/>
                         </StackLayout.Behaviors>
@@ -33,15 +34,15 @@
                                 <Entry.Behaviors>
                                     <Behaviors:ValidationBehavior Group="{x:Reference form}" 
                                               PropertyName="Text">
-                                            <Behaviors:ValidationBehavior.Validators>
-                                                <Validators:RequiredValidator />
-                                            </Behaviors:ValidationBehavior.Validators>
-                                        </Behaviors:ValidationBehavior>
-                                    </Entry.Behaviors>
+                                        <Behaviors:ValidationBehavior.Validators>
+                                            <Validators:RequiredValidator />
+                                        </Behaviors:ValidationBehavior.Validators>
+                                    </Behaviors:ValidationBehavior>
+                                </Entry.Behaviors>
                             </Entry>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                                <Image Source="smartphone.png" Aspect="AspectFit"/>
+                            <Image Source="smartphone.png" Aspect="AspectFit"/>
                             <Entry Keyboard="Numeric" Placeholder="{i18n:Translate Phone}" x:Name="EntryPhone"
                                    PlaceholderColor="LightGray" HorizontalOptions="FillAndExpand">
                                 <Entry.Behaviors>
@@ -56,10 +57,10 @@
                                     <local:MaxLengthValidatorBehavior  MaxLength="11"/>
                                 </Entry.Behaviors>
                             </Entry>
-                            </StackLayout>
+                        </StackLayout>
 
-                            <StackLayout Orientation="Horizontal">
-                                <Image Source="mail.png" Aspect="AspectFit"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="mail.png" Aspect="AspectFit"/>
                             <Entry Placeholder="{i18n:Translate Email}" x:Name="EntryEmail" 
                                    PlaceholderColor="LightGray" HorizontalOptions="FillAndExpand">
                                 <Entry.Behaviors>
@@ -73,9 +74,9 @@
                                     </Behaviors:ValidationBehavior>
                                 </Entry.Behaviors>
                             </Entry>
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal">
-                                <Image Source="lock.png" Aspect="AspectFit"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="lock.png" Aspect="AspectFit"/>
                             <Entry Placeholder="{i18n:Translate Pass}" IsPassword="True" 
                                    PlaceholderColor="LightGray" x:Name="EntryPassword" HorizontalOptions="FillAndExpand">
                                 <Entry.Behaviors>
@@ -90,7 +91,7 @@
                                     <local:MaxLengthValidatorBehavior  MaxLength="15"/>
                                 </Entry.Behaviors>
                             </Entry>
-                            </StackLayout>
+                        </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Image Source="lock.png" Aspect="AspectFit"/>
                             <Entry Placeholder="{i18n:Translate ConfirmPass}" IsPassword="True" 
@@ -112,22 +113,23 @@
                         <Button  IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}" Text="{i18n:Translate Confirm}" 
                                  x:Name="regbtn"  BackgroundColor="OrangeRed" Padding="7" Margin="10" TextColor="White"
                                  BorderRadius="10" HeightRequest="60" WidthRequest="110" Clicked="Regbtn_Clicked"/>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" FlowDirection="RightToLeft" >
-                                <Label Text="{i18n:Translate Login}" 
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" FlowDirection="RightToLeft" >
+                            <Label Text="{i18n:Translate Login}" 
                                        FontAttributes="Bold" FontSize="Medium" HorizontalOptions="Start" TextColor="OrangeRed">
-                                    <Label.GestureRecognizers>
+                                <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="LoginPageTapped" />
                                 </Label.GestureRecognizers>
-                                </Label>
-                                <Label Text="{i18n:Translate HaveAccount}" TextColor="Gray" HorizontalOptions="End" 
+                            </Label>
+                            <Label Text="{i18n:Translate HaveAccount}" TextColor="Gray" HorizontalOptions="End" 
                                        Margin="0,0,0,20"/>
-                            </StackLayout>
                         </StackLayout>
                     </StackLayout>
-               
-            <ActivityIndicator Grid.Row="0" Grid.RowSpan="2" HorizontalOptions="Center" VerticalOptions="Center"
+                </StackLayout>
+
+                <ActivityIndicator Grid.Row="0" Grid.RowSpan="2" HorizontalOptions="Center" VerticalOptions="Center"
                         HeightRequest="100" WidthRequest="100"       x:Name="Activ" Color="OrangeRed"/>
-        </Grid>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
   
 

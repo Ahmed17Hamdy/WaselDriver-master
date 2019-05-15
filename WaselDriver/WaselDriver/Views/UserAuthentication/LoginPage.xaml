@@ -9,8 +9,9 @@
              BackgroundColor="White"
              x:Class="WaselDriver.Views.UserAuthentication.LoginPage">
     <ContentPage.Content>
-        <Grid Padding="5">
-            <Grid.RowDefinitions>
+        <ScrollView>
+            <Grid Padding="5">
+                <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
@@ -97,9 +98,11 @@
                 </StackLayout>
                 <!--Splash Image-->
 
-            <ActivityIndicator HorizontalOptions="Center"  Grid.Row="0" Grid.RowSpan="2" 
+                <ActivityIndicator HorizontalOptions="Center"  Grid.Row="0" Grid.RowSpan="2" 
                    HeightRequest="100" WidthRequest="100"  VerticalOptions="Center"
                                x:Name="Activ" Color="OrangeRed"/>
-        </Grid>
+            </Grid>
+        </ScrollView>
+      
     </ContentPage.Content>
 </ContentPage>
