@@ -9,7 +9,7 @@
              BackgroundColor="White"
              x:Class="WaselDriver.Views.UserAuthentication.LoginPage">
     <ContentPage.Content>
-        <ScrollView>
+       
             <Grid Padding="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -19,7 +19,8 @@
                     <Image x:Name="image" Source="WaselLogo.png"  Aspect="AspectFit" HorizontalOptions="Center"
                            VerticalOptions="Center"/>
                 </Grid>
-                <StackLayout  Padding="20,0,20,0" Grid.Row="1" VerticalOptions="Center">
+            <ScrollView Padding="20,0,20,0" Grid.Row="1" VerticalOptions="Center">
+                <StackLayout  >
                     <!-- Place new controls here -->
                     <StackLayout>
                         <StackLayout Orientation="Horizontal">
@@ -96,13 +97,15 @@
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
+            </ScrollView>
+             
                 <!--Splash Image-->
 
                 <ActivityIndicator HorizontalOptions="Center"  Grid.Row="0" Grid.RowSpan="2" 
                    HeightRequest="100" WidthRequest="100"  VerticalOptions="Center"
                                x:Name="Activ" Color="OrangeRed"/>
             </Grid>
-        </ScrollView>
+      
       
     </ContentPage.Content>
 </ContentPage>

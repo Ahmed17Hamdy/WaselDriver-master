@@ -13,16 +13,16 @@
         <viewmodels:MainViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <ScrollView>
+     
             <Grid Padding="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0" x:Name="image" Aspect="AspectFit" 
+            <Image Grid.Row="0" x:Name="image" Aspect="AspectFit" 
                            Source="WaselLogo.png" HorizontalOptions="Center" VerticalOptions="Center"/>
-
-                <StackLayout Padding="20,0,20,0" Grid.Row="1" VerticalOptions="Start">
+            <ScrollView Padding="20,0,20,0" Grid.Row="1" VerticalOptions="Start">
+                <StackLayout >
                     <StackLayout>
                         <StackLayout.Behaviors>
                             <Validators:ValidationGroupBehavior x:Name="form"/>
@@ -125,11 +125,13 @@
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
+            </ScrollView>
+          
 
                 <ActivityIndicator Grid.Row="0" Grid.RowSpan="2" HorizontalOptions="Center" VerticalOptions="Center"
                         HeightRequest="100" WidthRequest="100"       x:Name="Activ" Color="OrangeRed"/>
             </Grid>
-        </ScrollView>
+      
     </ContentPage.Content>
   
 
