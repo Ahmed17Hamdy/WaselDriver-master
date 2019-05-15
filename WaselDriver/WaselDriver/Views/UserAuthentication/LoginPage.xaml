@@ -96,8 +96,8 @@
                     </StackLayout>
                 </StackLayout>
                 <!--Splash Image-->
-          
-            <ActivityIndicator HorizontalOptions="Center"
+
+            <ActivityIndicator HorizontalOptions="Center"  Grid.Row="0" Grid.RowSpan="2" 
                    HeightRequest="100" WidthRequest="100"  VerticalOptions="Center"
                                x:Name="Activ" Color="OrangeRed"/>
         </Grid>
