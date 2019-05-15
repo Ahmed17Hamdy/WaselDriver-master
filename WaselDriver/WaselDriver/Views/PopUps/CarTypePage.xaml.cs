@@ -14,7 +14,7 @@ using Rg.Plugins.Popup.Services;
 namespace WaselDriver.Views.PopUps
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CarTypePage : ContentPage
+	public partial class CarTypePage : PopupPage
 	{
 		public CarTypePage ()
 		{
@@ -37,7 +37,7 @@ namespace WaselDriver.Views.PopUps
 
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
-            await Navigation.PopModalAsync();
+            await PopupNavigation.Instance.PopAsync();
         }
     }
 }

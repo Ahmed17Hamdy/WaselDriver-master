@@ -3,23 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:WaselDriver.CustomControl"
              xmlns:Behaviors="clr-namespace:WaselDriver.Behaviors"
+             Padding="10"
              xmlns:Validators="clr-namespace:WaselDriver.Models"
              xmlns:local="clr-namespace:WaselDriver"
              BackgroundColor="White"
              x:Class="WaselDriver.Views.UserAuthentication.LoginPage">
     <ContentPage.Content>
-        <Grid>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.1*"/>
+        <Grid Padding="5">
+            <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="0">
                     <Image x:Name="image" Source="WaselLogo.png"  Aspect="AspectFit" HorizontalOptions="Center"
                            VerticalOptions="Center"/>
                 </Grid>
-                <StackLayout  Padding="20,0,20,0" Grid.Row="2" VerticalOptions="Center">
+                <StackLayout  Padding="20,0,20,0" Grid.Row="1" VerticalOptions="Center">
                     <!-- Place new controls here -->
                     <StackLayout>
                         <StackLayout Orientation="Horizontal">
@@ -97,8 +96,10 @@
                     </StackLayout>
                 </StackLayout>
                 <!--Splash Image-->
-            </Grid>
-            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" x:Name="Activ" Color="OrangeRed"/>
+          
+            <ActivityIndicator HorizontalOptions="Center"
+                   HeightRequest="100" WidthRequest="100"  VerticalOptions="Center"
+                               x:Name="Activ" Color="OrangeRed"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

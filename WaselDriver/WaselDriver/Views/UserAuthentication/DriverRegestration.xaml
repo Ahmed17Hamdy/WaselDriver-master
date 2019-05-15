@@ -1,34 +1,174 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="White"
+             Padding="20"
                 xmlns:i18n="clr-namespace:WaselDriver.CustomControl"
              x:Class="WaselDriver.Views.UserAuthentication.DriverRegestration">
     <ContentPage.Content>
         <ScrollView>
             <Grid Padding="5">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="60"/>
                     <RowDefinition Height="80"/>
-                    
                 </Grid.RowDefinitions>
-                <Grid x:Name="ProfileImg" Padding="5" Grid.Row="0">
-                    <StackLayout>
-                        <Label HorizontalOptions="Center" FontSize="Large" Text="{i18n:Translate ProfileImages}"/>
-                        <Image x:Name="ProfImgSource" HeightRequest="100" WidthRequest="100" Aspect="AspectFill"/>
-                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                            <Image Aspect="AspectFit" x:Name="FileImage1"
+                <Frame CornerRadius="20"   BorderColor="OrangeRed"
+                      BackgroundColor="White" Grid.Row="0" Padding="5" >
+                    <Grid x:Name="ProfileImg" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                               HorizontalOptions="Center" 
+                                Text="{i18n:Translate ProfileImages}"/>
+                        <Image Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="0" 
+                               x:Name="ProfImgSource" HeightRequest="100"
+                           WidthRequest="100" Aspect="AspectFill"/>
+                        <Image Grid.Row="1" Grid.Column="1" VerticalOptions="Center"
+                           HorizontalOptions="Center" Aspect="AspectFit" x:Name="FileImage1"
                                    HeightRequest="30" WidthRequest="30" Source="camera.png"/>
-                        </StackLayout>
-                    </StackLayout>
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ProfileImg_Clicked"/>
-                    </Grid.GestureRecognizers>
-                </Grid>
-                <StackLayout Grid.Row="1" Spacing="0">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ProfileImg_Clicked"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Frame>
+                <Frame CornerRadius="20"   BorderColor="OrangeRed"
+                      BackgroundColor="White" Grid.Row="1" Padding="5">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                               HorizontalOptions="Center" 
+                                Text="{i18n:Translate Front}"/>
+                        <Image Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="0" 
+                               x:Name="NatFrontImgSource" HeightRequest="100"
+                           WidthRequest="100" Aspect="AspectFill"/>
+                        <Image Grid.Row="1" Grid.Column="1" VerticalOptions="Center"
+                           HorizontalOptions="Center" Aspect="AspectFit" 
+                                   HeightRequest="30" WidthRequest="30" Source="camera.png"/>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="NationalFront_Clicked"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Frame>
+                <Frame CornerRadius="20"   BorderColor="OrangeRed"
+                      BackgroundColor="White" Grid.Row="2" Padding="5">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                               HorizontalOptions="Center" 
+                                Text="{i18n:Translate BackCard}"/>
+                        <Image Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="0" 
+                               x:Name="NatBackImgSource" HeightRequest="100"
+                           WidthRequest="100" Aspect="AspectFill"/>
+                        <Image Grid.Row="1" Grid.Column="1" VerticalOptions="Center"
+                           HorizontalOptions="Center" Aspect="AspectFit" 
+                                   HeightRequest="30" WidthRequest="30" Source="camera.png"/>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="NationalBack_Clicked"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Frame>
+                <Frame CornerRadius="20"   BorderColor="OrangeRed"
+                      BackgroundColor="White" Grid.Row="3" Padding="5">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                               HorizontalOptions="Center" 
+                                Text="{i18n:Translate CarLiecence}"/>
+                        <Image Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="0" 
+                               x:Name="CarLicImgSource" HeightRequest="100"
+                           WidthRequest="100" Aspect="AspectFill"/>
+                        <Image Grid.Row="1" Grid.Column="1" VerticalOptions="Center"
+                           HorizontalOptions="Center" Aspect="AspectFit" 
+                                   HeightRequest="30" WidthRequest="30" Source="camera.png"/>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CarLicImg_Clicked"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Frame>
+                <Frame CornerRadius="20"   BorderColor="OrangeRed"
+                      BackgroundColor="White" Grid.Row="4" Padding="5">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                               HorizontalOptions="Center" 
+                                Text="{i18n:Translate DriverLiecence}"/>
+                        <Image Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="0" 
+                               x:Name="DriverLicImgSource" HeightRequest="100"
+                           WidthRequest="100" Aspect="AspectFill"/>
+                        <Image Grid.Row="1" Grid.Column="1" VerticalOptions="Center"
+                           HorizontalOptions="Center" Aspect="AspectFit" 
+                                   HeightRequest="30" WidthRequest="30" Source="camera.png"/>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="DriverLicImg_Clicked"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Frame>
+                <Frame CornerRadius="20"   BorderColor="OrangeRed"
+                      BackgroundColor="White" Grid.Row="5" Padding="5">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                               HorizontalOptions="Center" 
+                                Text="{i18n:Translate CarImages}"/>
+                        <Image Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="0" 
+                               x:Name="CarImgSource" HeightRequest="100"
+                           WidthRequest="100" Aspect="AspectFill"/>
+                        <Image Grid.Row="1" Grid.Column="1" VerticalOptions="Center"
+                           HorizontalOptions="Center" Aspect="AspectFit" 
+                                   HeightRequest="30" WidthRequest="30" Source="camera.png"/>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CarImg_Clicked"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Frame>
+                <!--<StackLayout Grid.Row="1" Spacing="0">
                     <Label HorizontalOptions="Center" FontSize="Large" Text="{i18n:Translate IdentityImages}"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -64,8 +204,8 @@
                             </Grid>
                         </Frame>
                     </Grid>
-                </StackLayout>
-                <StackLayout Grid.Row="2" Spacing="0">
+                </StackLayout>-->
+                <!--<StackLayout Grid.Row="2" Spacing="0">
                     <Label HorizontalOptions="Center" FontSize="Large" Text="{i18n:Translate DrivingLiecence}"/>
                     <Grid Padding="3">
                         <Grid.ColumnDefinitions>
@@ -101,8 +241,8 @@
                             </Grid>
                         </Frame>
                     </Grid>
-                </StackLayout>
-                <StackLayout Grid.Row="3" Spacing="0" BackgroundColor="White">
+                </StackLayout>-->
+                <!--<StackLayout Grid.Row="3" Spacing="0" BackgroundColor="White">
                     <Label HorizontalOptions="Center" FontSize="Large" Text="{i18n:Translate CarImages}"/>
                     <Frame Padding="0" IsClippedToBounds="True" BackgroundColor="White" HasShadow="False"
                            HorizontalOptions="Center" VerticalOptions="Center">
@@ -115,12 +255,12 @@
                             <TapGestureRecognizer Tapped="CarImg_Clicked"/>
                         </Frame.GestureRecognizers>
                     </Frame>
-                </StackLayout>
-                <Button Grid.Row="4" Text="{i18n:Translate SelectCarType}"
+                </StackLayout>-->
+                <Button Grid.Row="6" Text="{i18n:Translate SelectCarType}"
                          BackgroundColor="OrangeRed" Padding="7" 
                           Margin="10" TextColor="White" BorderRadius="10"
                         Clicked="TapGestureRecognizer_Tapped" />
-                <Button  Grid.Row="5" HeightRequest="40"
+                <Button  Grid.Row="7" HeightRequest="40"
                     Clicked="Regbtn_Clicked" Text="{i18n:Translate Register}"
                          x:Name="regbtn"  BackgroundColor="OrangeRed" Padding="7" 
                          Margin="10" TextColor="White" BorderRadius="10" />

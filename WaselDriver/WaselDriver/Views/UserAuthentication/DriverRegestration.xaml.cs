@@ -137,7 +137,7 @@ namespace WaselDriver.Views.UserAuthentication
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new CarTypePage());
+            await PopupNavigation.Instance.PushAsync(new CarTypePage());
         }
         private async void ProfileImg_Clicked(object sender, EventArgs e)
         {

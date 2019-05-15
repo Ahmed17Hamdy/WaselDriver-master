@@ -459,4 +459,25 @@
   <ItemGroup>
     <BundleResource Include="Resources\x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\economy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\saloon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\prestige.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\familycar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\classiccar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hours.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ordercar.png" />
+  </ItemGroup>
 </Project>

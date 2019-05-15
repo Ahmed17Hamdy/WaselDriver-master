@@ -65,6 +65,11 @@ namespace WaselDriver
 
         protected override void OnStart()
         {
+            OneSignal.Current.StartInit("1126a3d0-1d80-42ee-94db-d0449ac0a62c")
+              .InFocusDisplaying(OSInFocusDisplayOption.None)
+              .HandleNotificationReceived(OnNotificationRecevied)
+              .HandleNotificationOpened(OnNotificationOpened)
+              .EndInit();
             // Handle when your app starts
         }
 
@@ -75,6 +80,11 @@ namespace WaselDriver
 
         protected override void OnResume()
         {
+            OneSignal.Current.StartInit("1126a3d0-1d80-42ee-94db-d0449ac0a62c")
+              .InFocusDisplaying(OSInFocusDisplayOption.None)
+              .HandleNotificationReceived(OnNotificationRecevied)
+              .HandleNotificationOpened(OnNotificationOpened)
+              .EndInit();
             // Handle when your app resumes
         }
     }

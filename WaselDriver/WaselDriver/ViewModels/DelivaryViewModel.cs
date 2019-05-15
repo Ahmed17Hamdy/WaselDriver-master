@@ -119,8 +119,36 @@ namespace WaselDriver.ViewModels
             var CartypeBack = await service.GetAllterhal();
             foreach (var item in CartypeBack)
             {
-                var baramImg = item.image;
-                item.image = "http://wassel.alsalil.net/users/images/" + baramImg;
+                if (item.name == "classic")
+                {
+                    item.image = "classiccar.png";
+                }
+                else if(item.name=="per hour")
+                {
+                    item.image = "hours.png";
+                }
+                else if(item.name=="توصيل طلبات")
+                {
+                    item.image = "ordercar.png";
+                }
+                else if (item.name == "عائلية")
+                {
+                    item.image = "familycar.png";
+                }
+                else if (item.name=="Prestige - بريستيج")
+                {
+                    item.image = "prestige.png";
+                }
+                else if (item.name=="Saloon - صالون")
+                {
+                    item.image = "saloon.png";
+                }
+                else
+                {
+                    item.image = "economy.png";
+                }
+                //var baramImg = item.image;
+                //item.image = "http://wassel.alsalil.net/users/images/" + baramImg;
                 if (item.price == null || item.available == null || item.available == 0)
                 {
                     item.PPrice = "لم يتم تحديد سعر من السائق";

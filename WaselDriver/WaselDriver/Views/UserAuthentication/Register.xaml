@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WaselDriver.Views.UserAuthentication.Register"
               xmlns:i18n="clr-namespace:WaselDriver.CustomControl"
+             Padding="10"
              xmlns:viewmodels="clr-namespace:WaselDriver.ViewModels"
              xmlns:Validators="clr-namespace:WaselDriver.Models"
              xmlns:local="clr-namespace:WaselDriver"
@@ -12,9 +13,8 @@
         <viewmodels:MainViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid>
-            <Grid>
-                <Grid.RowDefinitions>
+        <Grid Padding="5">
+            <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
@@ -124,8 +124,9 @@
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
-                </Grid>
-            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" x:Name="Activ" Color="OrangeRed"/>
+               
+            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center"
+                        HeightRequest="100" WidthRequest="100"       x:Name="Activ" Color="OrangeRed"/>
         </Grid>
     </ContentPage.Content>
   
