@@ -28,7 +28,7 @@ namespace WaselDriver.Views.UserAuthentication
         public DriverRegestration ()
 		{
 			InitializeComponent ();
-            GetUserLocationAsync();
+            _ = GetUserLocationAsync();
 		}
       private  bool AllNeeded()
         {
@@ -141,153 +141,333 @@ namespace WaselDriver.Views.UserAuthentication
         }
         private async void ProfileImg_Clicked(object sender, EventArgs e)
         {
-            var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
-            if (storageStatus != PermissionStatus.Granted)
+        var answer=   
+                await DisplayAlert(AppResources.PictureOption, AppResources.SelectpicMode,
+                 AppResources.Gallery, AppResources.Camera);
+            if (answer == true)
             {
-                var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
-                storageStatus = results[Permission.Storage];
-            }
-            if (storageStatus == PermissionStatus.Granted)
-            {
-                ProfilePic = await CrossMedia.Current.PickPhotoAsync();
-                if (ProfilePic == null)
-                    return;
-                ProfImgSource.Source = ImageSource.FromStream(() =>
+                var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+                if (storageStatus != PermissionStatus.Granted)
                 {
-                    return ProfilePic.GetStream();
-                });
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
+                    storageStatus = results[Permission.Storage];
+                }
+                if (storageStatus == PermissionStatus.Granted)
+                {
+                    ProfilePic = await CrossMedia.Current.PickPhotoAsync();
+                    if (ProfilePic == null)
+                        return;
+                    ProfImgSource.Source = ImageSource.FromStream(() =>
+                    {
+                        return ProfilePic.GetStream();
+                    });
+                }
+                else
+                {
+                    await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
+                    //On iOS you may want to send your user to the settings screen.
+                    CrossPermissions.Current.OpenAppSettings();
+                }
             }
             else
             {
-                await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
-                //On iOS you may want to send your user to the settings screen.
-                CrossPermissions.Current.OpenAppSettings();
+                var cameraStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+                if (cameraStatus != PermissionStatus.Granted)
+                {
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Camera });
+                    cameraStatus = results[Permission.Camera];
+                }
+                if (cameraStatus == PermissionStatus.Granted)
+                {
+                    ProfilePic = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+                    {
+                        Directory = "Test",
+                        SaveToAlbum = true,
+                        CompressionQuality = 75,
+                        CustomPhotoSize = 50,
+                        PhotoSize = PhotoSize.MaxWidthHeight,
+                        MaxWidthHeight = 2000,
+                        DefaultCamera = CameraDevice.Front
+                    });
+                    if (ProfilePic == null)
+                        return;
+                    ProfImgSource.Source = ImageSource.FromStream(() =>
+                    {
+                        return ProfilePic.GetStream();
+                    });
+                }
+                else
+                {
+                    await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
+                    //On iOS you may want to send your user to the settings screen.
+                    CrossPermissions.Current.OpenAppSettings();
+                }
             }
+
         }
         private async void NationalFront_Clicked(object sender, EventArgs e)
         {
-            var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
-            if (storageStatus != PermissionStatus.Granted)
+            var answer =
+               await DisplayAlert(AppResources.PictureOption, AppResources.SelectpicMode,
+                AppResources.Gallery, AppResources.Camera);
+            if (answer == true)
             {
-                var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
-                storageStatus = results[Permission.Storage];
-            }
-            if (storageStatus == PermissionStatus.Granted)
-            {
-                NationalImg1 = await CrossMedia.Current.PickPhotoAsync();
-                if (NationalImg1 == null)
-                    return;
-                NatFrontImgSource.Source = ImageSource.FromStream(() =>
+                var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+                if (storageStatus != PermissionStatus.Granted)
                 {
-                    return NationalImg1.GetStream();
-                });
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
+                    storageStatus = results[Permission.Storage];
+                }
+                if (storageStatus == PermissionStatus.Granted)
+                {
+                    NationalImg1 = await CrossMedia.Current.PickPhotoAsync();
+                    if (NationalImg1 == null)
+                        return;
+                    NatFrontImgSource.Source = ImageSource.FromStream(() =>
+                    {
+                        return NationalImg1.GetStream();
+                    });
+                }
+                else
+                {
+                    await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
+                    //On iOS you may want to send your user to the settings screen.
+                    CrossPermissions.Current.OpenAppSettings();
+                }
             }
             else
             {
-                await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
-                //On iOS you may want to send your user to the settings screen.
-                CrossPermissions.Current.OpenAppSettings();
+                var cameraStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+                if (cameraStatus != PermissionStatus.Granted)
+                {
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Camera });
+                    cameraStatus = results[Permission.Camera];
+                }
+                if (cameraStatus == PermissionStatus.Granted)
+                {
+                    NationalImg1 = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+                    {
+                        Directory = "Test",
+                        SaveToAlbum = true,
+                        CompressionQuality = 75,
+                        CustomPhotoSize = 50,
+                        PhotoSize = PhotoSize.MaxWidthHeight,
+                        MaxWidthHeight = 2000,
+                        DefaultCamera = CameraDevice.Front
+                    });
+                    if (NationalImg1 == null)
+                        return;
+                    NatFrontImgSource.Source = ImageSource.FromStream(() =>
+                    {
+                        return NationalImg1.GetStream();
+                    });
+                }
+                else
+                {
+                    await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
+                    //On iOS you may want to send your user to the settings screen.
+                    CrossPermissions.Current.OpenAppSettings();
+                }
             }
+           
         }
         private async void NationalBack_Clicked(object sender, EventArgs e)
         {
-            var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
-            if (storageStatus != PermissionStatus.Granted)
+            var answer =
+              await DisplayAlert(AppResources.PictureOption, AppResources.SelectpicMode,
+               AppResources.Gallery, AppResources.Camera);
+            if (answer == true)
             {
-                var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
-                storageStatus = results[Permission.Storage];             
-            }
-            if (storageStatus == PermissionStatus.Granted)
-            {
-                NationalImg2 = await CrossMedia.Current.PickPhotoAsync();
-                if (NationalImg2 == null)
-                    return;
-                NatBackImgSource.Source = ImageSource.FromStream(() =>
+                var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+                if (storageStatus != PermissionStatus.Granted)
                 {
-                    return NationalImg2.GetStream();
-                });
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
+                    storageStatus = results[Permission.Storage];
+                }
+                if (storageStatus == PermissionStatus.Granted)
+                {
+                    NationalImg2 = await CrossMedia.Current.PickPhotoAsync();
+                    if (NationalImg2 == null)
+                        return;
+                    NatBackImgSource.Source = ImageSource.FromStream(() =>
+                    {
+                        return NationalImg2.GetStream();
+                    });
+                }
+                else
+                {
+                    await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
+                    //On iOS you may want to send your user to the settings screen.
+                    CrossPermissions.Current.OpenAppSettings();
+                }
             }
             else
             {
-                await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
-                //On iOS you may want to send your user to the settings screen.
-                CrossPermissions.Current.OpenAppSettings();
+                var cameraStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+                if (cameraStatus != PermissionStatus.Granted)
+                {
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Camera });
+                    cameraStatus = results[Permission.Camera];
+                }
+                if (cameraStatus == PermissionStatus.Granted)
+                {
+                    NationalImg2 = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+                    {
+                        Directory = "Test",
+                        SaveToAlbum = true,
+                        CompressionQuality = 75,
+                        CustomPhotoSize = 50,
+                        PhotoSize = PhotoSize.MaxWidthHeight,
+                        MaxWidthHeight = 2000,
+                        DefaultCamera = CameraDevice.Front
+                    });
+                    if (NationalImg2 == null)
+                        return;
+                    NatBackImgSource.Source = ImageSource.FromStream(() =>
+                    {
+                        return NationalImg2.GetStream();
+                    });
+                }
+                else
+                {
+                    await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
+                    //On iOS you may want to send your user to the settings screen.
+                    CrossPermissions.Current.OpenAppSettings();
+                }
             }
+           
         }
         private async void CarLicImg_Clicked(object sender, EventArgs e)
         {
-            var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
-            if (storageStatus != PermissionStatus.Granted)
+            var answer =
+  await DisplayAlert(AppResources.PictureOption, AppResources.SelectpicMode,
+   AppResources.Gallery, AppResources.Camera);
+            if (answer == true)
             {
-                var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
-                storageStatus = results[Permission.Storage];
-            }
-            if (storageStatus == PermissionStatus.Granted)
-            {
-                CarLicImg = await CrossMedia.Current.PickPhotoAsync();
-                if (CarLicImg == null)
-                    return;
-                CarLicImgSource.Source = ImageSource.FromStream(() =>
+                var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+                if (storageStatus != PermissionStatus.Granted)
                 {
-                    return CarLicImg.GetStream();
-                });
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
+                    storageStatus = results[Permission.Storage];
+                }
+                if (storageStatus == PermissionStatus.Granted)
+                {
+                    CarLicImg = await CrossMedia.Current.PickPhotoAsync();
+                    if (CarLicImg == null)
+                        return;
+                    CarLicImgSource.Source = ImageSource.FromStream(() =>
+                    {
+                        return CarLicImg.GetStream();
+                    });
+                }
+                else
+                {
+                    await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
+                    //On iOS you may want to send your user to the settings screen.
+                    CrossPermissions.Current.OpenAppSettings();
+                }
             }
             else
             {
-                await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
-                //On iOS you may want to send your user to the settings screen.
-                CrossPermissions.Current.OpenAppSettings();
+                var cameraStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+                if (cameraStatus != PermissionStatus.Granted)
+                {
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Camera });
+                    cameraStatus = results[Permission.Camera];
+                }
+                if (cameraStatus == PermissionStatus.Granted)
+                {
+                    CarLicImg = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+                    {
+                        Directory = "Test",
+                        SaveToAlbum = true,
+                        CompressionQuality = 75,
+                        CustomPhotoSize = 50,
+                        PhotoSize = PhotoSize.MaxWidthHeight,
+                        MaxWidthHeight = 2000,
+                        DefaultCamera = CameraDevice.Front
+                    });
+                    if (CarLicImg == null)
+                        return;
+                    CarLicImgSource.Source = ImageSource.FromStream(() =>
+                    {
+                        return CarLicImg.GetStream();
+                    });
+                }
+                else
+                {
+                    await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
+                    //On iOS you may want to send your user to the settings screen.
+                    CrossPermissions.Current.OpenAppSettings();
+                }
             }
+           
         }
         private async void DriverLicImg_Clicked(object sender, EventArgs e)
         {
-            var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
-            if (storageStatus != PermissionStatus.Granted)
+            var answer =
+await DisplayAlert(AppResources.PictureOption, AppResources.SelectpicMode,
+AppResources.Gallery, AppResources.Camera);
+            if (answer == true)
             {
-                var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
-                storageStatus = results[Permission.Storage];
-            }
-            if (storageStatus == PermissionStatus.Granted)
-            {
-                DriverLicImg = await CrossMedia.Current.PickPhotoAsync();
-                if (DriverLicImg == null)
-                    return;
-                DriverLicImgSource.Source = ImageSource.FromStream(() =>
+                var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+                if (storageStatus != PermissionStatus.Granted)
                 {
-                    return DriverLicImg.GetStream();
-                });
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
+                    storageStatus = results[Permission.Storage];
+                }
+                if (storageStatus == PermissionStatus.Granted)
+                {
+                    DriverLicImg = await CrossMedia.Current.PickPhotoAsync();
+                    if (DriverLicImg == null)
+                        return;
+                    DriverLicImgSource.Source = ImageSource.FromStream(() =>
+                    {
+                        return DriverLicImg.GetStream();
+                    });
+                }
+                else
+                {
+                    await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
+                    //On iOS you may want to send your user to the settings screen.
+                    CrossPermissions.Current.OpenAppSettings();
+                }
             }
             else
             {
-                await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
-                //On iOS you may want to send your user to the settings screen.
-                CrossPermissions.Current.OpenAppSettings();
-            }
-        }
-        private async void CarImg_Clicked(object sender, EventArgs e)
-        {
-            var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
-            if (storageStatus != PermissionStatus.Granted)
-            {
-                var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
-                storageStatus = results[Permission.Storage];
-            }
-            if (storageStatus == PermissionStatus.Granted)
-            {
-                CarImg = await CrossMedia.Current.PickPhotoAsync();
-                if (CarImg == null)
-                    return;
-                CarImgSource.Source = ImageSource.FromStream(() =>
+                var cameraStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+                if (cameraStatus != PermissionStatus.Granted)
                 {
-                    return CarImg.GetStream();
-                });
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Camera });
+                    cameraStatus = results[Permission.Camera];
+                }
+                if (cameraStatus == PermissionStatus.Granted)
+                {
+                    DriverLicImg = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+                    {
+                        Directory = "Test",
+                        SaveToAlbum = true,
+                        CompressionQuality = 75,
+                        CustomPhotoSize = 50,
+                        PhotoSize = PhotoSize.MaxWidthHeight,
+                        MaxWidthHeight = 2000,
+                        DefaultCamera = CameraDevice.Front
+                    });
+                    if (DriverLicImg == null)
+                        return;
+                    DriverLicImgSource.Source = ImageSource.FromStream(() =>
+                    {
+                        return DriverLicImg.GetStream();
+                    });
+                }
+                else
+                {
+                    await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
+                    //On iOS you may want to send your user to the settings screen.
+                    CrossPermissions.Current.OpenAppSettings();
+                }
             }
-            else
-            {
-                await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
-                //On iOS you may want to send your user to the settings screen.
-                CrossPermissions.Current.OpenAppSettings();
-            }
+           
         }
     }
 }

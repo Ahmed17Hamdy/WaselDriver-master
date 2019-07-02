@@ -28,7 +28,7 @@ namespace WaselDriver
               .HandleNotificationReceived(OnNotificationRecevied)
               .HandleNotificationOpened(OnNotificationOpened)
               .EndInit();
-            MainPage = new SplashPage();
+            MainPage = new DriverRegestration();
           
         }
 

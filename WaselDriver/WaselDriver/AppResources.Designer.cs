@@ -19,7 +19,7 @@ namespace WaselDriver {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class AppResources {
@@ -93,6 +93,15 @@ namespace WaselDriver {
         internal static string BackCard {
             get {
                 return ResourceManager.GetString("BackCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera.
+        /// </summary>
+        internal static string Camera {
+            get {
+                return ResourceManager.GetString("Camera", resourceCulture);
             }
         }
         
@@ -304,6 +313,15 @@ namespace WaselDriver {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gallery.
+        /// </summary>
+        internal static string Gallery {
+            get {
+                return ResourceManager.GetString("Gallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Have Account , Already ?.
         /// </summary>
         internal static string HaveAccount {
@@ -403,7 +421,7 @@ namespace WaselDriver {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mobile number must be 11 digit.
+        ///   Looks up a localized string similar to Mobile number must be 10 digit.
         /// </summary>
         internal static string MobileValid {
             get {
@@ -574,6 +592,15 @@ namespace WaselDriver {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pictures Option.
+        /// </summary>
+        internal static string PictureOption {
+            get {
+                return ResourceManager.GetString("PictureOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Profile Image.
         /// </summary>
         internal static string ProfileImages {
@@ -642,6 +669,15 @@ namespace WaselDriver {
         internal static string SelectLanguage {
             get {
                 return ResourceManager.GetString("SelectLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Picture Mode.
+        /// </summary>
+        internal static string SelectpicMode {
+            get {
+                return ResourceManager.GetString("SelectpicMode", resourceCulture);
             }
         }
         

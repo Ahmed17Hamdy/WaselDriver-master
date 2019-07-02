@@ -51,10 +51,10 @@
                                             <Validators:RequiredValidator />
                                             <Validators:FormatValidator
                             Message="{i18n:Translate MobileValid}" 
-                            Format="^[0-9]{11}$" />
+                            Format="^[0-9]{10}$" />
                                         </Behaviors:ValidationBehavior.Validators>
                                     </Behaviors:ValidationBehavior>
-                                    <local:MaxLengthValidatorBehavior  MaxLength="11"/>
+                                    <local:MaxLengthValidatorBehavior  MaxLength="10"/>
                                 </Entry.Behaviors>
                             </Entry>
                         </StackLayout>

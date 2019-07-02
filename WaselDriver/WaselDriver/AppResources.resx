@@ -274,7 +274,7 @@
     <value>PassWord Doesn't Match</value>
   </data>
   <data name="MobileValid" xml:space="preserve">
-    <value>Mobile number must be 11 digit</value>
+    <value>Mobile number must be 10 digit</value>
   </data>
   <data name="PermissionDetails" xml:space="preserve">
     <value>Unable to take photos.</value>
@@ -335,5 +335,17 @@
   </data>
   <data name="FinishOrder" xml:space="preserve">
     <value>Finish Order</value>
+  </data>
+  <data name="Camera" xml:space="preserve">
+    <value>Camera</value>
+  </data>
+  <data name="Gallery" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
+  <data name="PictureOption" xml:space="preserve">
+    <value>Pictures Option</value>
+  </data>
+  <data name="SelectpicMode" xml:space="preserve">
+    <value>Select Picture Mode</value>
   </data>
 </root>

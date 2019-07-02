@@ -274,7 +274,7 @@
     <value>كلمة السر غير متطابقة</value>
   </data>
   <data name="MobileValid" xml:space="preserve">
-    <value>رقم الهاتف لابد أن يكون مكون من 11 رقم</value>
+    <value>رقم الهاتف لابد أن يكون مكون من 10 أرقام</value>
   </data>
   <data name="PermissionDetails" xml:space="preserve">
     <value>غير قادر على تحميل صور</value>
@@ -332,5 +332,17 @@
   </data>
   <data name="FinishOrder" xml:space="preserve">
     <value>تم الإنتهاء من التوصيل</value>
+  </data>
+  <data name="Camera" xml:space="preserve">
+    <value>الكاميرا</value>
+  </data>
+  <data name="Gallery" xml:space="preserve">
+    <value>معرض الصور</value>
+  </data>
+  <data name="PictureOption" xml:space="preserve">
+    <value>إختيار الصورة</value>
+  </data>
+  <data name="SelectpicMode" xml:space="preserve">
+    <value>نمط إختيار الصورة</value>
   </data>
 </root>

@@ -23,6 +23,7 @@ namespace WaselDriver.Droid
         readonly string[] permission =
         {
             Android.Manifest.Permission.AccessCheckinProperties,
+            Android.Manifest.Permission.Camera,
             Android.Manifest.Permission.AccessCoarseLocation,
             Android.Manifest.Permission.AccessFineLocation,
             Android.Manifest.Permission.AccessLocationExtraCommands,
