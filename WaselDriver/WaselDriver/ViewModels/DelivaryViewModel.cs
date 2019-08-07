@@ -114,39 +114,35 @@ namespace WaselDriver.ViewModels
         }
         private async Task CarTypegetter()
         {
-            DelivaryService service = new DelivaryService();
 
-            var CartypeBack = await service.GetAllterhal();
+            var CartypeBack = await DelivaryService.GetAllterhal();
             foreach (var item in CartypeBack)
             {
-                if (item.name == "classic")
+                switch (item.name)
                 {
-                    item.image = "classiccar.png";
+                    case "classic":
+                        item.image = "classiccar.png";
+                        break;
+                    case "per hour":
+                        item.image = "hours.png";
+                        break;
+                    case "توصيل طلبات":
+                        item.image = "ordercar.png";
+                        break;
+                    case "عائلية":
+                        item.image = "familycar.png";
+                        break;
+                    case "Prestige - بريستيج":
+                        item.image = "prestige.png";
+                        break;
+                    case "Saloon - صالون":
+                        item.image = "saloon.png";
+                        break;
+                    default:
+                        item.image = "economy.png";
+                        break;
                 }
-                else if(item.name=="per hour")
-                {
-                    item.image = "hours.png";
-                }
-                else if(item.name=="توصيل طلبات")
-                {
-                    item.image = "ordercar.png";
-                }
-                else if (item.name == "عائلية")
-                {
-                    item.image = "familycar.png";
-                }
-                else if (item.name=="Prestige - بريستيج")
-                {
-                    item.image = "prestige.png";
-                }
-                else if (item.name=="Saloon - صالون")
-                {
-                    item.image = "saloon.png";
-                }
-                else
-                {
-                    item.image = "economy.png";
-                }
+
                 //var baramImg = item.image;
                 //item.image = "http://wassel.alsalil.net/users/images/" + baramImg;
                 if (item.price == null || item.available == null || item.available == 0)

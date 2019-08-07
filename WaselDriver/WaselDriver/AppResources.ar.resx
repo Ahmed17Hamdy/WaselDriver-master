@@ -345,4 +345,7 @@
   <data name="SelectpicMode" xml:space="preserve">
     <value>نمط إختيار الصورة</value>
   </data>
+  <data name="HaveCode" xml:space="preserve">
+    <value>حصلت على كود ؟</value>
+  </data>
 </root>

@@ -25,8 +25,7 @@ namespace WaselDriver.Views.UserAuthentication
         {
             Activ.IsRunning = true;
            
-                UserServices ser = new UserServices();
-                var response = await ser.ResetPassword(EntryPass.Text);
+                var response = await UserServices.ResetPassword(EntryPass.Text);
                 var mess = JsonConvert.DeserializeObject<Response<string, string>>(response);
                 if (mess.success)
                 {

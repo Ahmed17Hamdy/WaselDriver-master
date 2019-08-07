@@ -331,6 +331,15 @@ namespace WaselDriver {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Already Have Code ?.
+        /// </summary>
+        internal static string HaveCode {
+            get {
+                return ResourceManager.GetString("HaveCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Identity Number Image.
         /// </summary>
         internal static string IdentityImages {

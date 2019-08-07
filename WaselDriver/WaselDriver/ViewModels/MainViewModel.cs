@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace WaselDriver.ViewModels
 {
-  public  class MainViewModel : BaseViewModel
+    public class MainViewModel : BaseViewModel
     {
         private static ObservableCollection<Country> _countries;
         public ObservableCollection<Country> Countries
@@ -44,31 +44,38 @@ namespace WaselDriver.ViewModels
         {
             CountryList();
         }
+        public bool ErrorPresent { get; set; }
+        public bool ValidPresent { get; set; }
         private async void CountryList()
         {
-            MainServices mainServices = new MainServices();
-            if(CrossConnectivity.Current.IsConnected)
+            ErrorPresent = false;
+            ValidPresent = !ErrorPresent;
+            if (CrossConnectivity.Current.IsConnected)
             {
-               var  Resback = await mainServices.GetAllCountries();
-                Countries = Resback;
-                foreach (var item in Countries)
+                try
                 {
-                    item.Title = (Settings.LastUserGravity == "Arabic") ? item.name : item.enname;
-                    item.Image = (item.enname == "Ethiopia") ? "ethiopia.png" : "sudan.png";
+                    var Resback = await MainServices.GetAllCountries();
+                    Countries = Resback;
+                    foreach (var item in Countries)
+                    {
+                        item.Title = (Settings.LastUserGravity == "Arabic") ? item.name : item.enname;
+                        item.Image = (item.enname == "Ethiopia") ? "ethiopia.png" : "sudan.png";
+                    }
+                    CountryName = Countries.Select(o => o.Title).ToList();
                 }
-               CountryName= Countries.Select(o => o.Title).ToList();
+                catch (System.Exception)
+                {
+                    ErrorPresent = true;
+                    ValidPresent = !ErrorPresent;
+                }
             }
             else
             {
-              await App.Current.MainPage.DisplayAlert("Message", AppResources.ErrorMessage, "Ok");
+                await App.Current.MainPage.DisplayAlert("Message", AppResources.ErrorMessage, "Ok");
             }
-                     
+
         }
-        //public event PropertyChangedEventHandler PropertyChanged;
-        //protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
+        
     }
-    
+
 }

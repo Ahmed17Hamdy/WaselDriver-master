@@ -139,6 +139,73 @@ namespace WaselDriver.Views.UserAuthentication
         {
             await PopupNavigation.Instance.PushAsync(new CarTypePage());
         }
+
+        private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        {
+            var answer =
+                await DisplayAlert(AppResources.PictureOption, AppResources.SelectpicMode,
+                 AppResources.Gallery, AppResources.Camera);
+            if (answer == true)
+            {
+                var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+                if (storageStatus != PermissionStatus.Granted)
+                {
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
+                    storageStatus = results[Permission.Storage];
+                }
+                if (storageStatus == PermissionStatus.Granted)
+                {
+                    CarImg = await CrossMedia.Current.PickPhotoAsync();
+                    if (ProfilePic == null)
+                        return;
+                    CarImgSource.Source = ImageSource.FromStream(() =>
+                    {
+                        return ProfilePic.GetStream();
+                    });
+                }
+                else
+                {
+                    await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
+                    //On iOS you may want to send your user to the settings screen.
+                    CrossPermissions.Current.OpenAppSettings();
+                }
+            }
+            else
+            {
+                var cameraStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+                if (cameraStatus != PermissionStatus.Granted)
+                {
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Camera });
+                    cameraStatus = results[Permission.Camera];
+                }
+                if (cameraStatus == PermissionStatus.Granted)
+                {
+                    CarImg = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+                    {
+                        Directory = "Test",
+                        SaveToAlbum = true,
+                        CompressionQuality = 75,
+                        CustomPhotoSize = 50,
+                        PhotoSize = PhotoSize.MaxWidthHeight,
+                        MaxWidthHeight = 2000,
+                        DefaultCamera = CameraDevice.Front
+                    });
+                    if (ProfilePic == null)
+                        return;
+                    CarImgSource.Source = ImageSource.FromStream(() =>
+                    {
+                        return ProfilePic.GetStream();
+                    });
+                }
+                else
+                {
+                    await DisplayAlert(AppResources.PermissionsDenied, AppResources.PermissionDetails, AppResources.Ok);
+                    //On iOS you may want to send your user to the settings screen.
+                    CrossPermissions.Current.OpenAppSettings();
+                }
+            }
+        }
+
         private async void ProfileImg_Clicked(object sender, EventArgs e)
         {
         var answer=   

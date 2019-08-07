@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:WaselDriver.CustomControl"
              xmlns:Behaviors="clr-namespace:WaselDriver.Behaviors"
-             Padding="10"
+             Padding="10" NavigationPage.HasNavigationBar="False"
              xmlns:Validators="clr-namespace:WaselDriver.Models"
              xmlns:local="clr-namespace:WaselDriver"
              BackgroundColor="White"
@@ -42,7 +42,7 @@
                                         <Behaviors:ValidationBehavior.Validators>
                                             <Validators:RequiredValidator />
                                             <Validators:FormatValidator
-                            Message="{i18n:Translate InvalidMail}" 
+                            Message="*" 
                             Format="^[_a-z0-9-]*(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" />
                                         </Behaviors:ValidationBehavior.Validators>
                                     </Behaviors:ValidationBehavior>
@@ -60,7 +60,7 @@
                                         <Behaviors:ValidationBehavior.Validators>
                                             <Validators:RequiredValidator />
                                             <Validators:FormatValidator
-                            Message="{i18n:Translate PassWordValid}" 
+                            Message="*" 
                             Format="(?=^[^\s]{6,}$)(?=.*\d)(?=.*[a-zA-Z])"/>
                                         </Behaviors:ValidationBehavior.Validators>
                                     </Behaviors:ValidationBehavior>

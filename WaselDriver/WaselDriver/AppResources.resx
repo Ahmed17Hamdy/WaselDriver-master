@@ -348,4 +348,7 @@
   <data name="SelectpicMode" xml:space="preserve">
     <value>Select Picture Mode</value>
   </data>
+  <data name="HaveCode" xml:space="preserve">
+    <value>Already Have Code ?</value>
+  </data>
 </root>

@@ -3,7 +3,7 @@
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-     xmlns:i18n="clr-namespace:WaselDriver.CustomControl"
+     xmlns:i18n="clr-namespace:WaselDriver.CustomControl" NavigationPage.HasNavigationBar="False"
     xmlns:custommap="clr-namespace:TK.CustomMap;assembly=TK.CustomMap"
     x:Class="WaselDriver.Views.PushNotificationPages.NotificationSummaryPage">
     <ContentPage.Content>

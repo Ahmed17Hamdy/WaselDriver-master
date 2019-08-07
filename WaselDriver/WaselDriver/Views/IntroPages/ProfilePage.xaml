@@ -4,7 +4,7 @@
              xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
                xmlns:i18n="clr-namespace:WaselDriver.CustomControl"
              xmlns:Behaviors="clr-namespace:WaselDriver.Behaviors"
-             xmlns:Validators="clr-namespace:WaselDriver.Models"
+             xmlns:Validators="clr-namespace:WaselDriver.Models" NavigationPage.HasNavigationBar="False"
              xmlns:local="clr-namespace:WaselDriver"
              BackgroundColor="White" Padding="10"
              x:Class="WaselDriver.Views.IntroPages.ProfilePage">

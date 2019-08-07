@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:WaselDriver.CustomControl"
            xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-             xmlns:viewmodel="clr-namespace:WaselDriver.ViewModels"
+             xmlns:viewmodel="clr-namespace:WaselDriver.ViewModels" NavigationPage.HasNavigationBar="False"
              xmlns:local="clr-namespace:WaselDriver.Views"
              x:Class="WaselDriver.Views.IntroPages.LanguagePage">
     <ContentPage.BindingContext>
@@ -15,25 +15,16 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="8*"/>
             </Grid.RowDefinitions>
-            <local:ConnectionView Grid.Row="1">
-                <Button Text="{i18n:Translate TryAgain}" Clicked="Button_Clicked" />
-            </local:ConnectionView>
+
             <Grid BackgroundColor="#FFC300" Grid.Row="0" FlowDirection="RightToLeft">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label HorizontalOptions="Start" Margin="5,0" TextColor="White" VerticalOptions="Center"
-                       FontSize="Medium" Grid.Column="0" Text="{i18n:Translate Next}">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label HorizontalOptions="Center" Grid.Column="1" VerticalOptions="Center"
-                       Text="{i18n:Translate Language}" TextColor="White" FontAttributes="Bold" FontSize="Large"/>
+                <Label HorizontalOptions="Center" Grid.Column="1" VerticalOptions="Center" Text="{i18n:Translate Language}" TextColor="White" FontAttributes="Bold" FontSize="Large"/>
             </Grid>
-            <Grid Padding="10" Grid.Row="1" IsVisible="{Binding IsConnected}">
+            <Grid Padding="10" Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="2*"/>
@@ -78,29 +69,34 @@
                 </Grid>
                 <BoxView Grid.Row="2" HeightRequest="2" Color="Gray" />
                 <Label Grid.Row="3" Text="{i18n:Translate CountryReg}"/>
-                <ListView x:Name="CountryList" Grid.Row="4"  ItemsSource="{Binding Countries}" 
+                <Grid x:Name="CountryList" IsVisible="False" Grid.Row="4">
+                    <ListView SelectionMode="None" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="{Binding ValidPresent}" ItemsSource="{Binding Countries}" 
                       HasUnevenRows="True" SeparatorVisibility="Default" SeparatorColor="Gray"
-                      ItemSelected="ListView_ItemSelected" >
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell Height="100">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <controls:CircleImage Grid.Column="0" HeightRequest="70" WidthRequest="70" Source="{Binding Image}" Aspect="AspectFill" />
-                                    <Label Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="{Binding Title }"/>
-                                    <Image Grid.Column="2" x:Name="TrueImage" Source="{Binding TrueImage}" />
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" x:Name="Activ" Color="OrangeRed"/>
+                      ItemTapped="ListView_ItemTapped" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell Height="100">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <controls:CircleImage Grid.Column="0" HeightRequest="70" WidthRequest="70" Source="{Binding Image}" Aspect="AspectFill" />
+                                        <Label Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="{Binding Title }"/>
+                                        <Image Grid.Column="2" x:Name="TrueImage" Source="{Binding TrueImage}" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <StackLayout x:Name="ErrorLbl" IsVisible="{Binding ErrorPresent}" HorizontalOptions="Center"  VerticalOptions="Center">
+                        <Label Text="{i18n:Translate ErrorMessage}" FontSize="Large" HorizontalTextAlignment="Center"/>
+                        <Button Text="{i18n:Translate TryAgain}" CornerRadius="20" TextColor="White" BackgroundColor="Red" HorizontalOptions="Center" Clicked="Button_Clicked"/>
+                    </StackLayout>
+                </Grid>
             </Grid>
-
+            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" x:Name="Activ" Color="OrangeRed"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

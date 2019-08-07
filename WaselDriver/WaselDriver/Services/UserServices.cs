@@ -10,6 +10,29 @@ namespace WaselDriver.Services
 {
   public  class UserServices
     {
+        public static async Task<string> CodeVerfication(string mail, string Code)
+        {
+            using (var client = new HttpClient())
+            {
+                Dictionary<string, string> values = new Dictionary<string, string>();
+                values.Add("email", mail);
+                values.Add("forgetcode", Code);
+                values.Add("user_hash", WaselDriver.Helper.Settings.UserHash);
+
+                string content = JsonConvert.SerializeObject(values);
+                try
+                {
+                    var response = await client.PostAsync("http://wassel.alsalil.net/api/activcode", new StringContent(content, Encoding.UTF8, "text/json"));
+                    var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
+                    return serverResponse;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+
         public async Task<string> InsertUser(User user)
         {
             using (var client = new HttpClient())
@@ -104,7 +127,7 @@ namespace WaselDriver.Services
                 }
             }
         }
-        public async Task<string> BackupEmail(string _email)
+        public static async Task<string> BackupEmail(string _email)
         {
             using (var client = new HttpClient())
             {
@@ -121,42 +144,18 @@ namespace WaselDriver.Services
                 }
                 catch (Exception)
                 {
-                    return "False";
+                    return null;
                 }
             }
         }
-
-        public async Task<string> CodeVerfication(string mail, string Code)
-        {
-            using (var client = new HttpClient())
-            {
-                Dictionary<string, string> values = new Dictionary<string, string>();
-                values.Add("email", mail);
-                values.Add("forgetcode", Code);
-                values.Add("user_hash", WaselDriver.Helper.Settings.UserHash);
-
-                string content = JsonConvert.SerializeObject(values);
-                try
-                {
-                    var response = await client.PostAsync("http://wassel.alsalil.net/api/activcode", new StringContent(content, Encoding.UTF8, "text/json"));
-                    var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
-                    return serverResponse;
-                }
-                catch (Exception)
-                {
-                    return "False";
-                }
-            }
-        }
-
-        public async Task<string> ResetPassword(string NewBassword)
+        public static async Task<string> ResetPassword(string NewBassword)
         {
             using (var client = new HttpClient())
             {
                 Dictionary<string, string> values = new Dictionary<string, string>();
                 values.Add("new_password", NewBassword);
                 values.Add("confirmpassword", NewBassword);
-                values.Add("user_hash", WaselDriver.Helper.Settings.UserHash);
+                values.Add("email", Helper.Settings.LastUsedEmail);
 
                 string content = JsonConvert.SerializeObject(values);
                 try

@@ -18,8 +18,6 @@ namespace WaselDriver
 {
     public partial class App : Application
     {
-       
-
         public App()
         {
             InitializeComponent();
@@ -28,7 +26,7 @@ namespace WaselDriver
               .HandleNotificationReceived(OnNotificationRecevied)
               .HandleNotificationOpened(OnNotificationOpened)
               .EndInit();
-            MainPage = new DriverRegestration();
+            MainPage = new NavigationPage(new SplashPage());
           
         }
 
