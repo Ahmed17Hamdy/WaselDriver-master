@@ -24,7 +24,7 @@ namespace WaselDriver.Views.UserAuthentication
 	public partial class DriverRegestration : ContentPage
 	{
         private MediaFile ProfilePic, NationalImg1, NationalImg2, DriverLicImg, CarLicImg, CarImg;
-       
+        string Lat, Lan;
         public DriverRegestration ()
 		{
 			InitializeComponent ();
@@ -32,7 +32,7 @@ namespace WaselDriver.Views.UserAuthentication
 		}
       private  bool AllNeeded()
         {
-            if (Settings.LastLat == "" || Settings.LastLng == "")
+            if (Lat == "" || Lan == "")
             {
                 DisplayAlert(AppResources.Error, AppResources.Location, AppResources.Ok);
                 CrossPermissions.Current.OpenAppSettings();
@@ -63,9 +63,9 @@ namespace WaselDriver.Views.UserAuthentication
                 if (locationStatus == PermissionStatus.Granted)
                 {
                     var location = await Geolocation.GetLastKnownLocationAsync();
-                    if (location != null)
-                        Settings.LastLat = location.Latitude.ToString();
-                        Settings.LastLng = location.Longitude.ToString();
+                    if (location != null)   
+                        Lat = location.Latitude.ToString();
+                        Lan = location.Longitude.ToString();
                 }
             else
             {
@@ -82,8 +82,8 @@ namespace WaselDriver.Views.UserAuthentication
                 Active.IsRunning = true;
                 StringContent user_id = new StringContent(Settings.LastRegister);
                 StringContent car_model_id = new StringContent(Settings.CarModelID);
-                StringContent lat = new StringContent(Settings.LastLat);
-                StringContent lng = new StringContent(Settings.LastLng);
+                StringContent lat = new StringContent("0");
+                StringContent lng = new StringContent("0");
                 var content = new MultipartFormDataContent();
                 content.Add(user_id, "user_id");
                 content.Add(lat, "lat");
@@ -208,9 +208,7 @@ namespace WaselDriver.Views.UserAuthentication
 
         private async void ProfileImg_Clicked(object sender, EventArgs e)
         {
-        var answer=   
-                await DisplayAlert(AppResources.PictureOption, AppResources.SelectpicMode,
-                 AppResources.Gallery, AppResources.Camera);
+        var answer= await DisplayAlert(AppResources.PictureOption, AppResources.SelectpicMode,AppResources.Gallery, AppResources.Camera);
             if (answer == true)
             {
                 var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);

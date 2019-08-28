@@ -48,7 +48,7 @@ namespace WaselDriver.Views
             {
                 App.Current.MainPage = new NavigationPage(new DriverRegestration());
             }
-            else if ( Settings.LastUsedDriverID!= 0 && Settings.LastUserStatus != "0" && Settings.LastNotify==null)
+            else if ( Settings.LastUsedDriverID!= 0 && Settings.LastUserStatus != "0")
             {
                 App.Current.MainPage = new NavigationPage(new MainTabbed());                                                                               
             }
@@ -56,10 +56,7 @@ namespace WaselDriver.Views
             {
                 App.Current.MainPage = new NavigationPage(new LoginPage());
             }
-            else if (Settings.LastUsedDriverID != 0 && Settings.LastUserStatus != "0" && Settings.LastNotify!= null)
-            {
-                App.Current.MainPage = new NavigationPage(new NotificationSummaryPage());
-            }
+            
         }
         private void Button_Clicked(object sender, EventArgs e)
         {

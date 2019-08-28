@@ -8,7 +8,7 @@ using WaselDriver.Models;
 
 namespace WaselDriver.Services
 {
-  public  class UserServices
+  public static class UserServices
     {
         public static async Task<string> CodeVerfication(string mail, string Code)
         {
@@ -32,8 +32,8 @@ namespace WaselDriver.Services
                 }
             }
         }
-
-        public async Task<string> InsertUser(User user)
+               
+        public static async Task<string> InsertUser(User user)
         {
             using (var client = new HttpClient())
             {
@@ -62,7 +62,7 @@ namespace WaselDriver.Services
             }
 
         }
-        public async Task<string> login(string email, string password, string device_id, string firebase_token)
+        public static async Task<string> login(string email, string password, string device_id, string firebase_token)
         {
             using (var client = new HttpClient())
             {
@@ -94,7 +94,7 @@ namespace WaselDriver.Services
                 }
             }
         }
-        public async Task<User> UpdateUser(User user)
+        public static async Task<User> UpdateUser(User user)
         {
             using (var client = new HttpClient())
             {
@@ -170,7 +170,7 @@ namespace WaselDriver.Services
                 }
             }
         }
-        public async Task<User> UpdateUserLocation(User user)
+        public static async Task<User> UpdateUserLocation(User user)
         {
             using (var client = new HttpClient())
             {
@@ -200,7 +200,7 @@ namespace WaselDriver.Services
                 }
             }
         }
-        public async Task<string> ChangePassword(string OldPass, string NewBassword)
+        public static async Task<string> ChangePassword(string OldPass, string NewBassword)
         {
             using (var client = new HttpClient())
             {

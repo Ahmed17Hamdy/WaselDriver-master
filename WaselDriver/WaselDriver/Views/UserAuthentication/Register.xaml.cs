@@ -40,8 +40,7 @@ namespace WaselDriver.Views.UserAuthentication
                     
 
                 };
-                UserServices userService = new UserServices();
-               var ResBack = await userService.InsertUser(_user);
+               var ResBack = await UserServices.InsertUser(_user);
                 if (ResBack == "false")
                 {
                     await DisplayAlert(AppResources.Error, AppResources.ErrorMessage, AppResources.Ok);
@@ -60,7 +59,6 @@ namespace WaselDriver.Views.UserAuthentication
                             //  PopAlert(checker);
                             Settings.LastUserStatus = JsonResponse.message.status;
                             Settings.UserHash = JsonResponse.message.user_hash;
-                            Settings.LastUsedEmail = JsonResponse.message.email;
                             Settings.LastRegister = JsonResponse.message.id.ToString();
                             Settings.UserFirebaseToken = JsonResponse.message.firebase_token;     
                             Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new DriverRegestration());

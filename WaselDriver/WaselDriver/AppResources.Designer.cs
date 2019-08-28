@@ -376,6 +376,15 @@ namespace WaselDriver {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location Service is not Enabled On Device.
+        /// </summary>
+        internal static string LocationEnabled {
+            get {
+                return ResourceManager.GetString("LocationEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start Location :.
         /// </summary>
         internal static string LocationFrom {
@@ -714,15 +723,6 @@ namespace WaselDriver {
         internal static string SettingsPass {
             get {
                 return ResourceManager.GetString("SettingsPass", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string String1 {
-            get {
-                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
         

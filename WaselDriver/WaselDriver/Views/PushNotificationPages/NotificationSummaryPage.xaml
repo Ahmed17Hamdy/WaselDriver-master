@@ -30,12 +30,12 @@
                     <Label Text="{i18n:Translate LocationTo }"/>
                     <Label x:Name="AddressTolbl"/>
                 </StackLayout>
-                <StackLayout   HorizontalOptions="Center" BackgroundColor="White"
+                <StackLayout Margin="10" HorizontalOptions="Center" BackgroundColor="White"
                              Orientation="Horizontal">
-                    <Button x:Name="Acceptbtn" BackgroundColor="Green" Clicked="Acceptbtn_Clicked"
+                    <Button x:Name="Acceptbtn" TextColor="White" BackgroundColor="Green" Clicked="Acceptbtn_Clicked"
                             Text="{i18n:Translate Confirm}" />
                     <BoxView BackgroundColor="OrangeRed" WidthRequest="1"/>
-                    <Button x:Name="Cancelbtn" Clicked="Cancelbtn_Clicked" BackgroundColor="Red" 
+                    <Button x:Name="Cancelbtn" TextColor="White" Clicked="Cancelbtn_Clicked" BackgroundColor="Red" 
                             Text="{i18n:Translate Cancel}" />
                 </StackLayout>
             </StackLayout>

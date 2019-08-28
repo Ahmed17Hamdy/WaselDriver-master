@@ -9,5 +9,4 @@
   <!--Pages can be added as references or inline-->
     <waseldriver:MainPage Title="{i18n:Translate MainPage}"/>
     <intropages:ProfilePage Title="{i18n:Translate ProfilePage}"/>
-   
 </TabbedPage>

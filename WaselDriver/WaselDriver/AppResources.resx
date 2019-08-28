@@ -288,9 +288,6 @@
   <data name="CheckPassWord" xml:space="preserve">
     <value>Please , Check Your PassWord</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value />
-  </data>
   <data name="RouteNotFound" xml:space="preserve">
     <value>Sorry , But Couldn't Draw this route</value>
   </data>
@@ -350,5 +347,8 @@
   </data>
   <data name="HaveCode" xml:space="preserve">
     <value>Already Have Code ?</value>
+  </data>
+  <data name="LocationEnabled" xml:space="preserve">
+    <value>Location Service is not Enabled On Device</value>
   </data>
 </root>

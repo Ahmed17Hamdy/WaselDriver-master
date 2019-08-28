@@ -22,7 +22,6 @@
                 <!-- header background -->
                 <!--<Image Source="WaselLogoo.png" Aspect="AspectFill"/>-->
                 <!--<Image Source="CurvedMask.png" VerticalOptions="End" Aspect="AspectFill" Margin="0,0,0,-1"/>-->
-
                 <!-- profile image -->
                 <abstractions:CircleImage Source="taxidriver.png" Margin="0,0,0,-50" HeightRequest="100"
                                           WidthRequest="100" HorizontalOptions="Center" VerticalOptions="End"/>
@@ -179,8 +178,7 @@
 
                 <!-- follow button -->
                 <Button x:Name="LogOutbtn" Grid.Row="4" Clicked="LogOutbtn_Clicked" Text="{i18n:Translate LogOUt}" 
-                        Margin="20" BackgroundColor="OrangeRed"
-                         VerticalOptions="End" />
+                        Margin="5" CornerRadius="4" BackgroundColor="OrangeRed" VerticalOptions="End" TextColor="White" />
 
             </Grid>
         </ScrollView>

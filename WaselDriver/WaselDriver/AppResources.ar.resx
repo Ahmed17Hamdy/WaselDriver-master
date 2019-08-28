@@ -348,4 +348,7 @@
   <data name="HaveCode" xml:space="preserve">
     <value>حصلت على كود ؟</value>
   </data>
+  <data name="LocationEnabled" xml:space="preserve">
+    <value>إمكانية الوصول إلى موقعك غير مفعلة على جهازك.. يرجى التفعيل و إعادة المحاولة</value>
+  </data>
 </root>

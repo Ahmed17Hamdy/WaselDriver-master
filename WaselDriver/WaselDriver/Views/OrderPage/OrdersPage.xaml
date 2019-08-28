@@ -9,28 +9,23 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <custommap:TKCustomMap Grid.Row="0" x:Name="OrderMap"  IsClusteringEnabled="False"
-                                    IsShowingUser="True" HasScrollEnabled="True"
+            <custommap:TKCustomMap Grid.Row="0" x:Name="OrderMap"  IsClusteringEnabled="False" IsShowingUser="True" HasScrollEnabled="True"
                                    RouteCalculationFinished="OrderMap_RouteCalculationFinished" 
-                               HasZoomEnabled="True" UserLocationChanged="OrderMap_UserLocationChanged"
-                               />
-            <Grid Padding="5" Grid.Row="1" HeightRequest="40" >
+                               HasZoomEnabled="True" UserLocationChanged="OrderMap_UserLocationChanged"/>
+            <Grid Padding="5" Grid.Row="1" Margin="10" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Button  Grid.Column="0" CornerRadius="20" BackgroundColor="OrangeRed" TextColor="White"
-                    Clicked="Button_Clicked"
-                    Text="{tr:Translate MainPage}" />
+                    Clicked="Button_Clicked" Text="{tr:Translate MainPage}"/>
                 <Button CornerRadius="20" Grid.Column="1" x:Name="FinishedOrder" BackgroundColor="Green"
                       Clicked="FinishedOrder_Clicked"  Text="{tr:Translate FinishOrder}" TextColor="White" />
             </Grid>
             <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" x:Name="Activ" Color="OrangeRed"/>
         </Grid>
-
-       
     </ContentPage.Content>
 </ContentPage>

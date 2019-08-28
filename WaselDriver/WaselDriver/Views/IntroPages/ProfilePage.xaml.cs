@@ -22,11 +22,9 @@ namespace WaselDriver.Views.IntroPages
 	{
         bool LangVis = false, vis = false;
         int rout1 = 180, rout2 = 180;
-        UserServices ser;
         public ProfilePage ()
 		{
 			InitializeComponent ();
-            ser = new UserServices();
             FlowDirection = (Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             Namelbl.Text = Settings.ProfileName;
         }
@@ -62,7 +60,7 @@ namespace WaselDriver.Views.IntroPages
         {
             if (EntryNewPass.Text == EntryConfirmPass.Text)
             {
-                var response = await ser.ChangePassword(EntryOldPass.Text, EntryNewPass.Text);
+                var response = await UserServices.ChangePassword(EntryOldPass.Text, EntryNewPass.Text);
                 var json = JsonConvert.DeserializeObject<Response<string, string>>(response);
                 if (json.success == true) await DisplayAlert("", json.message, "Ok");
                 else await DisplayAlert(AppResources.Error, "من فضلك تحقق من كلمة السر القديمة", "Ok");
@@ -78,7 +76,6 @@ namespace WaselDriver.Views.IntroPages
         }
         private async void Arabic_Clicked()
         {
-           
             if (CrossConnectivity.Current.IsConnected)
             {
                 CrossMultilingual.Current.CurrentCultureInfo =

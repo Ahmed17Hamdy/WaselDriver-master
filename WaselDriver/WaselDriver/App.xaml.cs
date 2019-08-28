@@ -40,12 +40,10 @@ namespace WaselDriver
             if (result.notification.payload.additionalData.ContainsKey("body"))
             {
                 var labelText = result.notification.payload.additionalData["body"].ToString();
-                Settings.LastNotify = labelText;
-                App.Current.MainPage = new NotificationSummaryPage();
+                App.Current.MainPage = new NotificationSummaryPage(labelText);
             }
 
         }
-
         private void OnNotificationRecevied(OSNotification notification)
         {
             if (notification.payload?.additionalData == null)
@@ -56,8 +54,7 @@ namespace WaselDriver
             if (notification.payload.additionalData.ContainsKey("body"))
             {
                 var labelText = notification.payload.additionalData["body"].ToString();
-                Settings.LastNotify = labelText;
-                App.Current.MainPage = new NotificationSummaryPage();
+                App.Current.MainPage = new NotificationSummaryPage(labelText);
             }
         }
 
