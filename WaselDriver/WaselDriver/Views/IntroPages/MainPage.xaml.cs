@@ -44,9 +44,9 @@ namespace WaselDriver
             {
                 try
                 {
-                    var request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromMilliseconds(6000));
+                    var request = new GeolocationRequest(GeolocationAccuracy.Lowest);
                     var location = await Geolocation.GetLocationAsync(request);
-                    MainMap.MapRegion = (MapSpan.FromCenterAndRadius(new Position(location.Latitude, location.Longitude), Distance.FromMiles(1)));
+                    MainMap.MapRegion = (MapSpan.FromCenterAndRadius(new Position(location.Latitude, location.Longitude), Distance.FromMiles(0.2)));
                     await StartListening(location.Latitude, location.Longitude);
                 }
                 catch (FeatureNotEnabledException)
