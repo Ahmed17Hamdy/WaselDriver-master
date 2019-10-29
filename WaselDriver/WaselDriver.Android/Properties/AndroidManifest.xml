@@ -32,8 +32,8 @@
 		</receiver>
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.alsalil.waseldriver.fileprovider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
-      <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
-    </provider>
+			<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+		</provider>
 		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBscFcMrxHVk38H90D-Yq4UJ7g1CMoo9rE" />
 	</application>
 </manifest>

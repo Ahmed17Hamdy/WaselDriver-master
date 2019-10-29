@@ -77,7 +77,7 @@ namespace WaselDriver.Helper
 
         }
 
-        private const string LastSignalIDSettingKey = "last_email_key";
+        private const string LastSignalIDSettingKey = "last_signal_key";
         private static readonly string SignalID = string.Empty;
         public static string LastSignalID
         {
