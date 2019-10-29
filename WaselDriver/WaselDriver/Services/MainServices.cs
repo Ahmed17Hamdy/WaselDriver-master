@@ -9,9 +9,9 @@ using WaselDriver.Models;
 
 namespace WaselDriver.Services
 {
- public   class MainServices
+ public static class MainServices
     {
-        public async Task<ObservableCollection<Country>> GetAllCountries()
+        public static async Task<ObservableCollection<Country>> GetAllCountries()
         {
             using (var client = new HttpClient())
             {

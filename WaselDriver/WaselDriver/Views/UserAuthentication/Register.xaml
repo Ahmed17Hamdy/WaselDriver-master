@@ -68,7 +68,7 @@
                                         <Behaviors:ValidationBehavior.Validators>
                                             <Validators:RequiredValidator />
                                             <Validators:FormatValidator
-                            Message="{i18n:Translate InvalidMail}" 
+                            Message="*" 
                             Format="^[_a-z0-9-]*(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" />
                                         </Behaviors:ValidationBehavior.Validators>
                                     </Behaviors:ValidationBehavior>
@@ -101,7 +101,7 @@
                                         <Behaviors:ValidationBehavior.Validators>
                                             <Validators:RequiredValidator />
                                             <Validators:FormatValidator
-                            Message="{i18n:Translate PassWordMatch}" 
+                            Message="*" 
                             Format="(?=^[^\s]{6,}$)(?=.*\d)(?=.*[a-zA-Z])" />
                                         </Behaviors:ValidationBehavior.Validators>
                                     </Behaviors:ValidationBehavior>

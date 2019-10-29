@@ -331,6 +331,15 @@ namespace WaselDriver {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Already Have Code ?.
+        /// </summary>
+        internal static string HaveCode {
+            get {
+                return ResourceManager.GetString("HaveCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Identity Number Image.
         /// </summary>
         internal static string IdentityImages {
@@ -363,6 +372,15 @@ namespace WaselDriver {
         internal static string Location {
             get {
                 return ResourceManager.GetString("Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location Service is not Enabled On Device.
+        /// </summary>
+        internal static string LocationEnabled {
+            get {
+                return ResourceManager.GetString("LocationEnabled", resourceCulture);
             }
         }
         
@@ -705,15 +723,6 @@ namespace WaselDriver {
         internal static string SettingsPass {
             get {
                 return ResourceManager.GetString("SettingsPass", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string String1 {
-            get {
-                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
         

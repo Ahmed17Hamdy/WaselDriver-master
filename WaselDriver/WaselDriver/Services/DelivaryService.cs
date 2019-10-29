@@ -9,9 +9,9 @@ using WaselDriver.Models;
 
 namespace WaselDriver.Services
 {
-  public  class DelivaryService
+  public static class DelivaryService
     {
-        public async Task<ObservableCollection<TirhalModel>> GetAllterhal()
+        public static async Task<ObservableCollection<TirhalModel>> GetAllterhal()
         {
 
             using (var client = new HttpClient())
@@ -20,13 +20,13 @@ namespace WaselDriver.Services
                 {
                     var response = await client.GetAsync("http://Wassel.alsalil.net/api/alltirhalmodel");
                     var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
-                    var Req = JsonConvert.DeserializeObject<Response<string, ObservableCollection<TirhalModel>>>(serverResponse);
-                    var Tirhal = Req.message;
+                    var Req = JsonConvert.DeserializeObject<Response<string, ResponseMessage<ObservableCollection<TirhalModel>>>>(serverResponse);
+                    var Tirhal = Req.message.data;
                     return Tirhal;
                 }
                 catch (Exception)
                 {
-                    return new ObservableCollection<TirhalModel>();
+                    return null;
                 }
             }
         }

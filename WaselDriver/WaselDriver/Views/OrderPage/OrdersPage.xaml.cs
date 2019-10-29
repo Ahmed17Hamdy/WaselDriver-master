@@ -23,12 +23,15 @@ namespace WaselDriver.Views.OrderPage
 	{
        List<TKRoute> routes = new List<TKRoute>();
         List<TKCustomMapPin> Pins = new List<TKCustomMapPin>();
-      
-            public MapSpan Bounds { get; set; }
-        public OrdersPage ()
+
+        DelivaryObject delivary;
+        string Lat, Lan;
+        TirhalOrder TOrder;
+        public OrdersPage (TirhalOrder Order,string Lt,string Ln)
 		{
 			InitializeComponent ();
-            Settings.LastNotify = null;
+            TOrder = Order;
+            Lat = Lt;Lan = Ln;
             GmsDirection.Init("AIzaSyB7rB6s8fc317zCPz8HS_yqwi7HjMsAqks");
            // SetMyLocation();
             OrderMap.RouteCalculationFinished += OrderMap_RouteCalculationFinished;
@@ -96,16 +99,16 @@ namespace WaselDriver.Views.OrderPage
         }
         private async void SetMyLocation()
         {
-            Pins.Clear();           
+            Pins.Clear();
             routes.Clear();
             var route = new TKRoute();
             route.TravelMode = TKRouteTravelMode.Driving;
-            var myposition = new Position(Convert.ToDouble(Settings.LastLat), Convert.ToDouble(Settings.LastLng));         
-            var toposition = new Position(Convert.ToDouble(Settings.Latto), Convert.ToDouble(Settings.Lngto));
+            var myposition = new Position(Convert.ToDouble(Lat), Convert.ToDouble(Lan));         
+            var toposition = new Position(Convert.ToDouble(TOrder.latfrom), Convert.ToDouble(TOrder.lngfrom));
             route.Source = myposition;
             route.Destination = toposition;
             route.Color = Color.OrangeRed;           
-            route.LineWidth = 4;
+            route.LineWidth = 7;
             
             Pins.Add(new RoutePin
             {
@@ -138,27 +141,28 @@ namespace WaselDriver.Views.OrderPage
             OrderMap.MapRegion = e.Value.Bounds;      
           
         }
+
+
         private async void OrderMap_UserLocationChanged(object sender, TKGenericEventArgs<Position> e)
         {
-            var request = new GeolocationRequest(GeolocationAccuracy.High);
+            var request = new GeolocationRequest(GeolocationAccuracy.Best);
             var location = await Geolocation.GetLocationAsync(request);
             var x = location.Latitude;
             var y = location.Longitude;
-            if (Settings.LastLat != x.ToString() || Settings.LastLng != y.ToString())
+            if (Lat != x.ToString() || Lan != y.ToString())
             {
-                    Settings.LastLat = x.ToString();
-                    Settings.LastLng = y.ToString();                        
+                    Lat = x.ToString();
+                    Lan = y.ToString();                        
                     try
                     {
-                        var CurrentLocation = new Position(Convert.ToDouble(Settings.LastLat),
-                            Convert.ToDouble(Settings.LastLng));
+                        var CurrentLocation = new Position(Convert.ToDouble(Lat),Convert.ToDouble(Lan));
                         if (CurrentLocation != null)
                         {
                             Dictionary<string, string> values = new Dictionary<string, string>();
                             values.Add("user_id", Settings.LastUsedID.ToString());
                             values.Add("driver_id", Settings.LastUsedDriverID.ToString());
-                            values.Add("lat", Settings.LastLat);
-                            values.Add("lng", Settings.LastLng);
+                            values.Add("lat", Lat);
+                            values.Add("lng", Lan);
                             string content = JsonConvert.SerializeObject(values);
                             var httpClient = new HttpClient();
                             try
@@ -191,7 +195,7 @@ namespace WaselDriver.Views.OrderPage
             TirhalOrder order = new TirhalOrder
             {
                 user_id = Settings.LastUsedID.ToString(),
-                id = Settings.LastOrderid,
+                id = TOrder.id,
                 driver_id = Settings.LastUsedDriverID.ToString()
             };
             Dictionary<string, string> values = new Dictionary<string, string>();
@@ -213,7 +217,6 @@ namespace WaselDriver.Views.OrderPage
                 }
                 else
                 {
-                    Settings.LastNotify = null;
                     Activ.IsRunning = false;
                     //Device.BeginInvokeOnMainThread(() => {
                     //    Navigation.PushModalAsync(new MainTabbed());

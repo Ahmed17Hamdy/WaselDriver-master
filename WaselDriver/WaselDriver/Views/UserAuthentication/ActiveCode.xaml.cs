@@ -28,8 +28,7 @@ namespace WaselDriver.Views.UserAuthentication
             Activ.IsRunning = true;
             if (EntryCode.Text != "")
             {
-                UserServices ser = new UserServices();
-                var resback = await ser.CodeVerfication(mail, EntryCode.Text);
+                var resback = await UserServices.CodeVerfication(mail, EntryCode.Text);
                 var mess = JsonConvert.DeserializeObject<Response<string, string>>(resback);
                 if (mess.success)
                 {

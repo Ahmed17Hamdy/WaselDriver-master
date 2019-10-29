@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.alsalil.WaselDriver" android:installLocation="auto">
-	<uses-sdk android:targetSdkVersion="27" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.alsalil.waseldriver" android:installLocation="internalOnly">
+	<uses-sdk android:targetSdkVersion="28" android:minSdkVersion="19" />
 	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
-
 	<uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -16,11 +15,11 @@
 	<permission android:name="com.alsalil.wasel.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 	<uses-permission android:name="com.alsalil.wasel.permission.C2D_MESSAGE" />
 	<uses-permission android:name="android.permission.CAMERA" />
-	<application android:label="WaselDriver.Android">
+	<application android:label="WaselDriver">
 		<receiver android:name="com.onesignal.GcmBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
 			<intent-filter>
 				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
-				<category android:name="com.alsalil.wasel" />
+				<category android:name="com.alsalil.waseldriver" />
 			</intent-filter>
 		</receiver>
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
@@ -31,9 +30,10 @@
 				<category android:name="com.alsalil.wasel" />
 			</intent-filter>
 		</receiver>
-		<provider android:name="android.support.v4.content.FileProvider" android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true">
+		<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.alsalil.waseldriver.fileprovider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
-		</provider>
-		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyB7rB6s8fc317zCPz8HS_yqwi7HjMsAqks" />
+      <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+    </provider>
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBscFcMrxHVk38H90D-Yq4UJ7g1CMoo9rE" />
 	</application>
 </manifest>

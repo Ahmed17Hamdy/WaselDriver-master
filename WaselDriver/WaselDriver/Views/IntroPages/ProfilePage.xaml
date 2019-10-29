@@ -4,7 +4,7 @@
              xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
                xmlns:i18n="clr-namespace:WaselDriver.CustomControl"
              xmlns:Behaviors="clr-namespace:WaselDriver.Behaviors"
-             xmlns:Validators="clr-namespace:WaselDriver.Models"
+             xmlns:Validators="clr-namespace:WaselDriver.Models" NavigationPage.HasNavigationBar="False"
              xmlns:local="clr-namespace:WaselDriver"
              BackgroundColor="White" Padding="10"
              x:Class="WaselDriver.Views.IntroPages.ProfilePage">
@@ -22,7 +22,6 @@
                 <!-- header background -->
                 <!--<Image Source="WaselLogoo.png" Aspect="AspectFill"/>-->
                 <!--<Image Source="CurvedMask.png" VerticalOptions="End" Aspect="AspectFill" Margin="0,0,0,-1"/>-->
-
                 <!-- profile image -->
                 <abstractions:CircleImage Source="taxidriver.png" Margin="0,0,0,-50" HeightRequest="100"
                                           WidthRequest="100" HorizontalOptions="Center" VerticalOptions="End"/>
@@ -179,8 +178,7 @@
 
                 <!-- follow button -->
                 <Button x:Name="LogOutbtn" Grid.Row="4" Clicked="LogOutbtn_Clicked" Text="{i18n:Translate LogOUt}" 
-                        Margin="20" BackgroundColor="OrangeRed"
-                         VerticalOptions="End" />
+                        Margin="5" CornerRadius="4" BackgroundColor="OrangeRed" VerticalOptions="End" TextColor="White" />
 
             </Grid>
         </ScrollView>

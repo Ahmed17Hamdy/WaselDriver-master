@@ -21,8 +21,8 @@ namespace WaselDriver.Views
         private string labelText;
 
         public SplashPage()
-        {           
-                InitializeComponent();
+        {
+            InitializeComponent();
         }
        
 
@@ -40,32 +40,24 @@ namespace WaselDriver.Views
 
         private void SetMainPage()
         {
-            if (Settings.LastUsedDriverID == 0 && Settings.LastRegister=="" )
+            if (Settings.LastUsedDriverID == 0)
             {
-                App.Current.MainPage = new LanguagePage();
+                App.Current.MainPage = new NavigationPage(new LanguagePage());
             }
             else if(Settings.LastUsedDriverID==0 && Settings.LastRegister!= "")
             {
-                App.Current.MainPage = new DriverRegestration();
+                App.Current.MainPage = new NavigationPage(new DriverRegestration());
             }
-            else if ( Settings.LastUsedDriverID!= 0 && 
-                Settings.LastUserStatus != "0" &&
-                Settings.LastNotify==null)
+            else if ( Settings.LastUsedDriverID!= 0 && Settings.LastUserStatus != "0")
             {
-                App.Current.MainPage = new MainTabbed();                                                                               
+                App.Current.MainPage = new NavigationPage(new MainTabbed());                                                                               
             }
-            else if( Settings.LastUsedDriverID != 0 &&
-                Settings.LastUserStatus == "0")
+            else if( Settings.LastUsedDriverID != 0 && Settings.LastUserStatus == "0")
             {
-                App.Current.MainPage = new LoginPage();
+                App.Current.MainPage = new NavigationPage(new LoginPage());
             }
-            else if (Settings.LastUsedDriverID != 0 &&
-                Settings.LastUserStatus != "0" && Settings.LastNotify!= null)
-            {
-                App.Current.MainPage = new NotificationSummaryPage();
-            }
+            
         }
-
         private void Button_Clicked(object sender, EventArgs e)
         {
             App.Current.MainPage = new SplashPage();

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WaselDriver.Helper;
 using WaselDriver.Models;
+using WaselDriver.ViewModels;
 using WaselDriver.Views.UserAuthentication;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -23,25 +24,22 @@ namespace WaselDriver.Views.IntroPages
             FlowDirection = (Settings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             Settings.LastCountry = 0;
             Settings.LastUserGravity = "";
-
         }
         private async void Arabic_Clicked()
         {
             Activ.IsRunning = true;
             if (CrossConnectivity.Current.IsConnected)
             {
-                CrossMultilingual.Current.CurrentCultureInfo = 
-                    CrossMultilingual.Current.NeutralCultureInfoList.ToList().First(element => element.EnglishName.Contains("Arabic"));
+                CrossMultilingual.Current.CurrentCultureInfo = CrossMultilingual.Current.NeutralCultureInfoList.ToList().First(element => element.EnglishName.Contains("Arabic"));
                 AppResources.Culture = CrossMultilingual.Current.CurrentCultureInfo;
-                Settings.LastUserGravity = "Arabic";
-                GravityClass.Grav();
-                if (Settings.LastUsedID == 0 || Settings.LastUserStatus == "0")
+                //GravityClass.Grav();
+                if (Settings.LastUsedID == 0)
                 {
-                    await Navigation.PushModalAsync(new LoginPage());
+                    await Navigation.PushAsync(new LoginPage());
                 }
                 else
                 {
-                    await Navigation.PushModalAsync(new MainPage());
+                    App.Current.MainPage = new MainPage();
                 }
                 //App.Current.MainPage = new MenuPage();
             }
@@ -58,32 +56,19 @@ namespace WaselDriver.Views.IntroPages
             {
                 CrossMultilingual.Current.CurrentCultureInfo = CrossMultilingual.Current.NeutralCultureInfoList.ToList().First(element => element.EnglishName.Contains("English"));
                 AppResources.Culture = CrossMultilingual.Current.CurrentCultureInfo;
-                Settings.LastUserGravity = "English";
-                if (Settings.LastUsedID == 0 || Settings.LastUserStatus == "0")
+                if (Settings.LastUsedID == 0)
                 {
-                    
-                    await Navigation.PushModalAsync(new LoginPage());
+                    Settings.LastUseeRole = 0;
+                    await Navigation.PushAsync(new LoginPage());
                 }
                 else
                 {
-                    await Navigation.PushModalAsync(new MainPage());
+                    App.Current.MainPage = new MainPage();
                 }
             }
             else await DisplayAlert("Message", AppResources.ErrorMessage, "Ok");
             Activ.IsRunning = false;
         }
-        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            Countryitem = e.SelectedItem as Country;
-            Countryitem.TrueImage = "checked.png";
-            Settings.LastCountry = Countryitem.id;
-        }
-
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-
-        }
-
         private bool Checker()
         {
             if (Settings.LastCountry == 0)
@@ -103,6 +88,7 @@ namespace WaselDriver.Views.IntroPages
         {
             ArLangImg.IsVisible = false;
             EnLangImg.IsVisible = true;
+            CountryList.IsVisible = true;
             Settings.LastUserGravity = "English";
         }
 
@@ -110,11 +96,25 @@ namespace WaselDriver.Views.IntroPages
         {
             ArLangImg.IsVisible = true;
             EnLangImg.IsVisible = false;
+            CountryList.IsVisible = true;
             Settings.LastUserGravity = "Arabic";
         }
-
-        private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        private void Button_Clicked(object sender, EventArgs e)
         {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                MainViewModel vm = new MainViewModel();
+                this.BindingContext = vm;
+            }
+            else DisplayAlert("", AppResources.ErrorMessage, "Ok");
+        }
+
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            Activ.IsRunning = true;
+            Countryitem = e.Item as Country;
+            Countryitem.TrueImage = "checked.png";
+            Settings.LastCountry = Countryitem.id;
             if (Checker())
             {
                 Settings.LastCountry = Countryitem.id;
@@ -122,11 +122,7 @@ namespace WaselDriver.Views.IntroPages
                     Arabic_Clicked();
                 else English_Clicked();
             }
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            App.Current.MainPage = new LanguagePage();
+            Activ.IsRunning = false;
         }
     }
 }

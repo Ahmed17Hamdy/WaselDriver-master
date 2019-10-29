@@ -164,7 +164,7 @@
                            HorizontalOptions="Center" Aspect="AspectFit" 
                                    HeightRequest="30" WidthRequest="30" Source="camera.png"/>
                         <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="CarImg_Clicked"/>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
                         </Grid.GestureRecognizers>
                     </Grid>
                 </Frame>
