@@ -38,6 +38,7 @@ namespace WaselDriver.Views.UserAuthentication
                     string password = EntryPassword.Text;
                     string device_id = "192.168.1.1";
                     string firebase_token = Settings.UserFirebaseToken;
+                    string ss = Settings.LastSignalID;
                     var ResBack = await UserServices.login(email, password, device_id, firebase_token);
                     if (ResBack == null)
                     {

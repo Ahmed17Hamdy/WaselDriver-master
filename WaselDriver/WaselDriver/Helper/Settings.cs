@@ -184,8 +184,8 @@ namespace WaselDriver.Helper
         private static readonly int SettingsDriverIDDefault = 0;
         public static int LastUsedDriverID
         {
-            get => AppSettings.GetValueOrDefault(LastIDSettingsKey, SettingsIDDefault);
-            set => AppSettings.AddOrUpdateValue(LastIDSettingsKey, value);
+            get => AppSettings.GetValueOrDefault(LastDriverIDSettingsKey, SettingsDriverIDDefault);
+            set => AppSettings.AddOrUpdateValue(LastDriverIDSettingsKey, value);
 
         }
 

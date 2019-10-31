@@ -100,6 +100,7 @@ namespace WaselDriver.Views.PushNotificationPages
             OrderMap.Pins = Pins;
 
         }
+        int UserID;
         private async Task ChechNotification(string data)
         {
             if(data != "Has been approved" && data != "Not approved")
@@ -107,7 +108,8 @@ namespace WaselDriver.Views.PushNotificationPages
                 var Req = JsonConvert.DeserializeObject<DelivaryObject>(data);
                 PosFrom = Req;
                 userNamelbl.Text = Req.driver_id;
-                Settings.LastUsedID = int.Parse(Req.user_id);
+                UserID = int.Parse(Req.user_id);
+                Settings.LastUsedID = UserID;
                 AddressFromlbl.Text=await GetAddress(Req.latfrom,Req.lngfrom);
                 AddressTolbl.Text =await GetAddress(Req.latto, Req.lngto);
             }
@@ -139,7 +141,7 @@ namespace WaselDriver.Views.PushNotificationPages
             {
                 latfrom = PosFrom.latfrom,
                 lngfrom = PosFrom.lngfrom,
-                user_id = Settings.LastUsedID.ToString(),
+                user_id = UserID.ToString(),
                 driver_id = Settings.LastUsedDriverID.ToString(),
                 car_model_id = PosFrom.car_model_id,
                 latto = PosFrom.latto,
@@ -183,7 +185,7 @@ namespace WaselDriver.Views.PushNotificationPages
             {
                 latfrom = PosFrom.latfrom,
                 lngfrom = PosFrom.lngfrom,
-                user_id = Settings.LastUsedID.ToString(),
+                user_id = UserID.ToString(),
                 driver_id = Settings.LastUsedDriverID.ToString(),
                 car_model_id = PosFrom.car_model_id,
                 latto = PosFrom.latto,

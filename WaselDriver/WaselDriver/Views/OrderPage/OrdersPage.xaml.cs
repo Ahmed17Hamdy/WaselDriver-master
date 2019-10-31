@@ -38,7 +38,7 @@ namespace WaselDriver.Views.OrderPage
             OrderMap.RouteCalculationFailed += OrderMap_RouteCalculationFailed;
             OneSignal.Current.StartInit("1126a3d0-1d80-42ee-94db-d0449ac0a62c")
              .InFocusDisplaying(OSInFocusDisplayOption.None)
-             .HandleNotificationReceived(OnNotificationRecevied)
+             .HandleNotificationReceived(OnNotificationRecevied)    
              .HandleNotificationOpened(OnNotificationOpened)
              .EndInit();
         }
@@ -188,7 +188,34 @@ namespace WaselDriver.Views.OrderPage
             }
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new MainTabbed());
+            Dictionary<string, string> values = new Dictionary<string, string>();
+            values.Add("tirhal_order_id", TOrder.id.ToString());
+            values.Add("driver_id", TOrder.driver_id.ToString());
+            string content = JsonConvert.SerializeObject(values);
+            var httpClient = new HttpClient();
+            try
+            {
+                var response = await httpClient.PostAsync("http://wassel.alsalil.net/api/drivercanceltirhalorder",
+                    new StringContent(content, Encoding.UTF8, "text/json"));
+                var serverResponse = response.Content.ReadAsStringAsync().Result.ToString();
+                var json = JsonConvert.DeserializeObject<Response<TirhalOrder, string>>(serverResponse);
+                if (json.success == false)
+                {
+                    Activ.IsRunning = false;
+                    await DisplayAlert(AppResources.Error, json.message, AppResources.Ok);
+                }
+                else
+                {
+                    Activ.IsRunning = false;
+                    App.Current.MainPage = new MainTabbed();
+                    await DisplayAlert(AppResources.OrderSuccess, json.message, AppResources.Ok);
+                }
+            }
+            catch (Exception)
+            {
+                Activ.IsRunning = false;
+                await DisplayAlert(AppResources.ErrorMessage, AppResources.ErrorMessage, AppResources.Ok);
+            }
         }
         private async void  FinishedOrder_Clicked(object sender, EventArgs e)
         {

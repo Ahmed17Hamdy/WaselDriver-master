@@ -351,4 +351,7 @@
   <data name="LocationEnabled" xml:space="preserve">
     <value>إمكانية الوصول إلى موقعك غير مفعلة على جهازك.. يرجى التفعيل و إعادة المحاولة</value>
   </data>
+  <data name="CancelOrder" xml:space="preserve">
+    <value>رفض</value>
+  </data>
 </root>

@@ -104,7 +104,10 @@ namespace WaselDriver
             if (result.notification.payload.additionalData.ContainsKey("body"))
             {
                 var labelText = result.notification.payload.additionalData["body"].ToString();
-                App.Current.MainPage = new NotificationSummaryPage(labelText, Lat, Lan);
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    App.Current.MainPage = new NavigationPage(new NotificationSummaryPage(labelText, Lat, Lan));
+                });
             }
 
         }
@@ -118,7 +121,11 @@ namespace WaselDriver
             if (notification.payload.additionalData.ContainsKey("body"))
             {
                 var labelText = notification.payload.additionalData["body"].ToString();
-                App.Current.MainPage = new NotificationSummaryPage(labelText,Lat,Lan);
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    App.Current.MainPage = new NavigationPage(new NotificationSummaryPage(labelText, Lat, Lan));
+                });
+                
             }
         }
         private void CheckUserStatus()

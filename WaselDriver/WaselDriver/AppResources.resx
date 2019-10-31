@@ -351,4 +351,7 @@
   <data name="LocationEnabled" xml:space="preserve">
     <value>Location Service is not Enabled On Device</value>
   </data>
+  <data name="CancelOrder" xml:space="preserve">
+    <value>Refuse</value>
+  </data>
 </root>
