@@ -65,6 +65,9 @@
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <AndroidLinkSkip>
     </AndroidLinkSkip>
+    <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
+    <AndroidSupportedAbis>
+    </AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />

@@ -37,7 +37,7 @@ namespace WaselDriver.Views.PushNotificationPages
 			InitializeComponent ();
             Lat = Lt; Lan = Ln;
             _=ChechNotification(ss);
-            GmsDirection.Init("AIzaSyB7rB6s8fc317zCPz8HS_yqwi7HjMsAqks");
+            //GmsDirection.Init("AIzaSyB7rB6s8fc317zCPz8HS_yqwi7HjMsAqks");
             SetMyLocation();
             OrderMap.RouteCalculationFinished += OrderMap_RouteCalculationFinished;
             OrderMap.RouteCalculationFailed += OrderMap_RouteCalculationFailed;
@@ -46,7 +46,7 @@ namespace WaselDriver.Views.PushNotificationPages
         {
             InitializeComponent();
             _=ChechNotification(ss);
-            GmsDirection.Init("AIzaSyB7rB6s8fc317zCPz8HS_yqwi7HjMsAqks");
+            //GmsDirection.Init("AIzaSyB7rB6s8fc317zCPz8HS_yqwi7HjMsAqks");
             SetMyLocation();
             OrderMap.RouteCalculationFinished += OrderMap_RouteCalculationFinished;
             OrderMap.RouteCalculationFailed += OrderMap_RouteCalculationFailed;

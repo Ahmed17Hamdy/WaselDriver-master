@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace WaselDriver.Droid
 {
-    [Activity(Label = "WaselDriver", Icon = "@drawable/WaselLogoo", Theme = "@style/SplashTheme", NoHistory = true, MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "CaptainWasel", Icon = "@drawable/WaselLogoo", Theme = "@style/SplashTheme", NoHistory = true, MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 
     public class SplashActivity : Activity
     {
