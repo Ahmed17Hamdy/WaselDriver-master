@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="2" android:versionName="1.3" package="com.alsalil.WaselDriver" android:installLocation="preferExternal">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="3" android:versionName="1.4" package="com.alsalil.WaselDriver" android:installLocation="preferExternal">
 	<uses-sdk android:targetSdkVersion="28" android:minSdkVersion="15" />
 	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
@@ -27,13 +27,13 @@
 			<intent-filter>
 				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
 				<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-				<category android:name="com.alsalil.wasel" />
+				<category android:name="com.alsalilweb.wasel" />
 			</intent-filter>
 		</receiver>
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.alsalil.waseldriver.fileprovider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
 			<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 		</provider>
-		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBscFcMrxHVk38H90D-Yq4UJ7g1CMoo9rE" />
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAT6HVK-vqK_wsYp2ZRMRXki--_fYkIIjM" />
 	</application>
 </manifest>

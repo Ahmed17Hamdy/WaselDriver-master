@@ -145,6 +145,7 @@ namespace WaselDriver.Views.PushNotificationPages
                 driver_id = Settings.LastUsedDriverID.ToString(),
                 car_model_id = PosFrom.car_model_id,
                 latto = PosFrom.latto,
+                note = "",
                 lngto = PosFrom.lngto,
                 done = 1,
                 order_id = PosFrom.id.ToString()
@@ -191,6 +192,7 @@ namespace WaselDriver.Views.PushNotificationPages
                 latto = PosFrom.latto,
                 lngto = PosFrom.lngto,
                 done = 0,
+                note="",
                 order_id = PosFrom.id.ToString()
             };
 

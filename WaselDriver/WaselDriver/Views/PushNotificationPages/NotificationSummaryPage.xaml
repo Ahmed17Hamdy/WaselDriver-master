@@ -30,6 +30,10 @@
                     <Label Text="{i18n:Translate LocationTo }"/>
                     <Label x:Name="AddressTolbl"/>
                 </StackLayout>
+                <StackLayout  BackgroundColor="White" Orientation="Horizontal">
+                    <Label Text="{i18n:Translate Note }"/>
+                    <Label x:Name="LblNote"/>
+                </StackLayout>
                 <StackLayout Margin="10" HorizontalOptions="Center" BackgroundColor="White"
                              Orientation="Horizontal">
                     <Button x:Name="Acceptbtn" TextColor="White" BackgroundColor="Green" Clicked="Acceptbtn_Clicked"

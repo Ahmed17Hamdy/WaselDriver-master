@@ -156,11 +156,11 @@ namespace WaselDriver.Views.UserAuthentication
                 if (storageStatus == PermissionStatus.Granted)
                 {
                     CarImg = await CrossMedia.Current.PickPhotoAsync();
-                    if (ProfilePic == null)
+                    if (CarImg == null)
                         return;
                     CarImgSource.Source = ImageSource.FromStream(() =>
                     {
-                        return ProfilePic.GetStream();
+                        return CarImg.GetStream();
                     });
                 }
                 else

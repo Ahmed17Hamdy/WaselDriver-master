@@ -45,7 +45,7 @@
                             <Image Source="smartphone.png" Aspect="AspectFit"/>
                             <Entry Keyboard="Numeric" Placeholder="{i18n:Translate Phone}" x:Name="EntryPhone"
                                    PlaceholderColor="LightGray" HorizontalOptions="FillAndExpand">
-                                <Entry.Behaviors>
+                                <!--<Entry.Behaviors>
                                     <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
                                         <Behaviors:ValidationBehavior.Validators>
                                             <Validators:RequiredValidator />
@@ -55,7 +55,7 @@
                                         </Behaviors:ValidationBehavior.Validators>
                                     </Behaviors:ValidationBehavior>
                                     <local:MaxLengthValidatorBehavior  MaxLength="10"/>
-                                </Entry.Behaviors>
+                                </Entry.Behaviors>-->
                             </Entry>
                         </StackLayout>
 

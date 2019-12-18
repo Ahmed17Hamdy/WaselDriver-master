@@ -28,7 +28,7 @@
                                 <Validators:ValidationGroupBehavior x:Name="form"/>
                             </StackLayout.Behaviors>
                             <Image Source="smartphone.png" Aspect="AspectFit" Opacity=".4"/>
-                            <Entry Focused="EntryPhone_Focused" Unfocused="EntryPhone_Unfocused"
+                            <Entry 
                                    x:Name="EntryPhone" MaxLength="25" Keyboard="Numeric"
                                    Placeholder="{i18n:Translate Phone}" PlaceholderColor="LightGray" 
                                    HorizontalOptions="FillAndExpand"/>

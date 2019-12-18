@@ -47,7 +47,7 @@ namespace WaselDriver.Droid
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             var options = new FirebaseOptions.Builder()
                .SetApplicationId("1:622412870107:android:6aec2d0b1210b5bc")
-               .SetApiKey("AIzaSyDIs8cX6YYLC-tXrOFMS4DfTwLGW7c6yGQ")
+               .SetApiKey("AIzaSyAT6HVK-vqK_wsYp2ZRMRXki--_fYkIIjM")
                .SetGcmSenderId("622412870107")
                .Build();
             try
