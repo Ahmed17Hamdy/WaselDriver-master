@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="3" android:versionName="1.4" package="com.alsalil.WaselDriver" android:installLocation="preferExternal">
-	<uses-sdk android:targetSdkVersion="28" android:minSdkVersion="15" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="4" android:versionName="1.5" package="com.alsalil.WaselDriver" android:installLocation="preferExternal">
+	<uses-sdk android:targetSdkVersion="28" android:minSdkVersion="21" />
 	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES" />
@@ -19,7 +19,7 @@
 		<receiver android:name="com.onesignal.GcmBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
 			<intent-filter>
 				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
-				<category android:name="com.alsalil.waseldriver" />
+				<category android:name="com.alsalil.WaselDriver" />
 			</intent-filter>
 		</receiver>
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
